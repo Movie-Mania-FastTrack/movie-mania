@@ -34,17 +34,17 @@ function SingleMovieHome()
                     
                         <div style={{marginTop: '200px', height:'600px', width:'300px', float:'right'}}>
                             <Space direction='vertical'>
-                        <Link to='home'>
+                        <Link to='movie_trailor_page'>
                             <Card style={{height:'60px', width:'200px',backgroundColor:'#FBFAF6',opacity:'0.4', borderRadius:'12px'}}> 
                                 <h3 style={{textAlign:'center', color:'black', paddingTop:'10px', fontWeight:'bold'}}>Watch Trailor</h3>
                             </Card> 
                         </Link><br/>
-                        <Link to='home'>
+                        <Link to='cast_page'>
                             <Card style={{height:'60px', width:'200px',backgroundColor:'#FBFAF6',opacity:'0.4', borderRadius:'12px'}}> 
                                 <h3 style={{textAlign:'center',color:'black', paddingTop:'10px'}}>Story</h3>
                             </Card> 
                         </Link><br/>
-                        <Link to='home'>
+                        <Link to='buy_page'>
                             <Card style={{height:'60px', width:'200px',backgroundColor:'#FBFAF6',opacity:'0.4', borderRadius:'12px'}}> 
                                 <h3 style={{textAlign:'center', color:'black', paddingTop:'10px'}}>Buy</h3>
                             </Card> 
