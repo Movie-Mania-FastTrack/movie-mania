@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 import SingleMovieHome  from "./screens/SingleMovieHome";
 import MovieTrailorPage  from "./screens/MovieTrailorPage";
-import MovieCast  from "./screens/MovieCast";
+import MovieCastHome  from "./screens/MovieCastHome";
 import BuyMovie  from "./screens/BuyMovie";
 
 function App() {
@@ -12,7 +12,7 @@ function App() {
       <Routes>
         <Route path="/single_movie_home" element={<SingleMovieHome />} />
         <Route path="/movie_trailor_page" element={<MovieTrailorPage />} />
-        <Route path="/cast_page" element={<MovieCast />} />
+        <Route path="/cast_page" element={<MovieCastHome />} />
         <Route path="/buy_page" element={<BuyMovie />} />
       </Routes>
     </Router>
