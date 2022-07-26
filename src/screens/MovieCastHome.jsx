@@ -6,8 +6,7 @@ function Customer_Home()
 {
     return(  
         <Screen_Layout 
-        department={''} 
-        searchBar={0} 
+        department={'Cast'} 
         back={'/single_movie_home'}
         home={'/single_movie_home'}
         Component={<MovieCast/>}
