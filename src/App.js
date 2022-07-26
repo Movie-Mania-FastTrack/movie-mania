@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import SingleMovieHome  from "./screens/SingleMovieHome";
 import MovieTrailorPage  from "./screens/MovieTrailorPage";
 import MovieCastHome  from "./screens/MovieCastHome";
-import BuyMovie  from "./screens/BuyMovie";
+import BuyMovieHome  from "./screens/BuyMovieHome";
 
 function App() {
   return (
@@ -13,7 +13,7 @@ function App() {
         <Route path="/single_movie_home" element={<SingleMovieHome />} />
         <Route path="/movie_trailor_page" element={<MovieTrailorPage />} />
         <Route path="/cast_page" element={<MovieCastHome />} />
-        <Route path="/buy_page" element={<BuyMovie />} />
+        <Route path="/buy_page" element={<BuyMovieHome/>} />
       </Routes>
     </Router>
   );
