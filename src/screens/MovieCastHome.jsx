@@ -2,7 +2,7 @@ import React from 'react';
 import Screen_Layout from "./common_components/ScreenLayout";
 import MovieCast from "./MovieCast";
 
-function Customer_Home()
+function MovieCastHome()
 {
     return(  
         <Screen_Layout 
@@ -16,4 +16,4 @@ function Customer_Home()
 
 }
 
-export default Customer_Home;
+export default MovieCastHome;
