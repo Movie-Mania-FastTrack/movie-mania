@@ -1,0 +1,25 @@
+.fullScreen{
+    height: 100%;
+    width: 100%;
+    position:absolute;
+    background-color: rgb(30, 30, 29);
+}
+
+.navBar{
+    height:30%;
+    width:100%;
+    position:relative;
+    background-image: url("");
+}
+
+.topRated{
+    height:30%;
+    width:100%;
+    position:relative;
+}
+
+.recentMovies{
+    height:30%;
+    width:100%;
+    position:relative;
+}
