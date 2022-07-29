@@ -7,6 +7,7 @@ import MovieTrailorPage  from "./screens/MovieTrailorPage";
 import MovieCastHome  from "./screens/MovieCastHome";
 import BuyMovieHome  from "./screens/BuyMovieHome";
 import AdminHomePage  from "./screens/AdminHomePage";
+import AddNewMovieScreen from "./screens/AddNewMovie/AddNewMovieScreen";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path="/cast_page" element={<MovieCastHome />} />
         <Route path="/buy_page" element={<BuyMovieHome/>} />
         <Route path="/admin_home_page" element={<AdminHomePage/>} />
+        <Route path="/add_new_movie" element={<AddNewMovieScreen/>} />
       </Routes>
     </Router>
   );

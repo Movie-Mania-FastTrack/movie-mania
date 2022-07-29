@@ -1,0 +1,35 @@
+.heading{
+    color:white;
+    padding-left: 20px;
+    padding-top: 10px;
+
+}
+
+.form{
+    color:white;
+    width: 100%;
+    text-align: left;
+        /* background-color: aqua; */
+        padding-left: 15%;
+    
+
+}
+
+.button{
+    background-color: yellow;
+    border-radius: 10px;
+    color:#810C0C;
+    font-weight: bold;
+    border-color:yellow;
+    margin-bottom: 10px;
+
+    
+}
+
+.category{
+    width:300px;
+}
+
+.movieName{
+    padding-left: 50px;
+}
