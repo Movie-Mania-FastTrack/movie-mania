@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 const { Header, Content } = Layout;
 
 
-function Screen_Layout({department,image,Component,bell,add,topSearchBar,home,back,addLink}){
+function Screen_Layout({department,image,Component,home,back}){
     const current = new Date();
     const navigate = useNavigate();
 

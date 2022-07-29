@@ -5,22 +5,16 @@ import { Avatar, Badge, Button, Space } from "antd";
 import {
   HomeFilled,
   LeftOutlined,
-  PlusOutlined,
 } from "@ant-design/icons";
 import { Link } from "react-router-dom";
 
 
 function Topbar_Management({
   department,
-  add,
   home,
   back,
-  addLink,
 }) {
-  const current = new Date();
-  const date = `${current.getDate()}/${
-    current.getMonth() + 1
-  }/${current.getFullYear()}`;
+  
   const size = "large";
 
   return (
@@ -62,29 +56,12 @@ function Topbar_Management({
        
       </Space>
 
-      <Space
-        size={"large"}
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          justifyContent: "flex-end",
-        }}
-      >
-        {add === 1 ? (
-          <Link to={addLink} state={{ department: department }}>
-            <Badge>
-              <Avatar shape="circle" size={50} icon={<PlusOutlined />} />
-            </Badge>
-          </Link>
-        ) : null}
+      
+        
 
 
-        <h2 className={Screen_Layout_Styles.date}>
-          <span style={{ fontWeight: "bold" }}>TODAY : </span>
-          {date}
-        </h2>
-
-      </Space>
+       
+     
     </div>
   );
 }
