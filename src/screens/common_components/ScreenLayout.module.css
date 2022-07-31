@@ -1,0 +1,79 @@
+
+
+.screen{
+    min-height: 100%;
+    width:100%;
+    position:absolute;
+}
+.topLeft{ /*Title bar - Left*/
+    color: white;
+    
+}
+
+
+.h1{
+    color: white;
+    font-size: 35px;
+    float: right;
+    margin-left: 10px;
+    margin-top: 0;
+}
+
+.header{
+    background-color: #262836;
+    padding-top: 5px;
+    margin: 0;
+}
+.topleft{
+    float:left;
+    color: white;  
+}
+
+.subcontent{
+    background-color: #1f1d2b;
+    border-radius: 10px;
+    margin: 15px;
+    min-height: 97%;
+    height: auto;
+    width: 98%;
+    position: relative;
+    
+}
+
+.content{
+   background-color: #262836;
+   height: 100%;
+}
+
+
+
+.date{
+    font-size: 16px;
+    color: white;
+    text-align: right;
+    vertical-align: middle;
+    
+}
+.searchbar{
+    width: 50%;
+    height: 10%; 
+    padding-top: 30px;
+    padding-left: 30px;
+    margin-bottom: 10px;
+    float: left;
+}
+
+.profileImage{
+    height: auto;
+    width: 55px;
+    background-color: initial;
+    margin: 0;
+    padding: 0;
+}
+
+.topright{
+    float: right;
+    height: 100%;
+    width: auto;
+    margin-bottom: 10px;
+}
