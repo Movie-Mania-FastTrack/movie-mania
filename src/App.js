@@ -7,6 +7,7 @@ import MovieTrailorPage  from "./screens/MovieTrailorPage";
 import MovieCastHome  from "./screens/MovieCastHome";
 import BuyMovieHome  from "./screens/BuyMovieHome";
 import AdminHomePage  from "./screens/AdminHomePage";
+import ManageMoviesHome  from "./screens/ManageMoviesHome";
 import AddNewMovieScreen from "./screens/AddNewMovie/AddNewMovieScreen";
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
         <Route path="/buy_page" element={<BuyMovieHome/>} />
         <Route path="/admin_home_page" element={<AdminHomePage/>} />
         <Route path="/add_new_movie" element={<AddNewMovieScreen/>} />
+        <Route path="/manage_movie_home" element={<ManageMoviesHome />} />
       </Routes>
     </Router>
   );
