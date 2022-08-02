@@ -1,15 +1,28 @@
-import React from "react";
-import {Row, Col, Card, Space} from 'antd';
+import React, {useState} from "react";
+import {Row, Col, Modal} from 'antd';
 import {LeftCircleOutlined,RightCircleOutlined} from '@ant-design/icons';
-import {Link} from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 
 import TopRatedMovieCard from './TopRatedMovieCard';
 import RecentMovieCard from './RecentMovieCard';
 
 import HomePageStyles from "./HomePage.module.css";
+import admin from '../../resources/images/admin.png';
 
-function SingleMovieHome()
+function HomePage()
 {
+    const [isModalVisible, setIsModalVisible] = useState(false);
+    const navigate = useNavigate();
+
+    const showModal = () => {
+      setIsModalVisible(true);
+    };
+  
+    const handleOk = () => {
+      setIsModalVisible(false);
+      navigate("/admin_home_page");
+    };
+  
     return(
         <>
         <div className={HomePageStyles.fullScreen}>
@@ -41,9 +54,20 @@ function SingleMovieHome()
                 {/* Footer */}
                 <div className={HomePageStyles.footer}>
                     <Row>
-                        <Col span={10}><h4 style={{color:'white', opacity:'0.7', paddingLeft:'20px'}}>Website <br/> www.fastrack.com</h4></Col>
-                        <Col span={10}><h4 style={{color:'white', opacity:'0.7'}}>Fast Track Computers <br/> Negombo Rd, Narammala.</h4></Col>
+                        <Col span={10}><h4 style={{color:'white', opacity:'0.7', paddingLeft:'20px'}}>Website <br/> www.fasttrack.com</h4></Col>
+                        <Col span={8}><h4 style={{color:'white', opacity:'0.7'}}>Fast Track Computers <br/> Negombo Rd, Narammala.</h4></Col>
                         <Col span={4}><h4 style={{color:'white', opacity:'0.7'}}>Contact   <br/> +94 77 158 1542 <br/> +94 77 158 1542</h4></Col>
+                        <Col span={2}>
+                         <button style={{height:'50px', width:'70px', opacity:'0.2', marginTop:'5px'}} onClick={showModal}><img src={admin} style={{height:'50px', width:'70px'}}></img></button>  
+                         <Modal 
+                         style={{height:'300px', width:'600px', borderRadius:'15px', backgroundColor:'wheat'}}
+                         title="Basic Modal" visible={isModalVisible} onOk={handleOk} >
+                            <div>
+                                <p>Admin UserName: <input type='text'/></p>
+                                <p>Admin Password: <input type='password'/></p>
+                            </div>
+                        </Modal>
+                        </Col>
                     </Row>
                 </div>
             </div>
@@ -52,4 +76,4 @@ function SingleMovieHome()
     );
 }
 
-export default SingleMovieHome;
+export default HomePage;

@@ -1,5 +1,5 @@
 import React from 'react';
-import Screen_Layout from "./common_components/ScreenLayout";
+import Screen_Layout from "../common_components/ScreenLayout";
 import AdminHomePageLayout from "./AdminHomePageLayout";
 
 function AdminHomePage()
@@ -7,8 +7,8 @@ function AdminHomePage()
     return(  
         <Screen_Layout 
         department={'Administration'} 
-        back={'/single_movie_home'}
-        home={'/single_movie_home'}
+        back={0}
+        home={'/'}
         Component={<AdminHomePageLayout/>}
         />
 
