@@ -16,19 +16,18 @@ function Topbar({ department, home, back }) {
         <Space size="large">
           <Link to={back}>
             <Button
-              type="primary"
               icon={<LeftOutlined />}
               size={size}
-              style={{ background: "#ff7875", borderColor: "#ff7875" }}
+              style={{ background: "#FFF504", borderColor: "black" }}
             />
           </Link>
 
+      {/* Home Icon */}
           <Link to={home}>
             <Button
-              type="primary"
               icon={<HomeFilled />}
               size={size}
-              style={{fontSize:'45px', margin:'17px 0px 0px 17px'}}
+              style={{fontSize:'45px', margin:'17px 0px 0px 17px',backgroundColor:'#FFF504', borderColor:'black'}}
             />
           </Link>
 

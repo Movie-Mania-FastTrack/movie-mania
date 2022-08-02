@@ -3,8 +3,6 @@ import 'antd/dist/antd.css';
 import Screen_Layout_Styles from './ScreenLayout.module.css';
 import { Layout} from 'antd';
 import Topbar from "./TopBarComponent";
-import Topbar_Management from "./TopBar";
-import Title from './Title'
 import { useNavigate } from "react-router-dom";
 const { Header, Content } = Layout;
 
