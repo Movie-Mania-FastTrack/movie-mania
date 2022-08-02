@@ -7,7 +7,7 @@ import TopRatedMovieCard from './TopRatedMovieCard';
 import RecentMovieCard from './RecentMovieCard';
 
 import HomePageStyles from "./HomePage.module.css";
-import admin from '../resources/images/admin.png';
+import admin from '../../resources/images/admin.png';
 
 function HomePage()
 {
