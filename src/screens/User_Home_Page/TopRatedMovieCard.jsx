@@ -1,12 +1,15 @@
 import React from "react";
+import {Link} from 'react-router-dom';
 
 function TopRatedMovieCard ()
 {
     return(
         <>
-        <div style={{height:'160px', width:'140px',backgroundColor:'white', borderRadius:'15px'}}>
+         <Link to='/single_movie_home'>
+            <div style={{height:'160px', width:'140px',backgroundColor:'white', borderRadius:'15px'}}>
 
-        </div>
+            </div>
+        </Link>
         </>
     );
 }
