@@ -6,7 +6,7 @@ function MovieRequest(requestID)
 {
     return(
         <>
-        <div style={{height:'auto', width:'100%', position:'absolute', backgroundColor:'#01091D', marginTop:'30px'}}>
+        <div style={{height:'auto', width:'100%', position:'absolute', backgroundColor:'#171723', marginTop:'30px'}}>
            
                 
                   
