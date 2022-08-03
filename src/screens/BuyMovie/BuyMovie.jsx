@@ -77,6 +77,36 @@ function BuyMovie() {
       </center>
       <p className={styles.h1}>Contact information</p>
       <hr />
+      <center>
+        <div className={styles.BuyingInfoContainer}>
+          <Row gutter={[48, 48]}>
+            <Col span={8}>
+              <p>Name :</p>
+            </Col>
+            <Col span={16}>
+              <Input style={{ width: "300px", float: "left" }} />
+            </Col>
+
+            <Col span={8}>
+              <p>Contact No :</p>
+            </Col>
+            <Col span={16}>
+              <Input style={{ width: "300px", float: "left" }} />
+            </Col>
+
+            <Col span={8}>
+              <p>Email Address :</p>
+            </Col>
+            <Col span={8}>
+              <Input style={{ width: "300px", float: "left" }} />
+            </Col>
+
+            <Col span={8}>
+              <Button className={styles.button}>SUBMIT REQUEST</Button>
+            </Col>
+          </Row>
+        </div>
+      </center>
     </>
   );
 }
