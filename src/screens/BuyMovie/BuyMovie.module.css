@@ -1,88 +1,23 @@
-.screen {
-    height: 180%;
-    width: 100%;
-    position: absolute;
-  }
-  .topLeft {
-    /*Title bar - Left*/
-    color: white;
-  }
-  .h1 {
-    color: white;
-    font-size: 35px;
-    float: right;
-    margin-left: 10px;
-    margin-top: 0;
-  }
-  .header {
-    background-color: #262836;
-    padding-top: 10px;
-    margin: 0;
-  }
-  .topleft {
-    float: left;
-    color: white;
-  }
-  .topright {
-    float: right;
-    height: 100%;
-    width: 6%;
-    margin: 0;
-    padding-top: 0;
-  }
-  .subcontent {
-    background-color: #1f1d2b;
-    border-radius: 10px;
-    margin: 15px 15px 0 15px;
-    padding-bottom: 15px;
-    height: auto;
-    width: 98%;
-    position: absolute;
-  }
-  .button {
-    float: right;
-    padding-right: 50px;
-  }
-  .content {
-    background-color: #262836;
-  }
-  .date {
-    font-size: 16px;
-    color: white;
-    text-align: right;
-    margin-right: 90px;
-  }
-  .personalDetails {
-    padding-left: 20px;
-    padding-top: 10px;
-    color: white;
-  }
-  .name {
-    color: white;
-  }
-  .row {
-    padding-right: 100px;
-  }
-  .selectDepartment{
-    
-    width: 100%;
-  }
-  
-  .textArea{
-    color:white;
-    background-color: #1F1D2B;
-    border-color: #de826e;
-  }
-  .required:after {
-    content:" *";
-    color: red;
-    display:inline;
-  }
-  
-  .button{
-    margin-top: 100px;
-    float: left;
-    margin-left: 120px;
-  }
-  
-  
+.h1{
+  color: white;
+  padding: 10px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.BuyingInfoContainer{
+color:white;
+font-size:15px;
+/* background-color: antiquewhite; */
+width: 70%;
+
+}
+
+.ignoreDriveLink{
+  background-color:rgba(255, 245, 4, 0.32);
+  border-radius: 15px 15px 15px 0px;
+  width: 300px;
+    height: 40px;
+    color:rgba(226, 241, 255, 0.64);
+    padding-top: 5px;
+}
