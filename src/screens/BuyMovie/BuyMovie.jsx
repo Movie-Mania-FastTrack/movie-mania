@@ -13,12 +13,15 @@ function BuyMovie() {
       <hr />
       <center>
         <div className={styles.BuyingInfoContainer}>
-          <Row gutter={[48, 48]}>
+          {/* Buying info */}
+          <Row gutter={[48, 24]}>
             <Col span={8}>
-              <p>Movie Name :</p>
+              {/* Movie name selection */}
+              <p className={styles.pName}>Movie Name :</p>
             </Col>
             <Col span={8}>
               <Select
+                className={styles.p}
                 defaultValue="Doctor Strange 2020"
                 style={{
                   width: "200px",
@@ -32,40 +35,47 @@ function BuyMovie() {
             </Col>
             <Col span={8}>
               <Button
+                className={styles.addButton}
                 type="primary"
                 shape="circle"
                 icon={<PlusCircleOutlined />}
               />
             </Col>
             <Col span={8}>
-              <p>Movie Count :</p>
+              {/* Movie count */}
+              <p className={styles.pName}>Movie Count :</p>
             </Col>
             <Col span={8}>
-              <p>{movieCount}</p>
+              <p className={styles.p}>{movieCount}</p>
             </Col>
             <Col span={8}></Col>
             <Col span={8}>
-              <p>Payable Amount :</p>
+              <p className={styles.pName}>Payable Amount :</p>
             </Col>
             <Col span={8}>
-              <p>Rs {payableAmount}</p>
+              <p className={styles.p}>Rs {payableAmount}</p>
             </Col>
             <Col span={8}></Col>
 
             <Col span={8}>
-              <p>Collection Method :</p>
+              <p className={styles.pName}>Collection Method :</p>
             </Col>
             <Col span={8}>
-              <Radio style={{ color: "white" }}>To the drive</Radio>
+              <Radio style={{ color: "white" }} className={styles.p}>
+                To the drive
+              </Radio>
             </Col>
             <Col span={8}>
               <Radio style={{ color: "white" }}>Pickup from the shop</Radio>
             </Col>
             <Col span={8}>
-              <p>Drive Link :</p>
+              <p className={styles.pName}>Drive Link :</p>
             </Col>
             <Col span={8}>
-              <Input placeholder="Paste the Drive link here" />
+              <Input
+                placeholder="Paste the Drive link here"
+                className={styles.p}
+              />
             </Col>
             <Col span={8}>
               <p className={styles.ignoreDriveLink}>
@@ -79,26 +89,35 @@ function BuyMovie() {
       <hr />
       <center>
         <div className={styles.BuyingInfoContainer}>
-          <Row gutter={[48, 48]}>
+          <Row gutter={[48, 24]}>
             <Col span={8}>
-              <p>Name :</p>
+              <p className={styles.pName}>Name :</p>
             </Col>
             <Col span={16}>
-              <Input style={{ width: "300px", float: "left" }} />
+              <Input
+                placeholder="Enter name"
+                style={{ width: "300px", float: "left" }}
+              />
             </Col>
 
             <Col span={8}>
-              <p>Contact No :</p>
+              <p className={styles.pName}>Contact No :</p>
             </Col>
             <Col span={16}>
-              <Input style={{ width: "300px", float: "left" }} />
+              <Input
+                placeholder="Enter contact no "
+                style={{ width: "300px", float: "left" }}
+              />
             </Col>
 
             <Col span={8}>
-              <p>Email Address :</p>
+              <p className={styles.pName}>Email Address :</p>
             </Col>
             <Col span={8}>
-              <Input style={{ width: "300px", float: "left" }} />
+              <Input
+                placeholder="Enter email address "
+                style={{ width: "300px", float: "left" }}
+              />
             </Col>
 
             <Col span={8}>
