@@ -15,15 +15,18 @@
 
 }
 
-.button{
+.button {
     background-color: yellow;
     border-radius: 10px;
-    color:#810C0C;
+    color: #810C0C;
     font-weight: bold;
-    border-color:yellow;
+    border-color: yellow;
     margin-bottom: 10px;
+    height: 50px;
+    float: right;
+    width:120px;
 
-    
+
 }
 
 .category{
