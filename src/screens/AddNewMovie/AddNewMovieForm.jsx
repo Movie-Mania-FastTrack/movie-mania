@@ -86,31 +86,53 @@ function AddNewMovieForm() {
                 </Col>
               </Row>
             </Form.Item>
-            {/* <Form.Item label="Characters">
-              <Space>
-                <Input />
-                <Input />
-                <Input />
-              </Space>
+            <Row gutter={[16, 16]}>
+              <Col span={8}>
+                <Form.Item label="Partner Image">
+                  <Dragger style={{ width: "300px" }}>
+                    <p className="ant-upload-drag-icon">
+                      <InboxOutlined />
+                    </p>
+                    <p className="ant-upload-text">
+                      Click or drag file to this area to upload
+                    </p>
+                    <p className="ant-upload-hint">Choose File</p>
+                  </Dragger>
+                </Form.Item>
+              </Col>
+              <Col span={8} offset={1}>
+                <Form.Item label="Movie Image">
+                  <Dragger style={{ width: "300px" }}>
+                    <p className="ant-upload-drag-icon">
+                      <InboxOutlined />
+                    </p>
+                    <p className="ant-upload-text">
+                      Click or drag file to this area to upload
+                    </p>
+                    <p className="ant-upload-hint">Choose File</p>
+                  </Dragger>
+                </Form.Item>
+              </Col>
 
-              <Space>
-                <Input />
-                <Input />
-                <Input />
-              </Space>
-            </Form.Item> */}
-            <Form.Item label="Trailer Clip">
-              <Dragger>
-                <p className="ant-upload-drag-icon">
-                  <InboxOutlined />
-                </p>
-                <p className="ant-upload-text">
-                  Click or drag file to this area to upload
-                </p>
-                <p className="ant-upload-hint">Choose File</p>
-              </Dragger>
-            </Form.Item>
+              {/* <Col span={8}>
+           
+              </Col>
+              <Col span={8}>
+                <p>Movie Partner Image</p>
+              </Col> */}
 
+              <Form.Item label="Trailer Clip">
+                <Dragger>
+                  <p className="ant-upload-drag-icon">
+                    <InboxOutlined />
+                  </p>
+                  <p className="ant-upload-text">
+                    Click or drag file to this area to upload
+                  </p>
+                  <p className="ant-upload-hint">Choose File</p>
+                </Dragger>
+              </Form.Item>
+            </Row>
             <Form.Item {...tailLayout}>
               <Space>
                 <Button className={formStyles.button}>Add Movie</Button>
