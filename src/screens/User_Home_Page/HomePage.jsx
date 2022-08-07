@@ -1,7 +1,8 @@
-import React, {useState} from "react";
+import React, {useState , useEffect} from "react";
 import {Row, Col, Modal} from 'antd';
 import {LeftCircleOutlined,RightCircleOutlined} from '@ant-design/icons';
 import {useNavigate} from 'react-router-dom';
+
 
 import TopRatedMovieCard from './TopRatedMovieCard';
 import RecentMovieCard from './RecentMovieCard';
@@ -12,6 +13,7 @@ import admin from '../../resources/images/admin.png';
 function HomePage()
 {
     const [isModalVisible, setIsModalVisible] = useState(false);
+    
     const navigate = useNavigate();
 
     const showModal = () => {
@@ -23,6 +25,8 @@ function HomePage()
       navigate("/admin_home_page");
     };
   
+   
+
     return(
         <>
         <div className={HomePageStyles.fullScreen}>
