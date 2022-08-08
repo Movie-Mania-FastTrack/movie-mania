@@ -12,15 +12,13 @@ function ManageMovies()
                 {/* Category Manage */}
                 <Col style={{height:'800px', width:'23%',backgroundColor:'#5C5101',position:'relative', borderRadius:'10px'}}>
                     <div style={{margin:'20px 0px 0px 20px'}}>
-                        <h2 style={{color:'white', fontWeight:'600', textAlign:'center'}}>Add Movie Category</h2>
-                        <br/><br/>
-                        <h3 style={{color:'white'}}>Category Name: </h3><br/>
-                        <input type='text' style={{height:'50px', width:'280px', borderColor:'#FFF504', borderRadius:'10px', backgroundColor:'transparent'}}/>
-                        <button style={{height:'40px',width:'90px',backgroundColor:'#FFF504', float:'right', borderRadius:'10px', margin:'10px 20px 0px 0px'}}>ADD</button>
-                        <h2 style={{color:'white', fontWeight:'600', textAlign:'center', paddingTop:'100px'}}>Category List</h2>
+                        <h2 style={{color:'white', textAlign:'center'}}>Categories </h2><br/>
+                       <br/>
+                        <h4 style={{color:'white', fontWeight:'600', textAlign:'center', paddingTop:'30px'}}>Category1</h4>
                     </div>
                 </Col>
 
+                {/* Space  */}
                 <Col style={{height:'800px', width:'5%',position:'relative'}}></Col>
 
                  {/* Movies Manage */}
