@@ -26,7 +26,7 @@ function SingleMovieHome()
                     </div>
 
                        {/* Single movie Options */}
-                    <div style={{paddingTop:'180px'}}>
+                    <div style={{paddingTop:'10vw'}}>
                             <Space direction='vertical'>
                                 <Link to='/movie_trailor_page'>
                                     <Card style={{height:'60px', width:'200px',backgroundColor:'#FBFAF6',opacity:'0.4', borderRadius:'12px'}}> 
