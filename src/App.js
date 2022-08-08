@@ -6,6 +6,7 @@ import SingleMovieHome  from "./screens/SingleMovieHome";
 import MovieTrailorPage  from "./screens/MovieTrailorPage";
 import MovieCastHome  from "./screens/MovieCastHome";
 import BuyMovieHome  from "./screens/BuyMovie/BuyMovieHome";
+import SlipUploadHome  from "./screens/BuyMovie/SlipUploadHome";
 import AdminHomePage  from "./screens/Admin_Home_Page/AdminHomePage";
 import ManageMoviesHome  from "./screens/Admin_Manage_Movies/ManageMoviesHome";
 import AddNewMovieScreen from "./screens/AddNewMovie/AddNewMovieScreen";
@@ -20,6 +21,7 @@ function App() {
         <Route path="/movie_trailor_page" element={<MovieTrailorPage />} />
         <Route path="/cast_page" element={<MovieCastHome />} />
         <Route path="/buy_page" element={<BuyMovieHome/>} />
+        <Route path="/slip_upload_page" element={<SlipUploadHome/>} />
         <Route path="/admin_home_page" element={<AdminHomePage/>} />
         <Route path="/add_new_movie" element={<AddNewMovieScreen/>} />
         <Route path="/manage_movie_home" element={<ManageMoviesHome />} />

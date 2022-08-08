@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./BuyMovie.module.css";
 import { Row, Col, Radio, Select,Button, Input } from "antd";
+import {Link} from 'react-router-dom';
 import { PlusCircleOutlined } from "@ant-design/icons";
 
 const { Option } = Select;
@@ -11,6 +12,7 @@ function BuyMovie() {
     <>
       <p className={styles.h1}>Buying information</p>
       <hr />
+      <Link to='/slip_upload_page'><h3>Already Requested ?</h3></Link>
       <center>
         <div className={styles.BuyingInfoContainer}>
           {/* Buying info */}
