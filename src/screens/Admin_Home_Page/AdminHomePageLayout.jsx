@@ -6,7 +6,7 @@ function AdminHomePageLayout()
 {
     return(
         <>
-        <div style={{height:'100%', width:'100%', position: 'fixed', backgroundColor:'#040819'}}>
+        <div style={{height:'auto', width:'100vw', position: 'absolute', backgroundColor:'#040819'}}>
             <MovieRequest/>
         </div>
 

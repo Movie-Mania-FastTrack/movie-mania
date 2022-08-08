@@ -1,31 +1,31 @@
 .fullScreen{
-    height: 120%;
-    width: 100%;
+    height: auto;
+    width: 100vw;
     position:absolute;
     background-color: rgb(28, 27, 27);
 }
 
 .navBar{
-    height:30%;
+    height:20vw;
     width:100%;
     position:relative;
     background-image: url("../../resources/images/MovieMania.png");
 }
 
 .topRated{
-    height:30%;
+    height:15vw;
     width:100%;
     position:relative;
 }
 
 .recentMovies{
-    height:30%;
+    height:15vw;
     width:100%;
     position:relative;
 }
 
 .footer{
-    height: 20%;
+    height: 5vw;
     width: 100%;
     top:92%;
     position: fixed;

@@ -1,8 +1,8 @@
 
 
 .screen{
-    min-height: 100%;
-    width:100%;
+    height: auto;
+    width: 100vw;
     position:absolute;
 }
 .topLeft{ /*Title bar - Left*/
