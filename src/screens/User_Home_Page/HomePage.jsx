@@ -1,5 +1,5 @@
 import React, {useState , useEffect} from "react";
-import {Row, Col, Modal} from 'antd';
+import {Row, Col, Modal, Select} from 'antd';
 import {LeftCircleOutlined,RightCircleOutlined} from '@ant-design/icons';
 import {useNavigate} from 'react-router-dom';
 
@@ -32,6 +32,18 @@ function HomePage()
         <div className={HomePageStyles.fullScreen}>
             {/* Nav Bar */}
             <div className={HomePageStyles.navBar}>
+                <Row style={{paddingTop:'220px'}}>
+                  <Col span={2}></Col> 
+                  <Col span={3}><button className={HomePageStyles.categoryBtn}>English</button></Col> 
+                  <Col span={3}><button className={HomePageStyles.categoryBtn}>Sinhala</button></Col> 
+                  <Col span={3}><button className={HomePageStyles.categoryBtn}>Malayalam</button></Col> 
+                  <Col span={3}><button className={HomePageStyles.categoryBtn}>Tamil</button></Col> 
+                  <Col span={3}><button className={HomePageStyles.categoryBtn}>Hindi</button></Col>  
+                  <Col span={2}></Col> 
+                  <Col span={2}><Select className={HomePageStyles.categoryBtn}>More</Select></Col>  
+                </Row>
+
+
             </div>
 
             {/* Top Rated */}

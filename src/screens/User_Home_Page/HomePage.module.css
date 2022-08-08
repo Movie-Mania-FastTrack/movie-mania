@@ -31,3 +31,12 @@
     position: fixed;
     background-color: black;
 }
+
+.categoryBtn{
+    
+    border-radius: 12px;
+    height: 35px;
+    width:100px;
+    border-width: 1px;
+    background-color: rgb(147, 147, 147);
+}
