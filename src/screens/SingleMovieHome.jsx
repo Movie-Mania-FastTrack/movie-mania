@@ -10,67 +10,58 @@ function SingleMovieHome()
 {
     return(
         <>
-    <div className={SingleHomeStyles.screenImg}>
+    <div className={SingleHomeStyles.fullScreen}>
 
-            <Row>
-                <Col>
-                    {/* Home Button */}
-                    <div 
-                        style={{position:'absolute', height:'80px', width:'80px', 
-                        borderRadius:'50%', backgroundColor:'#FBFAF6', opacity:'0.3', float:'left',
-                        marginLeft:'20px'}}>
+           {/* Left Content*/}
+
+           
+              <div className={SingleHomeStyles.leftContent} >
+
+                {/* Home button */}
+                    <div
+                        style={{position:'fixed', height:'80px', width:'80px', 
+                        borderRadius:'50%', backgroundColor:'#FBFAF6', opacity:'0.3',
+                        margin:'20px 20px 0px 0px'}}>
                             <HomeFilled style={{fontSize:'45px', margin:'17px 0px 0px 17px'}}/>
                     </div>
-                </Col>
-               
-               <Col>
-                    <Row>
-                        {/* Movie Name display position */}
-                        <h2 style={{textAlign:'right',color:'white',fontWeight:'bold', margin:'20px 50px 0px 0px'}}>Doctor Strange 2022</h2>     
-                    </Row>
-                          
-                    
-                         {/* Right Side Options */}
-                    
-                        <div style={{marginTop: '200px', height:'600px', width:'300px', float:'right'}}>
+
+                       {/* Single movie Options */}
+                    <div style={{paddingTop:'180px', position:'fixed'}}>
                             <Space direction='vertical'>
-                        <Link to='/movie_trailor_page'>
-                            <Card style={{height:'60px', width:'200px',backgroundColor:'#FBFAF6',opacity:'0.4', borderRadius:'12px'}}> 
-                                <h3 style={{textAlign:'center', color:'black', paddingTop:'10px', fontWeight:'bold'}}>Watch Trailor</h3>
-                            </Card> 
-                        </Link><br/>
-                        <Link to='/cast_page'>
-                            <Card style={{height:'60px', width:'200px',backgroundColor:'#FBFAF6',opacity:'0.4', borderRadius:'12px'}}> 
-                                <h3 style={{textAlign:'center',color:'black', paddingTop:'10px'}}>Story</h3>
-                            </Card> 
-                        </Link><br/>
-                        <Link to='/buy_page'>
-                            <Card style={{height:'60px', width:'200px',backgroundColor:'#FBFAF6',opacity:'0.4', borderRadius:'12px'}}> 
-                                <h3 style={{textAlign:'center', color:'black', paddingTop:'10px'}}>Buy</h3>
-                            </Card> 
-                        </Link>
-                        </Space>
-                    
+                                <Link to='/movie_trailor_page'>
+                                    <Card style={{height:'60px', width:'200px',backgroundColor:'#FBFAF6',opacity:'0.4', borderRadius:'12px'}}> 
+                                        <h3 style={{textAlign:'center', color:'black', paddingTop:'10px', fontWeight:'bold'}}>Watch Trailor</h3>
+                                    </Card> 
+                                </Link><br/>
+                                <Link to='/cast_page'>
+                                    <Card style={{height:'60px', width:'200px',backgroundColor:'#FBFAF6',opacity:'0.4', borderRadius:'12px'}}> 
+                                        <h3 style={{textAlign:'center',color:'black', paddingTop:'10px'}}>Story</h3>
+                                    </Card> 
+                                </Link><br/>
+                                <Link to='/buy_page'>
+                                    <Card style={{height:'60px', width:'200px',backgroundColor:'#FBFAF6',opacity:'0.4', borderRadius:'12px'}}> 
+                                        <h3 style={{textAlign:'center', color:'black', paddingTop:'10px'}}>Buy</h3>
+                                    </Card> 
+                                </Link>
+                            </Space>
                         </div>
-               
                     
+                </div>
 
-                </Col>
 
-        
-                  
-            </Row>
 
-            <Row style={{float:'bottom', position:'relative', marginTop:'550px'}}>
-                <h3 style={{textAlign:'center', paddingLeft:'200px', color:'white'}}>
-                    Doctor Strange teams up with a mysterious teenage girl from his dreams who can travel across multiverses, 
-                    to battle multiple threats, including other-universe versions of himself, which threaten to wipe out millions across the multiverse.
-                    They seek help from Wanda the Scarlet Witch, Wong and others.
+            {/* Right Content*/}
+            <div className={SingleHomeStyles.rightContent}>
+    
+
+                <h3 style={{textAlign:'center',color:'white', fontSize:'28px'}}>
+                    Doctor Strange 2022
                 </h3>
-            </Row>
+     
+            
+            </div>
 
-          
-
+   
         </div>
         </>
     );

@@ -1,8 +1,23 @@
-.screenImg{
+.fullScreen{
+    height:100vh;
+    width:auto;
+    position: absolute;
+    background-color: black;
+
+}
+
+.leftContent{
     height:100%;
-    width:100%;
-    position: fixed;
+    width:10vh;
+    margin-left:30px;
+    background-color:'aqua';
+}
+
+.rightContent{
+    height:100%;
+    width:40vh;
+    position: relative;
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: fit-content;
     background-image: url("../resources/images/doctorStrange.jpeg");
 }
