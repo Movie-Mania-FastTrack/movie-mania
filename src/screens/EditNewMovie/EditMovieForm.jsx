@@ -14,17 +14,17 @@ import {
 } from "antd";
 import { InboxOutlined } from "@ant-design/icons";
 import { useState } from "react";
-import formStyles from "./AddNewMovie.module.css";
-import "./AddNewMovie.css";
+import formStyles from "../AddNewMovie/AddNewMovie.module.css";
+// import "./AddNewMovie.css";
 const { Dragger } = Upload;
 const { TextArea } = Input;
-function AddNewMovieForm() {
+function EditMovieForm() {
   const tailLayout = {
   wrapperCol: { offset: 13, span: 16 },
 };
   return (
     <div>
-      <h2 className={formStyles.heading}>Add New Movie</h2>
+      <h2 className={formStyles.heading}>View/Edit Movie</h2>
       <center>
         <Row gutter={[16, 16]}>
           <Form
@@ -135,8 +135,8 @@ function AddNewMovieForm() {
             </Row>
             <Form.Item {...tailLayout}>
               <Space>
-                <Button className={formStyles.button}>Add Movie</Button>
-                <Button className={formStyles.button}>Cancel</Button>
+                <Button className={formStyles.button}>Edit Movie</Button>
+                <Button className={formStyles.button}>Remove</Button>
               </Space>
             </Form.Item>
           </Form>
@@ -146,4 +146,4 @@ function AddNewMovieForm() {
   );
 }
 
-export default AddNewMovieForm;
+export default EditMovieForm;

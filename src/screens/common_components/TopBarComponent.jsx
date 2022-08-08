@@ -1,7 +1,7 @@
 import React from "react";
 import Screen_Layout_Styles from "./ScreenLayout.module.css";
 import { Button, Space } from "antd";
-import { HomeFilled, LeftOutlined } from "@ant-design/icons";
+import { HomeFilled, LeftOutlined,PlusCircleOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
 
 function Topbar({ department, home, back }) {
@@ -18,7 +18,7 @@ function Topbar({ department, home, back }) {
             <Button
               icon={<LeftOutlined />}
               size={size}
-              style={{ background: "#FFF504", borderColor: "black" }}
+              style={{ background: "#FFF504", borderColor: "black"}}
             />
           </Link>
 
@@ -27,7 +27,7 @@ function Topbar({ department, home, back }) {
             <Button
               icon={<HomeFilled />}
               size={size}
-              style={{fontSize:'45px', margin:'17px 0px 0px 17px',backgroundColor:'#FFF504', borderColor:'black'}}
+              style={{fontSize:'45px', margin:'12px 0px 0px 17px',backgroundColor:'#FFF504', borderColor:'black'}}
             />
           </Link>
 
@@ -37,6 +37,15 @@ function Topbar({ department, home, back }) {
       </div>
 
       <div className={Screen_Layout_Styles.topright}>
+
+            {/* Add Icon */}
+          <Link to='/add_new_movie'>
+            <Button
+              icon={<PlusCircleOutlined />}
+              size={size}
+              style={{fontSize:'45px', margin:'17px 20px 0px 0px',backgroundColor:'#FFF504', borderColor:'black'}}
+            />
+          </Link>
         <h2 className={Screen_Layout_Styles.date}>
           <span style={{ fontWeight: "bold" }}>TODAY : </span>
           {date}

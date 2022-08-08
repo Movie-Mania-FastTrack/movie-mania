@@ -1,66 +1,133 @@
 import React from "react";
 import styles from "./BuyMovie.module.css";
-import {Row, Col, Input, Select} from 'antd';
+import { Row, Col, Radio, Select,Button, Input } from "antd";
+import { PlusCircleOutlined } from "@ant-design/icons";
 
 const { Option } = Select;
-function BuyMovie()
-{
-    return(
-        <>
-        <div style={{height:'100%', width:'100%', position: 'fixed', backgroundColor:'#040819'}}>
-            {/* Buying Information */}
-            <div style={{height:'55%', width:'100%',position:'relative'}}>
-                <h2 style={{textAlign:'left', color:'#E2F1FF', padding:'30px 0px 0px 20px', fontWeight:'650',fontSize:'22px'}}>Buying Information</h2>
-                <hr />
-                <br/>
+function BuyMovie() {
+  const movieCount=12;
+    const payableAmount = 300.00;
+  return (
+    <>
+      <p className={styles.h1}>Buying information</p>
+      <hr />
+      <center>
+        <div className={styles.BuyingInfoContainer}>
+          {/* Buying info */}
+          <Row gutter={[48, 24]}>
+            <Col span={8}>
+              {/* Movie name selection */}
+              <p className={styles.pName}>Movie Name :</p>
+            </Col>
+            <Col span={8}>
+              <Select
+                className={styles.p}
+                defaultValue="Doctor Strange 2020"
+                style={{
+                  width: "200px",
+                }}
+                onChange={null}
+              >
+                <Option value="Doctor Strange 2020">Doctor Strange 2020</Option>
+                <Option value="lucy">Lucy</Option>
+                <Option value="Yiminghe">yiminghe</Option>
+              </Select>
+            </Col>
+            <Col span={8}>
+              <Button
+                className={styles.addButton}
+                type="primary"
+                shape="circle"
+                icon={<PlusCircleOutlined />}
+              />
+            </Col>
+            <Col span={8}>
+              {/* Movie count */}
+              <p className={styles.pName}>Movie Count :</p>
+            </Col>
+            <Col span={8}>
+              <p className={styles.p}>{movieCount}</p>
+            </Col>
+            <Col span={8}></Col>
+            <Col span={8}>
+              <p className={styles.pName}>Payable Amount :</p>
+            </Col>
+            <Col span={8}>
+              <p className={styles.p}>Rs {payableAmount}</p>
+            </Col>
+            <Col span={8}></Col>
 
-        <Row className={styles.row}>
-        {/* Movie Name */}
-        <Col span={2}>
-          <p className={styles.required} style={{color:'white'}}>Movie Name </p>
-          </Col>
-          <Col span={8}>
-          <Select
-            showSearch
-            placeholder="Select movie"
-            optionFilterProp="children"
-            onChange={null}
-            onSearch={null}
-            style={{height:'120px', width:'300px', strokeColor:'#FFF504', opacity: '32%' , border:'2px'}}
-          >
-            <Option value="Doctor">Doctor Strange</Option>
-            
-          </Select>
-        </Col>
-        </Row>
-        <Row>
-        {/* Movie Count */}
-        <Col span={8}>
-          <p style={{color:'white'}}>Movie Count:</p>
-    
-        </Col>
-  
-        {/* Payable Amount */}
-        <Col span={8}>
-          <p  style={{color:'white'}}>Payable Amount:</p>
-         
-        </Col>
-
-    
-
-        </Row>
-
-      
-
-            </div>
-            {/* Contact Information */}
-            <div style={{height:'40%', width:'100%',position:'relative'}}>
-                <h2 style={{textAlign:'left', color:'#E2F1FF', padding:'30px 0px 0px 20px', fontWeight:'650',fontSize:'22px'}}>Contact Information</h2>
-                <hr />
-            </div>
+            <Col span={8}>
+              <p className={styles.pName}>Collection Method :</p>
+            </Col>
+            <Col span={8}>
+              <Radio style={{ color: "white" }} className={styles.p}>
+                To the drive
+              </Radio>
+            </Col>
+            <Col span={8}>
+              <Radio style={{ color: "white" }}>Pickup from the shop</Radio>
+            </Col>
+            <Col span={8}>
+              <p className={styles.pName}>Drive Link :</p>
+            </Col>
+            <Col span={8}>
+              <Input
+                placeholder="Paste the Drive link here"
+                className={styles.p}
+              />
+            </Col>
+            <Col span={8}>
+              <p className={styles.ignoreDriveLink}>
+                Ignore, if you chose pickup option
+              </p>
+            </Col>
+          </Row>
         </div>
-        </>
-    );
+      </center>
+      <p className={styles.h1}>Contact information</p>
+      <hr />
+      <center>
+        <div className={styles.BuyingInfoContainer}>
+          <Row gutter={[48, 24]}>
+            <Col span={8}>
+              <p className={styles.pName}>Name :</p>
+            </Col>
+            <Col span={16}>
+              <Input
+                placeholder="Enter name"
+                style={{ width: "300px", float: "left" }}
+              />
+            </Col>
+
+            <Col span={8}>
+              <p className={styles.pName}>Contact No :</p>
+            </Col>
+            <Col span={16}>
+              <Input
+                placeholder="Enter contact no "
+                style={{ width: "300px", float: "left" }}
+              />
+            </Col>
+
+            <Col span={8}>
+              <p className={styles.pName}>Email Address :</p>
+            </Col>
+            <Col span={8}>
+              <Input
+                placeholder="Enter email address "
+                style={{ width: "300px", float: "left" }}
+              />
+            </Col>
+
+            <Col span={8}>
+              <Button className={styles.button}>SUBMIT REQUEST</Button>
+            </Col>
+          </Row>
+        </div>
+      </center>
+    </>
+  );
 }
 
 export default BuyMovie;

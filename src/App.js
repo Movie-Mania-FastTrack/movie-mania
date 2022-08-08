@@ -9,6 +9,7 @@ import BuyMovieHome  from "./screens/BuyMovie/BuyMovieHome";
 import AdminHomePage  from "./screens/Admin_Home_Page/AdminHomePage";
 import ManageMoviesHome  from "./screens/Admin_Manage_Movies/ManageMoviesHome";
 import AddNewMovieScreen from "./screens/AddNewMovie/AddNewMovieScreen";
+import EditNewMovieScreen from "./screens/EditNewMovie/EditMovieScreen";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path="/admin_home_page" element={<AdminHomePage/>} />
         <Route path="/add_new_movie" element={<AddNewMovieScreen/>} />
         <Route path="/manage_movie_home" element={<ManageMoviesHome />} />
+        <Route path="/edit_movie" element={<EditNewMovieScreen />} />
       </Routes>
     </Router>
   );
