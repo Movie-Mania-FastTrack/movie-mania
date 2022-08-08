@@ -1,22 +1,24 @@
 .fullScreen{
-    height:100vh;
-    width:auto;
+    height:100%;
+    width:100vw;
     position: absolute;
     background-color: black;
 
 }
 
 .leftContent{
+    position: fixed;
     height:100%;
-    width:10vh;
+    width:10vw;
     margin-left:30px;
     background-color:'aqua';
 }
 
 .rightContent{
     height:100%;
-    width:40vh;
-    position: relative;
+    width:90vw;
+    margin-left:20vw;
+    position: fixed;
     background-repeat: no-repeat;
     background-size: fit-content;
     background-image: url("../resources/images/doctorStrange.jpeg");
