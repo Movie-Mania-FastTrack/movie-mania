@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 const { Header, Content } = Layout;
 
 
-function Screen_Layout({department,image,Component,home,back}){
+function Screen_Layout({department,image,Component,home,back,add}){
     const current = new Date();
     const navigate = useNavigate();
 
@@ -18,7 +18,7 @@ function Screen_Layout({department,image,Component,home,back}){
                 
                 <Layout>
                     <Header className={Screen_Layout_Styles.header}>
-                        <Topbar department={department} home={home} back={back}/>
+                        <Topbar department={department} home={home} back={back} add={add}/>
                       
                     </Header>
 
