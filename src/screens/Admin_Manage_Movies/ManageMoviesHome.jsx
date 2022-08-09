@@ -10,6 +10,7 @@ function ManageMoviesHome()
         back={'/admin_home_page'}
         home={'/'}
         Component={<ManageMovies/>}
+       
         />
 
     );

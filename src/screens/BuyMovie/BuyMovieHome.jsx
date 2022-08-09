@@ -4,14 +4,14 @@ import Screen_Layout from "../common_components/ScreenLayout";
 
 function BuyMovieHome()
 {
-    return(  
-        <Screen_Layout 
-        department={'Buy'} 
-        back={'/single_movie_home'}
-        home={'/single_movie_home'}
-        Component={<BuyMovie/>}
-        />
-
+    return (
+      <Screen_Layout
+        department={"Buy"}
+        back={"/single_movie_home"}
+        home={"/single_movie_home"}
+        Component={<BuyMovie />}
+     
+      />
     );
 
 }

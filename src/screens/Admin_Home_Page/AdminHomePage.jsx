@@ -10,6 +10,7 @@ function AdminHomePage()
         back={0}
         home={'/'}
         Component={<AdminHomePageLayout/>}
+        manageMovies={1}
         />
 
     );

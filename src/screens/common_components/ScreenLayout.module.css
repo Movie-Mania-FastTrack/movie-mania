@@ -76,3 +76,20 @@
     width: auto;
     margin-bottom: 10px;
 }
+
+.button{
+ 
+
+    height: 50px;
+    width:200px;
+        background: rgba(255, 245, 4, 0.24);
+        border-radius: 10px;
+        color: white;
+        font-size: 20px;
+        font-weight: bold;
+        border: none;
+        margin-top: 10px;
+
+    
+    
+}

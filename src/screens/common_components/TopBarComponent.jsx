@@ -1,10 +1,14 @@
 import React from "react";
 import Screen_Layout_Styles from "./ScreenLayout.module.css";
 import { Button, Space } from "antd";
-import { HomeFilled, LeftOutlined,PlusCircleOutlined } from "@ant-design/icons";
+import {
+  HomeFilled,
+  LeftOutlined,
+  PlusCircleOutlined,
+} from "@ant-design/icons";
 import { Link } from "react-router-dom";
 
-function Topbar({ department, home, back ,add}) {
+function Topbar({ department, home, back, add, manageMovies }) {
   const current = new Date();
   const date = `${current.getDate()}/${
     current.getMonth() + 1
@@ -42,7 +46,6 @@ function Topbar({ department, home, back ,add}) {
       </div>
 
       <div className={Screen_Layout_Styles.topright}>
-        
         {/* Add Icon */}
         {add === 1 ? (
           <Link to="/add_new_movie">
@@ -56,6 +59,13 @@ function Topbar({ department, home, back ,add}) {
                 borderColor: "black",
               }}
             />
+          </Link>
+        ) : null}
+        {manageMovies === 1 ? (
+          <Link to="/">
+            <Button className={Screen_Layout_Styles.button}>
+              Manage Movies
+            </Button>
           </Link>
         ) : null}
         <h2 className={Screen_Layout_Styles.date}>
