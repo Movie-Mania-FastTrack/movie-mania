@@ -1,7 +1,7 @@
 
 
 .screen{
-    height: auto;
+    height: 100vh;
     width: 100vw;
     position:absolute;
 }
@@ -32,9 +32,9 @@
     background-color: #1f1d2b;
     border-radius: 10px;
     margin: 15px;
-    min-height: 97%;
-    height: auto;
-    width: 98%;
+    /* min-height: 97%; */
+    height: 90vh;
+    width: 98vw;
     position: relative;
     
 }
