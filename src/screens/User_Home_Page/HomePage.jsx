@@ -13,19 +13,119 @@ import admin from '../../resources/images/admin.png';
 function HomePage()
 {
     const [isModalVisible, setIsModalVisible] = useState(false);
+    const[username , setUsername] = useState("")
+    const[password , setPassword] = useState("")
+    const[login , setLogin] = useState(false)
+    const[ip , setIp] = useState("")
     
     const navigate = useNavigate();
 
     const showModal = () => {
       setIsModalVisible(true);
     };
+
+    function tokenChange(token){
+
+        var key = "qwerty"
+        return token+key
+       }
   
+    function login(){
+
+        const admin ={username,password}
+        var position = document.getElementById("id1")
+       // console.log(student)
+       movieManiaApi.post("/getKey?ip="+ip,{
+        
+    })
+    .then((res) => { 
+        console.log("result - ",res.data)
+        console.log(res.data)
+          var error = "Error username or password"
+          if(error==res.data){
+            position.innerHTML = res.data
+            alert(res.data)
+            if(localStorage.getItem("count")==null){
+              localStorage.setItem("count",1)
+    
+            }
+            else{    
+                  var count = parseInt(localStorage.getItem("count"))
+                  count++
+                  localStorage.setItem("count",count)
+                  if(count>=3){
+                    localStorage.removeItem("count")
+                    movieManiaApi.put("/setLogin/status?ip="+ip,{
+
+                    })
+                    .then((res) => { 
+                        console.log("result - ",res.data)
+          alert("your pc is blocked for 20 minuts , pc_ip : "+ip)
+          setLogin(false)
+                    })
+              
+                  // Catch errors if any
+                  .catch((err) => { 
+                    console.log(err)
+                  });
+                  }
+          }
+          }
+          else{
+            console.log(res.data)
+            console.log(tokenChange(res.data))
+            localStorage.setItem("user",tokenChange(res.data))
+            localStorage.removeItem("count")
+           // window.location="/category"
+          }
+    })
+
+  // Catch errors if any
+  .catch((err) => { 
+    console.log(err)
+  });
+
+    }
+
+    function getCategories(){
+
+    }
+
+    function  search(name){
+
+    }
+
+    function getByCategory(catId){
+
+    }
     const handleOk = () => {
       setIsModalVisible(false);
       navigate("/admin_home_page");
     };
   
+     useEffect(()=>{
+
+    fetch("https://api.ipify.org?format=json?callback=?",{
+      method:"GET",
+      headers:{},
+    })
+    .then(res=>res.text())
+    .then((result1)=>{
+      setIp(JSON.stringify(result1))
+      //alert("ip "+JSON.stringify(result1))
+      fetch("https://into-uncommon.herokuapp.com/intouncommon/getLogin/status?ip="+JSON.stringify(result1),{
+        headers:{"header":"subhath"}
+      })
+      .then(res=>res.text())
+      .then((result)=>{
+        console.log("status",result)
+        if(result==="true"){
+          setLogin(true)
+        }
+      })
+    })
    
+  },[])
 
     return(
         <>
