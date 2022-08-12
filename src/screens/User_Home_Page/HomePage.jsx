@@ -3,7 +3,7 @@ import {Row, Col, Modal, Select} from 'antd';
 import {LeftCircleOutlined,RightCircleOutlined} from '@ant-design/icons';
 import {useNavigate} from 'react-router-dom';
 
-
+import movieManiaApi from "../../api/movieManiaApi";
 import TopRatedMovieCard from './TopRatedMovieCard';
 import RecentMovieCard from './RecentMovieCard';
 
@@ -30,7 +30,7 @@ function HomePage()
         return token+key
        }
   
-    function login(){
+    function Login(){
 
         const admin ={username,password}
         var position = document.getElementById("id1")

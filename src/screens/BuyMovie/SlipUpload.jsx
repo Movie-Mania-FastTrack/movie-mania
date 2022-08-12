@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {storage} from "./Firebase"
+import {storage} from "../../resources/Firebase"
 import {ref , uploadBytes , listAll, getDownloadURL} from "firebase/storage"
 import movieManiaApi from "../../api/movieManiaApi";
 
@@ -21,7 +21,7 @@ function SlipUpload()
                 getDownloadURL(snapshot.ref).then((url) => {
                     console.log(url)
                     const productImages = {url}
-                    const productImageDTO = {productId : id , productImages}
+                    // const productImageDTO = {productId : id , productImages}
                    movieManiaApi.post("/",{
 
                    })
