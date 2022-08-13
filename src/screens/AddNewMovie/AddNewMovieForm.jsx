@@ -133,26 +133,34 @@ function submit(){
               <Col span={8}>
                 <Form.Item label="Category">
                   {/* <p className={formStyles.p}>Category</p> */}
-                  <Input className={formStyles.category} />
+                  <Input className={formStyles.category} 
+                  onChange={(e) => setCategory(e.target.value)}
+                  />
                 </Form.Item>
               </Col>
 
               <Col span={12}>
                 <Form.Item label="Movie Name" className={formStyles.movieName}>
-                  <Input className={formStyles.category} />
+                  <Input className={formStyles.category} 
+                   onChange={(e) => setName(e.target.value)}
+                  />
                 </Form.Item>
               </Col>
             </Row>
             <Col span={24}>
               <Form.Item label="Story">
-                <TextArea rows={4} />
+                <TextArea rows={4} 
+                onChange={(e) => setStory(e.target.value)}
+                />
               </Form.Item>
             </Col>
             <Form.Item label="Characters">
               <Row gutter={[16, 16]}>
                 <Col span={6}>
                   {" "}
-                  <Input />
+                  <Input 
+                   onChange={(e) => setActors(e.target.value)}
+                  />
                 </Col>
                 <Col span={6}>
                   {" "}
