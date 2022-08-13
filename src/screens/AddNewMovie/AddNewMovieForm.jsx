@@ -1,22 +1,12 @@
 import React from "react";
-import {
-  Button,
-  Cascader,
-  DatePicker,
-  Form,
-  Input,
-  InputNumber,
-  Row,
-  Space,
-  Switch,
-  Upload,
-  Col
-} from "antd";
-import { InboxOutlined } from "@ant-design/icons";
+import {storage} from "../../resources/Firebase";
+import {ref , uploadBytes , getDownloadURL} from "firebase/storage";
+import { Form, Input,Row, Space,Col } from "antd";
+import movieManiaApi from "../../api/movieManiaApi";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import formStyles from "./AddNewMovie.module.css";
 import "./AddNewMovie.css";
-const { Dragger } = Upload;
 const { TextArea } = Input;
 function AddNewMovieForm() {
   const tailLayout = {
@@ -31,6 +21,9 @@ const[category ,setCategory] = useState("")
 const[actors ,setActors] = useState("")
 const[story ,setStory] = useState("")
 const[price ,setPrice] = useState(0)
+const[imageUpload,setImageUpload] = useState(null)
+const[releaseImageUpload,setReleaseImageUpload] = useState(null)
+const[videoUpload,setVideoUpload] = useState(null)
 
 function releaseToken(changedToken){
 
@@ -46,20 +39,79 @@ return token
 }
 
 function addMovie(){
-  const movie = {name , story , category, imageUrl , launchingImageUrl , trailerLink , actors , price}
-  movieManiaApi.get("/addMovie",{
-    movie,
-    headers:{"header":releaseToken(localStorage.getItem("user"))}
+  
+    const movie = {name , story , category, imageUrl , launchingImageUrl , trailerLink , actors , price}
+    movieManiaApi.get("/addMovie",{
+      movie,
+      headers:{"header":releaseToken(localStorage.getItem("user"))}
+    })
+    .then((res) => { 
+        console.log("result - ",res.data)
+        alert(res.data)
+    })
+  
+  // Catch errors if any
+  .catch((err) => { 
+    console.log(err)
   })
-  .then((res) => { 
-      console.log("result - ",res.data)
-      alert(res.data)
-  })
+  
+}
 
-// Catch errors if any
-.catch((err) => { 
-  console.log(err)
-});
+function uploadTrailer(){
+  if(videoUpload == null){
+      alert("video clip has not selected")
+      return}
+      const imageRef = ref(storage ,"movieMania/trailer"+"/video")
+      uploadBytes(imageRef,videoUpload).then((snapshot)=>{
+          alert("submited")
+          getDownloadURL(snapshot.ref).then((url) => {
+            console.log(url)
+            setTrailerLink(url)
+            alert(url)
+              // const productImageDTO = {productId : id , productImages}
+    
+      })
+    })
+}
+
+function uploadMovieImage(){
+  if(imageUpload == null){
+      alert("image has not selected")
+      return}
+      const imageRef = ref(storage ,"movieMania/movieImage"+"/image")
+      uploadBytes(imageRef,imageUpload).then((snapshot)=>{
+          alert("submited")
+          getDownloadURL(snapshot.ref).then((url) => {
+              console.log(url)
+              setImageUrl(url)
+              alert(url)
+      })
+    })
+}
+
+function uploadReleaseImage(){
+  if(releaseImageUpload == null){
+      alert("image has not selected")
+      return}
+      const imageRef = ref(storage ,"movieMania/releaseImage"+"/image")
+      uploadBytes(imageRef,releaseImageUpload).then((snapshot)=>{
+          alert("submited")
+          getDownloadURL(snapshot.ref).then((url) => {
+            console.log(url)
+            setLaunchingImageUrl(url)
+            alert(url)
+            
+      })
+    })
+}
+
+function submit(){
+  uploadMovieImage();
+  uploadTrailer();
+  uploadReleaseImage();
+
+  const delay = setTimeout(addMovie,20000)
+
 }
 
   return (
@@ -129,54 +181,24 @@ function addMovie(){
             <Row gutter={[16, 16]}>
               <Col span={8}>
                 <Form.Item label="Partner Image">
-                  <Dragger style={{ width: "300px" }}>
-                    <p className="ant-upload-drag-icon">
-                      <InboxOutlined />
-                    </p>
-                    <p className="ant-upload-text">
-                      Click or drag file to this area to upload
-                    </p>
-                    <p className="ant-upload-hint">Choose File</p>
-                  </Dragger>
+                <input type="file" name="file" onChange={null} />
                 </Form.Item>
               </Col>
               <Col span={8} offset={1}>
                 <Form.Item label="Movie Image">
-                  <Dragger style={{ width: "300px" }}>
-                    <p className="ant-upload-drag-icon">
-                      <InboxOutlined />
-                    </p>
-                    <p className="ant-upload-text">
-                      Click or drag file to this area to upload
-                    </p>
-                    <p className="ant-upload-hint">Choose File</p>
-                  </Dragger>
+                <input type="file" name="file" onChange={null} />
                 </Form.Item>
               </Col>
 
-              {/* <Col span={8}>
-           
-              </Col>
-              <Col span={8}>
-                <p>Movie Partner Image</p>
-              </Col> */}
 
               <Form.Item label="Trailer Clip">
-                <Dragger>
-                  <p className="ant-upload-drag-icon">
-                    <InboxOutlined />
-                  </p>
-                  <p className="ant-upload-text">
-                    Click or drag file to this area to upload
-                  </p>
-                  <p className="ant-upload-hint">Choose File</p>
-                </Dragger>
+              <input type="file" name="file" onChange={null} />
               </Form.Item>
             </Row>
             <Form.Item {...tailLayout}>
               <Space>
-                <Button className={formStyles.button}>Add Movie</Button>
-                <Button className={formStyles.button}>Cancel</Button>
+                <button className={formStyles.button} onClick={submit}>Add Movie</button>
+               <Link to="/"><button className={formStyles.button}>Cancel</button></Link> 
               </Space>
             </Form.Item>
           </Form>
