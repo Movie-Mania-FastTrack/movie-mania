@@ -17,6 +17,8 @@ function HomePage()
     const[password , setPassword] = useState("")
     const[login , setLogin] = useState(false)
     const[ip , setIp] = useState("")
+    const[categories ,setCategories] = useState([])
+    const[movies , setMovies] = useState([])
     
     const navigate = useNavigate();
 
@@ -92,11 +94,27 @@ function HomePage()
     }
 
     function  search(name){
+      movieManiaApi.get("/getMovieByName"+name)
+      .then((res) => { 
+        setMovies(res.data)
+    })
 
+  // Catch errors if any
+  .catch((err) => { 
+    console.log(err)
+  });
     }
 
     function getByCategory(catId){
+      movieManiaApi.get("/getMovieByCategory"+catId)
+      .then((res) => { 
+        setMovies(res.data)
+    })
 
+  // Catch errors if any
+  .catch((err) => { 
+    console.log(err)
+  });
     }
     const handleOk = () => {
       setIsModalVisible(false);
@@ -104,6 +122,16 @@ function HomePage()
     };
   
      useEffect(()=>{
+
+      movieManiaApi.get("/getCategories")
+      .then((res) => { 
+        setCategories(res.data)
+    })
+
+  // Catch errors if any
+  .catch((err) => { 
+    console.log(err)
+  });
 
     fetch("https://api.ipify.org?format=json?callback=?",{
       method:"GET",
