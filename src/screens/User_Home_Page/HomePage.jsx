@@ -1,5 +1,5 @@
 import React, {useState , useEffect} from "react";
-import {Row, Col, Modal, Select} from 'antd';
+import {Row, Col, Modal} from 'antd';
 import {LeftCircleOutlined,RightCircleOutlined} from '@ant-design/icons';
 import {useNavigate} from 'react-router-dom';
 
@@ -160,15 +160,16 @@ function HomePage()
         <div className={HomePageStyles.fullScreen}>
             {/* Nav Bar */}
             <div className={HomePageStyles.navBar}>
-                <Row style={{paddingTop:'220px'}}>
+                <Row style={{height:'17vw'}}></Row>
+                <Row style={{height:'3vw', width:'100%', backgroundColor: ' rgb(4, 4, 31)'}}>
                   <Col span={2}></Col> 
-                  <Col span={3}><button className={HomePageStyles.categoryBtn}>English</button></Col> 
-                  <Col span={3}><button className={HomePageStyles.categoryBtn}>Sinhala</button></Col> 
-                  <Col span={3}><button className={HomePageStyles.categoryBtn}>Malayalam</button></Col> 
-                  <Col span={3}><button className={HomePageStyles.categoryBtn}>Tamil</button></Col> 
-                  <Col span={3}><button className={HomePageStyles.categoryBtn}>Hindi</button></Col>  
+                  <Col span={3}><button onClick={null} className={HomePageStyles.categoryBtn}>English</button></Col> 
+                  <Col span={3}><button onClick={null} className={HomePageStyles.categoryBtn}>Sinhala</button></Col> 
+                  <Col span={3}><button onClick={null} className={HomePageStyles.categoryBtn}>Malayalam</button></Col> 
+                  <Col span={3}><button onClick={null} className={HomePageStyles.categoryBtn}>Tamil</button></Col> 
+                  <Col span={3}><button onClick={null} className={HomePageStyles.categoryBtn}>Hindi</button></Col>  
                   <Col span={2}></Col> 
-                  <Col span={2}><Select className={HomePageStyles.categoryBtn}>More</Select></Col>  
+                  <Col span={2}><button onClick={null} className={HomePageStyles.categoryBtn}>More ...</button></Col>  
                 </Row>
 
 
@@ -179,11 +180,11 @@ function HomePage()
                 <h2 style={{color:'#FFF504', textAlign:'left', paddingLeft:'20px', fontWeight:'600'}}>Top Rated</h2>
                 <Row>
                     <Col span={2}>
-                        <LeftCircleOutlined style={{fontSize:'52px', color:'white', float:'left', padding:'40px 0px 0px 10px', opacity:'0.8'}}/>
+                        <LeftCircleOutlined style={{fontSize:'52px', color:'#676523', float:'left', padding:'40px 0px 0px 10px', opacity:'0.8'}}/>
                     </Col>
                     <Col span={20}><TopRatedMovieCard/></Col>
                     <Col span={2}>
-                        <RightCircleOutlined style={{fontSize:'52px', color:'white', float:'right', padding:'40px 10px 0px 0px', opacity:'0.8'}}/>
+                        <RightCircleOutlined style={{fontSize:'52px', color:'#676523', float:'right', padding:'40px 10px 0px 0px', opacity:'0.8'}}/>
                     </Col>
                 </Row>
             </div>
