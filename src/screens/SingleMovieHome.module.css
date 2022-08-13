@@ -2,7 +2,7 @@
     height:100%;
     width:100vw;
     position: absolute;
-    background-color: black;
+    background-color: rgb(4, 4, 31);
 
 }
 
@@ -11,7 +11,6 @@
     height:100%;
     width:10vw;
     margin-left:30px;
-    background-color:'aqua';
 }
 
 .rightContent{
@@ -22,4 +21,8 @@
     background-repeat: no-repeat;
     background-size: fit-content;
     background-image: url("../resources/images/doctorStrange.jpeg");
+}
+
+.cardHover:hover{
+    background-color: bisque;
 }
