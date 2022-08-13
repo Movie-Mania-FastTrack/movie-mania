@@ -22,6 +22,33 @@ function AddNewMovieForm() {
   const tailLayout = {
   wrapperCol: { offset: 13, span: 16 },
 };
+
+const[name ,setName] = useState("")
+const[imageUrl ,setImageUrl] = useState("")
+const[trailerLink ,setTrailerLink] = useState("")
+const[launchingImageUrl ,setLaunchingImageUrl] = useState("")
+const[category ,setCategory] = useState("")
+const[actors ,setActors] = useState("")
+const[story ,setStory] = useState("")
+const[price ,setPrice] = useState(0)
+
+
+function addMovie(){
+  const movie = {name , story , category, imageUrl , launchingImageUrl , trailerLink , actors , price}
+  movieManiaApi.get("/addMovie",{
+    movie
+  })
+  .then((res) => { 
+      console.log("result - ",res.data)
+      alert(res.data)
+  })
+
+// Catch errors if any
+.catch((err) => { 
+  console.log(err)
+});
+}
+
   return (
     <div>
       <h2 className={formStyles.heading}>Add New Movie</h2>

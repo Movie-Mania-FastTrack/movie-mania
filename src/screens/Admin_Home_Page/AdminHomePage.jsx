@@ -4,6 +4,7 @@ import AdminHomePageLayout from "./AdminHomePageLayout";
 
 function AdminHomePage()
 {
+   
     return(  
         <Screen_Layout 
         department={'Administration'} 

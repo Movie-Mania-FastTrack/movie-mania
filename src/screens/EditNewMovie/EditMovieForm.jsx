@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   Button,
   Cascader,
@@ -22,6 +22,67 @@ function EditMovieForm() {
   const tailLayout = {
   wrapperCol: { offset: 13, span: 16 },
 };
+
+const[movie , setMovie] = useState({})
+const[name ,setName] = useState("")
+const[imageUrl ,setImageUrl] = useState("")
+const[trailerLink ,setTrailerLink] = useState("")
+const[launchingImageUrl ,setLaunchingImageUrl] = useState("")
+const[category ,setCategory] = useState("")
+const[actors ,setActors] = useState("")
+const[story ,setStory] = useState("")
+const[price ,setPrice] = useState(0)
+const[movieLoad , setMovieLoad] = useState(false)
+
+
+
+useEffect(()=>{
+
+  var movieId = localStorage.getItem("movieId")
+  var movieIId = parseInt(movieId)
+
+  movieManiaApi.get("/getMovie"+movieIId,{
+
+  })
+  .then((res) => { 
+      console.log("result - ",res.data)
+      setMovie(res.data)
+      setActors(res.data.actors)
+      setCategory(res.data.category)
+      setImageUrl(res.data.imageUrl)
+      setLaunchingImageUrl(res.data.launchingImageUrl)
+      setStory(res.data.story)
+      setName(res.data.name)
+      setTrailerLink(res.data.trailerLink)
+      setPrice(res.data.price)
+      setMovieLoad(true)
+  })
+
+// Catch errors if any
+.catch((err) => { 
+  console.log(err)
+});
+    
+  },[])
+
+  function updateMovie(){
+    var movieId = localStorage.getItem("movieId")
+    var movieIId = parseInt(movieId)
+  const movie = {name , story , category, imageUrl , launchingImageUrl , trailerLink , actors , price}
+    movieManiaApi.get("/updateMovie"+movieIId,{
+      movie
+    })
+    .then((res) => { 
+        console.log("result - ",res.data)
+        alert(res.data)
+    })
+  
+  // Catch errors if any
+  .catch((err) => { 
+    console.log(err)
+  });
+  }
+
   return (
     <div>
       <h2 className={formStyles.heading}>View/Edit Movie</h2>
