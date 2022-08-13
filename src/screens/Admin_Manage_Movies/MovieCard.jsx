@@ -9,6 +9,19 @@ function MovieCard()
 
     const navigate = useNavigate();
 
+    function releaseToken(changedToken){
+
+        var token = ""
+        var key = "qwerty"
+        for(var i =0; i<changedToken.length-6; i++){
+          token+=changedToken[i]
+        }
+      console.log(token)
+      //setToken(token)
+      return token
+  
+      }
+
     useEffect(()=>{
         movieManiaApi.get("/getMovies",{
 
@@ -25,9 +38,24 @@ function MovieCard()
           
         },[])
 
+        function deleteMovie(id){
+            movieManiaApi.get("/deleteMovie"+id,{
+                headers:{"header":releaseToken(localStorage.getItem("user"))}
+            })
+            .then((res) => { 
+                console.log("result - ",res.data)
+                alert(res.data)
+            })
+      
+          // Catch errors if any
+          .catch((err) => { 
+            console.log(err)
+          });
+        }
+
         function editMovie(id){
-            localStorage.setItem("selectMovie",id)
-            navigate("/manage_movie_home")
+            localStorage.setItem("movieId",id)
+            //navigate to edit movie page
         }
 
     return(

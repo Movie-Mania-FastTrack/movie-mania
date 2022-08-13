@@ -32,11 +32,24 @@ const[actors ,setActors] = useState("")
 const[story ,setStory] = useState("")
 const[price ,setPrice] = useState(0)
 
+function releaseToken(changedToken){
+
+  var token = ""
+  var key = "qwerty"
+  for(var i =0; i<changedToken.length-6; i++){
+    token+=changedToken[i]
+  }
+console.log(token)
+//setToken(token)
+return token
+
+}
 
 function addMovie(){
   const movie = {name , story , category, imageUrl , launchingImageUrl , trailerLink , actors , price}
   movieManiaApi.get("/addMovie",{
-    movie
+    movie,
+    headers:{"header":releaseToken(localStorage.getItem("user"))}
   })
   .then((res) => { 
       console.log("result - ",res.data)

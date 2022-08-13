@@ -4,43 +4,35 @@ import MovieRequest  from "./MovieRequest";
 
 function AdminHomePageLayout()
 {
-    const[movies , setMovies] = useState[[]]
-    useEffect(()=>{
-        movieManiaApi.get("/getMovies",{
 
-        })
-        .then((res) => { 
-            console.log("result - ",res.data)
-            setMovies(res.data)
-        })
+    function releaseToken(changedToken){
+
+        var token = ""
+        var key = "qwerty"
+        for(var i =0; i<changedToken.length-6; i++){
+          token+=changedToken[i]
+        }
+      console.log(token)
+      //setToken(token)
+      return token
   
-      // Catch errors if any
-      .catch((err) => { 
-        console.log(err)
-      });
-          
-        },[])
+      }
 
-        function deleteMovie(id){
-            movieManiaApi.get("/deleteMovie"+id,{
+    function changeAdmin(){
 
-            })
-            .then((res) => { 
-                console.log("result - ",res.data)
-                alert(res.data)
-            })
-      
-          // Catch errors if any
-          .catch((err) => { 
-            console.log(err)
-          });
-        }
+    }
 
-        function editMovie(id){
-            localStorage.setItem("movieId",id)
-            //navigate to edit movie page
-        }
+    function addAdmin(){
 
+    }
+
+    function onclickEdit(){
+        //navigate to manage movie
+    }
+
+    function onclickAdd(){
+        //navigate to add movie
+    }
 
     return(
         <>
