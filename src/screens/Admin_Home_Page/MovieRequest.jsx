@@ -1,9 +1,123 @@
-import React from "react";
+import React, { useState } from "react";
 import {Row, Col, Space} from 'antd';
+import movieManiaApi from "../../api/movieManiaApi";
 
 
 function MovieRequest(requestID)
 {
+
+    const[code , setCode] = useState("")
+    const[logicPayed , setLogicPayed] = useState(false)
+    const[logicNPayed , setLogicNPayed] = useState(false)
+    const[logicNPayable , setLogicNPayable] = useState(false)
+    const[requests , setRequests] = useState([])
+    const[rejectLogic , setRejectLogic] = useState(false)
+    const[reasonLogic , setReasonLogic] = useState(false)
+    const[reason , setReason] = useState("")
+
+
+    function showPayedRequests(){
+        movieManiaApi.get("/getPayedRequests"+id)
+        .then((res) => { 
+          setRequests(res.data)
+          setLogicNPayable(false)
+          setLogicNPayed(false)
+          setLogicPayed(true)
+      })
+  
+    // Catch errors if any
+    .catch((err) => { 
+      console.log(err)
+    });
+    }
+
+    function showNotPayedRequests(){
+        movieManiaApi.get("/getPayableRequests"+id)
+        .then((res) => { 
+          setRequests(res.data)
+          setLogicNPayable(false)
+          setLogicNPayed(true)
+          setLogicPayed(false)
+      })
+  
+    // Catch errors if any
+    .catch((err) => { 
+      console.log(err)
+    });
+    }
+
+    function showNotPayableRequests(){
+        movieManiaApi.get("/getNotPayableRequests"+id)
+        .then((res) => { 
+          setRequests(res.data)
+          setLogicNPayable(true)
+          setLogicNPayed(false)
+          setLogicPayed(false)
+      })
+  
+    // Catch errors if any
+    .catch((err) => { 
+      console.log(err)
+    });
+    }
+
+    function showConfirm(id){
+        movieManiaApi.put("/setShow"+id)
+        .then((res) => { 
+          alert(res.data)
+      })
+  
+    // Catch errors if any
+    .catch((err) => { 
+      console.log(err)
+    });
+    }
+
+    function sendCustomerUploadMail(){
+        movieManiaApi.get("/sendUploadMail"+code)
+        .then((res) => { 
+          alert(res.data)
+      })
+  
+    // Catch errors if any
+    .catch((err) => { 
+      console.log(err)
+    });
+    }
+
+    function confirmReq(id){
+        movieManiaApi.put("/confirmRequest"+code)
+        .then((res) => { 
+          alert(res.data)
+      })
+  
+    // Catch errors if any
+    .catch((err) => { 
+      console.log(err)
+    });
+    }
+
+    function rejectReq(id){
+       if(reasonLogic){
+        setReasonLogic(false)
+        const rejectDto = {id : id , reason : reason}
+        movieManiaApi.put("/rejectRequest",{
+            rejectDto
+        })
+        .then((res) => { 
+          alert(res.data)
+      })
+  
+    // Catch errors if any
+    .catch((err) => { 
+      console.log(err)
+    });
+       }
+       else{
+        setReasonLogic(true)
+       }
+    }
+
     return(
         <>
         <div style={{height:'auto', width:'100%', position:'absolute', backgroundColor:'#171723', marginTop:'30px'}}>
