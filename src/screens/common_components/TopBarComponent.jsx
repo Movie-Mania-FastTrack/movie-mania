@@ -62,7 +62,7 @@ function Topbar({ department, home, back, add, manageMovies }) {
           </Link>
         ) : null}
         {manageMovies === 1 ? (
-          <Link to="/">
+          <Link to="/manage_movie_home">
             <Button className={Screen_Layout_Styles.button}>
               Manage Movies
             </Button>
