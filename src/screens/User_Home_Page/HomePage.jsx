@@ -19,6 +19,7 @@ function HomePage()
     const[ip , setIp] = useState("")
     const[categories ,setCategories] = useState([])
     const[movies , setMovies] = useState([])
+    const[adminMails , setAdminMails] = useState([])
     
     const navigate = useNavigate();
 
@@ -89,8 +90,28 @@ function HomePage()
 
     }
 
-    function getCategories(){
+    function getAdminMails(){
+      movieManiaApi.get("/getMails")
+      .then((res) => { 
+        setAdminMails(res.data)
+    })
 
+  // Catch errors if any
+  .catch((err) => { 
+    console.log(err)
+  });
+    }
+
+    function sendMailUsername(email){
+      movieManiaApi.post("/sendMail"+email)
+      .then((res) => { 
+        alert(res.data)
+    })
+
+  // Catch errors if any
+  .catch((err) => { 
+    console.log(err)
+  });
     }
 
     function  search(name){
@@ -132,6 +153,8 @@ function HomePage()
   .catch((err) => { 
     console.log(err)
   });
+
+  getAdminMails()
 
     fetch("https://api.ipify.org?format=json?callback=?",{
       method:"GET",
