@@ -14,6 +14,7 @@ function MovieRequest(requestID)
     const[rejectLogic , setRejectLogic] = useState(false)
     const[reasonLogic , setReasonLogic] = useState(false)
     const[reason , setReason] = useState("")
+    const[reqId , setId] = useState(0)
 
     function releaseToken(changedToken){
 
@@ -124,7 +125,7 @@ function MovieRequest(requestID)
     function rejectReq(id){
        if(reasonLogic){
         setReasonLogic(false)
-        const rejectDto = {id : id , reason : reason}
+        const rejectDto = {id : reqId , reason : reason}
         movieManiaApi.put("/rejectRequest",{
             rejectDto,
             headers:{"header":releaseToken(localStorage.getItem("user"))}
@@ -141,7 +142,12 @@ function MovieRequest(requestID)
        }
        else{
         setReasonLogic(true)
+        setId(id)
        }
+    }
+
+    function cancleReject(){
+      setReasonLogic(false)
     }
 
     return(
@@ -179,8 +185,16 @@ function MovieRequest(requestID)
                             <Col span={6} ><h3 style={{color:'white'}}>Method </h3></Col>
                         </Row><br/><br/>
                         <Row><h3 style={{paddingLeft:'20px',color:'white'}}>Drive Link</h3></Row>
+
+                        <button onClick={()=>rejectReq}>Reject</button>
+                        <button onClick={()=>confirmReq}>Confirm</button>
                   
-            
+            {reasonLogic&&<div>
+              <label>Reason</label>
+              <input value={reason} onChange={(e) => setReason(e.target.value)}></input>
+              <button onClick={rejectReq}>Reject</button>
+              <button onClick={cancleReject}>Cancel</button>
+              </div>}
           
         </div>
         </>

@@ -95,6 +95,64 @@ useEffect(()=>{
   });
   }
 
+
+  function uploadTrailer(){
+    if(videoUpload == null){
+        alert("video clip has not selected")
+        return}
+        const imageRef = ref(storage ,"movieMania/trailer"+"/video")
+        uploadBytes(imageRef,videoUpload).then((snapshot)=>{
+            alert("submited")
+            getDownloadURL(snapshot.ref).then((url) => {
+              console.log(url)
+              setTrailerLink(url)
+              alert(url)
+                // const productImageDTO = {productId : id , productImages}
+      
+        })
+      })
+  }
+  
+  function uploadMovieImage(){
+    if(imageUpload == null){
+        alert("image has not selected")
+        return}
+        const imageRef = ref(storage ,"movieMania/movieImage"+"/image")
+        uploadBytes(imageRef,imageUpload).then((snapshot)=>{
+            alert("submited")
+            getDownloadURL(snapshot.ref).then((url) => {
+                console.log(url)
+                setImageUrl(url)
+                alert(url)
+        })
+      })
+  }
+  
+  function uploadReleaseImage(){
+    if(releaseImageUpload == null){
+        alert("image has not selected")
+        return}
+        const imageRef = ref(storage ,"movieMania/releaseImage"+"/image")
+        uploadBytes(imageRef,releaseImageUpload).then((snapshot)=>{
+            alert("submited")
+            getDownloadURL(snapshot.ref).then((url) => {
+              console.log(url)
+              setLaunchingImageUrl(url)
+              alert(url)
+              
+        })
+      })
+  }
+  
+  function submit(){
+    uploadMovieImage();
+    uploadTrailer();
+    uploadReleaseImage();
+  
+    const delay = setTimeout(updateMovie,20000)
+  
+  }
+
   return (
     <div>
       <h2 className={formStyles.heading}>View/Edit Movie</h2>

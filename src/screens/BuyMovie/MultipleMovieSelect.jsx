@@ -12,7 +12,7 @@ function MultipleMovieSelect(){
 
     function selectMovie(id){
         movieIds.push(id)
-        movieManiaApi.get("/getMoviesWithoutSelect",{
+        movieManiaApi.post("/getMoviesWithoutSelect",{
             movieIds
         })
         .then((res) => { 
@@ -25,7 +25,7 @@ function MultipleMovieSelect(){
         console.log(err)
       });
 
-      movieManiaApi.get("/getMoviesByID",{
+      movieManiaApi.post("/getMoviesByID",{
         movieIds
     })
     .then((res) => { 
@@ -47,7 +47,7 @@ function MultipleMovieSelect(){
             }
         }
         setMovieIds(movieIdsAssis)
-        movieManiaApi.get("/getMoviesWithoutSelect",{
+        movieManiaApi.post("/getMoviesWithoutSelect",{
             movieIdsAssis
         })
         .then((res) => { 
@@ -60,7 +60,7 @@ function MultipleMovieSelect(){
         console.log(err)
       });
 
-      movieManiaApi.get("/getMoviesByID",{
+      movieManiaApi.post("/getMoviesByID",{
         movieIdsAssis
     })
     .then((res) => { 
@@ -95,7 +95,7 @@ function MultipleMovieSelect(){
         console.log(err)
       });
 
-      movieManiaApi.get("/getMoviesByID",{
+      movieManiaApi.post("/getMoviesByID",{
         movieIds
     })
     .then((res) => { 

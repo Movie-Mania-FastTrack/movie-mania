@@ -6,6 +6,7 @@ import {useNavigate} from 'react-router-dom';
 function MovieCard()
 {
     const [recentMovies , setRecentMovies] = useState([])
+    const [deleteLogic , setDeleteLogic] = useState(false)
 
     const navigate = useNavigate();
 
@@ -39,7 +40,8 @@ function MovieCard()
         },[])
 
         function deleteMovie(id){
-            movieManiaApi.get("/deleteMovie"+id,{
+            if(deleteLogic){
+              movieManiaApi.get("/deleteMovie"+id,{
                 headers:{"header":releaseToken(localStorage.getItem("user"))}
             })
             .then((res) => { 
@@ -51,6 +53,10 @@ function MovieCard()
           .catch((err) => { 
             console.log(err)
           });
+            }
+            else{
+              setDeleteLogic(true)
+            }
         }
 
         function editMovie(id){
@@ -58,9 +64,24 @@ function MovieCard()
             //navigate to edit movie page
         }
 
+        function cancleDelete(){
+          setDeleteLogic(false)
+        }
+
     return(
         <>
-        <div style={{height:'200px',width:'180px', borderRadius:'8px', backgroundColor:'grey'}}></div>
+        {recentMovies.length!=0&&recentMovies.map((movie)=>(
+                    <div style={{height:'200px',width:'180px', borderRadius:'8px', backgroundColor:'grey'}}> 
+                    <p>name - {movie.name}</p>
+                    <button onClick={editMovie}>Edit</button>
+                    <button onClick={deleteMovie(movie.movieId)}>Delete</button>
+                    <div>
+                      <button onClick={deleteMovie(movie.movieId)}>Confirm Delete</button>
+                      <button onClick={cancleDelete}>Cancle</button>
+                    </div>
+                    </div>
+                ))}
+        
         </>
     );
 }
