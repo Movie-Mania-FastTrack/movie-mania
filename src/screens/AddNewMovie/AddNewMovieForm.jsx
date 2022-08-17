@@ -189,18 +189,18 @@ function submit(){
             <Row gutter={[16, 16]}>
               <Col span={8}>
                 <Form.Item label="Partner Image">
-                <input type="file" name="file" onChange={null} />
+                <input type="file" name="file" onChange={(e)=>setReleaseImageUpload(e.target.files[0])}/>
                 </Form.Item>
               </Col>
               <Col span={8} offset={1}>
                 <Form.Item label="Movie Image">
-                <input type="file" name="file" onChange={null} />
+                <input type="file" name="file" onChange={(e)=>setImageUpload(e.target.files[0])} />
                 </Form.Item>
               </Col>
 
 
               <Form.Item label="Trailer Clip">
-              <input type="file" name="file" onChange={null} />
+              <input type="file" name="file" onChange={(e)=>setVideoUpload(e.target.files[0])} />
               </Form.Item>
             </Row>
             <Form.Item {...tailLayout}>

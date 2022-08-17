@@ -22,6 +22,15 @@ function BuyMovie() {
     const[logicPay , setLogicPay] = useState(false)
     const[movie , setMovie] = useState({})
     const[movieId , setMovieId] = useState(0)
+    const[movies , setMovies] = useState([])
+    const[selectedMovies , setSelectedMovies] = useState([])
+
+    function addMultipleMovies(){
+      const request = {customerName,customerEmail,contact,driverLink,payableStatus:"payable"}
+      localStorage.setItem("request",JSON.stringify(request))
+      localStorage.setItem("movies",JSON.stringify(movies))
+      navigate("/add_more_movies")
+    }
 
     function getRequestByCode(){
       if(code!=""){
@@ -42,8 +51,12 @@ function BuyMovie() {
 
     function addPayableRequest(){
       
-      const reques = {customerName,customerEmail,contact,driverLink,payableStatus:"payable"}
-      movieManiaApi.post("/addRequest"+movieId)
+      
+     
+        const reques = {customerName,customerEmail,contact,driverLink,payableStatus:"payable",movies}
+      movieManiaApi.post("/addRequest",{
+        reques
+      })
       .then((res) => { 
         alert(res.data)
         if(res.data=="added"){
@@ -61,8 +74,10 @@ function BuyMovie() {
     }
 
     function addNotPayableRequest(){
-      const reques = {customerName,customerEmail,contact,driverLink}
-      movieManiaApi.post("/addRequest"+movieId)
+      const reques = {customerName,customerEmail,contact,driverLink,movies}
+      movieManiaApi.post("/addRequest",{
+        reques
+      })
       .then((res) => { 
         alert(res.data)
         if(res.data=="added"){
@@ -103,18 +118,43 @@ function BuyMovie() {
         setLogicPay(true)
       }
       else{
-        var movieId = localStorage.getItem("movie")
-        var movieIId = parseInt(movieId)
-        setMovieId(movieIId)
-        movieManiaApi.get("/getRequest"+movieIId)
-        .then((res) => { 
-          setMovie(res.data)
-      })
-  
-    // Catch errors if any
-    .catch((err) => { 
-      console.log(err)
-    });
+        if(localStorage.getItem("request")!=null){
+          const reques = JSON.parse(localStorage.getItem("request"))
+          setContact(reques.contact)
+          setCustomerEmail(reques.customerEmail)
+          setCustomerName(reques.customerName)
+          setDriverLink(reques.driverLink)
+          const moviesOld = (JSON.parse(localStorage.getItem("movies")))
+        movieManiaApi.post("/getMoviesByID",{
+          moviesOld
+        })
+          .then((res) => { 
+            setSelectedMovies(res.data)
+        })
+    
+      // Catch errors if any
+      .catch((err) => { 
+        console.log(err)
+      });
+          setMovies(moviesOld)
+
+        }
+        else{
+          var movieId = localStorage.getItem("movie")
+          
+          var movieIId = parseInt(movieId)
+          setMovieId(movieIId)
+          movies.push(movieIId)
+          movieManiaApi.get("/getMovie"+movieIId)
+          .then((res) => { 
+            selectedMovies.push(res.data)
+        })
+    
+      // Catch errors if any
+      .catch((err) => { 
+        console.log(err)
+      });
+        }
       }
       },[])
   return (
