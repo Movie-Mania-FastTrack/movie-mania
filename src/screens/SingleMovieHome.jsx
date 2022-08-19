@@ -4,10 +4,22 @@ import {HomeFilled} from '@ant-design/icons';
 import {Link} from 'react-router-dom';
 
 import SingleHomeStyles from "./SingleMovieHome.module.css"
+import { useEffect } from "react";
+import { useState } from "react";
+
+
+
 
 
 function SingleMovieHome()
 {
+
+    const[movie , setMovie] = useState({})
+    useEffect(()=>{
+        const movie = JSON.parse( localStorage.getItem("singleMovie")) 
+        setMovie(movie)   
+        },[])
+
     return(
         <>
     <div className={SingleHomeStyles.fullScreen}>
@@ -28,7 +40,7 @@ function SingleMovieHome()
                  </Link> 
                  
                 <h3 style={{color:'#c5bf1d', fontSize:'18px', paddingTop:'3vw'}}>
-                    Doctor Strange 2022
+                    {movie.name}
                 </h3>
                        {/* Single movie Options */}
                     <div style={{paddingTop:'8vw'}}>

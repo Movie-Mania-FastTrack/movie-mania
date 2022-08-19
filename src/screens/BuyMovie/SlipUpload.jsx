@@ -42,7 +42,7 @@ function SlipUpload()
         <div>
             <h3>Enter Request ID: </h3>
             <br/>
-            <input label="product id" varient="Outlined" fullWidth type="text" placeholder="Product ID"
+            <input label="Request Code" varient="Outlined" fullWidth type="text" placeholder="Request Code"
           value={code}
           onChange={(e)=>setCode(e.target.value)}>
           </input><br></br>

@@ -3,10 +3,19 @@ import React from "react";
 import {Row, Col} from 'antd';
 
 import releasePartner from '../resources/images/marvel.jpg';
+import { useState } from "react";
+import { useEffect } from "react";
 
 
 function MovieCast()
 {
+
+    const[movie , setMovie] = useState({})
+    useEffect(()=>{
+        const movie = JSON.parse( localStorage.getItem("singleMovie")) 
+        setMovie(movie)   
+        },[])
+
     const text ="Doctor Strange teams up with a mysterious teenage girl from his dreams who can travel across multiverses, to battle multiple threats, including other-universe versions of himself, which threaten to wipe out millions across the multiverse. They seek help from Wanda the Scarlet Witch, Wong and others.";
     const characters ="Peter Derrol";
 
@@ -20,7 +29,7 @@ function MovieCast()
                 <h2 style={{textAlign:'center', color:'#E2F1FF', paddingTop:'30px', fontWeight:'650',fontSize:'24px'}}>Story</h2>
                 <h2 style={{textAlign:'center', color:'#E2F1FF', margin:'20px 0px 0px 150px', fontWeight:'500',fontSize:'16px',width: '1200px',
                 overflowWrap: 'break-word',wordWrap: 'break-word', wordBreak: 'break-word'}}>
-                    {text} <br/><br/>
+                    {movie.story} <br/><br/>
                     {text} <br/><br/>
                     {text}
                 </h2>
@@ -45,7 +54,7 @@ function MovieCast()
             style={{height:'25%', width:'100%', position:'relative'}}
             >
             <h2 style={{textAlign:'center', color:'#E2F1FF', fontWeight:'650',fontSize:'24px'}}>Exclusive Release Partner</h2>
-                <img src={releasePartner} style={{height:'100px', width:'300px', marginLeft:'600px'}}></img>
+                <img src={movie.launchingImageUrl} style={{height:'100px', width:'300px', marginLeft:'600px'}}></img>
             </div>
 
         </div>

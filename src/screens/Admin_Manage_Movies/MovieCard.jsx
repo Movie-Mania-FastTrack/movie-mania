@@ -41,7 +41,7 @@ function MovieCard()
 
         function deleteMovie(id){
             if(deleteLogic){
-              movieManiaApi.get("/deleteMovie"+id,{
+              movieManiaApi.delete("/deleteMovie"+id,{
                 headers:{"header":releaseToken(localStorage.getItem("user"))}
             })
             .then((res) => { 

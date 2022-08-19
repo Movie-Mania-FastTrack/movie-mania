@@ -24,6 +24,7 @@ const[price ,setPrice] = useState(0)
 const[imageUpload,setImageUpload] = useState(null)
 const[releaseImageUpload,setReleaseImageUpload] = useState(null)
 const[videoUpload,setVideoUpload] = useState(null)
+const[characters , setCharacters] = useState([])
 
 function releaseToken(changedToken){
 
@@ -38,10 +39,18 @@ return token
 
 }
 
+function addCharacter(){
+  
+  const actor = { character : actors}
+  alert(actors)
+  characters.push(actor)
+}
+
 function addMovie(){
   
   alert(imageUrl)
   alert(name)
+  alert(characters)
     const movie = {name : name , story : story , category, imageUrl , launchingImageUrl , trailerLink , actors , price}
     movieManiaApi.post("/addMovie",{
         name : name,
@@ -50,7 +59,7 @@ function addMovie(){
         imageUrl,
         launchingImageUrl,
         trailerLink,
-        actors,
+        characters,
         price
      // headers:{"header":releaseToken(localStorage.getItem("user"))}
     })
@@ -72,7 +81,7 @@ function uploadTrailer(){
       return}
       const imageRef = ref(storage ,"movieMania/trailer"+"/video")
       uploadBytes(imageRef,videoUpload).then((snapshot)=>{
-          alert("submited")
+          alert("submited Trailer")
           getDownloadURL(snapshot.ref).then((url) => {
             console.log(url)
             setTrailerLink(url)
@@ -89,7 +98,7 @@ function uploadMovieImage(){
       return}
       const imageRef = ref(storage ,"movieMania/movieImage"+"/image")
       uploadBytes(imageRef,imageUpload).then((snapshot)=>{
-          alert("submited")
+          alert("submited  Moie Image")
           getDownloadURL(snapshot.ref).then((url) => {
               console.log(url)
               setImageUrl(url)
@@ -104,7 +113,7 @@ function uploadReleaseImage(){
       return}
       const imageRef = ref(storage ,"movieMania/releaseImage"+"/image")
       uploadBytes(imageRef,releaseImageUpload).then((snapshot)=>{
-          alert("submited")
+          alert("submited Partner image")
           getDownloadURL(snapshot.ref).then((url) => {
             console.log(url)
             setLaunchingImageUrl(url)
@@ -119,7 +128,7 @@ function submit(){
   uploadTrailer();
   uploadReleaseImage();
 
-  const delay = setTimeout(addMovie,10000)
+  const delay = setTimeout(addMovie,30000)
 
 }
 
@@ -170,31 +179,11 @@ function submit(){
                   <Input 
                    onChange={(e) => setActors(e.target.value)}
                   />
-                </Col>
-                <Col span={6}>
-                  {" "}
-                  <Input />
-                </Col>
-                <Col span={6}>
-                  {" "}
-                  <Input />
-                </Col>
-              </Row>
-              <Row gutter={[16, 16]}>
-                <Col span={6}>
-                  {" "}
-                  <Input />
-                </Col>
-                <Col span={6}>
-                  {" "}
-                  <Input />
-                </Col>
-                <Col span={6}>
-                  {" "}
-                  <Input />
+                  <button onClick={addCharacter}>Add Actor</button>
                 </Col>
               </Row>
             </Form.Item>
+
             <Row gutter={[16, 16]}>
               <Col span={8}>
                 <Form.Item label="Partner Image">

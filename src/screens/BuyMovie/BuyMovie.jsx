@@ -24,6 +24,9 @@ function BuyMovie() {
     const[movieId , setMovieId] = useState(0)
     const[movies , setMovies] = useState([])
     const[selectedMovies , setSelectedMovies] = useState([])
+    const[requestCount , setRequestCount] = useState(0)
+    const[selectPrice , SetSelectedPrice] = useState(0)
+    const[movieName , setMovieName] = useState("")
 
     function addMultipleMovies(){
       const request = {customerName,customerEmail,contact,driverLink,payableStatus:"payable"}
@@ -122,23 +125,36 @@ function BuyMovie() {
 
     }
 
-    useEffect(()=>{
-      if(localStorage.getItem("pay")==="true"){
-        setLogicPay(true)
+    function veiwMovie(id){
+      alert(id)
+      for(let i=0; i<selectedMovies.length ; i++){
+        if(selectedMovies[i].movieId==id){
+          setRequestCount(selectedMovies[i].rate)
+            SetSelectedPrice(selectedMovies[i].price)
+        }
       }
-      else{
+    }
+
+    function onclickCheck(){
+      alert("hee")
+    }
+
+    useEffect(()=>{
         if(localStorage.getItem("request")!=null){
           const reques = JSON.parse(localStorage.getItem("request"))
           setContact(reques.contact)
           setCustomerEmail(reques.customerEmail)
           setCustomerName(reques.customerName)
           setDriverLink(reques.driverLink)
+          alert("hello")
           const moviesOld = (JSON.parse(localStorage.getItem("movies")))
         movieManiaApi.post("/getMoviesByID",{
           moviesOld
         })
           .then((res) => { 
             setSelectedMovies(res.data)
+            setRequestCount(res.data[0].rate)
+            SetSelectedPrice(res.data[0].price)
         })
     
       // Catch errors if any
@@ -149,23 +165,17 @@ function BuyMovie() {
 
         }
         else{
-          var movieId = localStorage.getItem("movie")
-          
-          var movieIId = parseInt(movieId)
-          setMovieId(movieIId)
-          movies.push(movieIId)
-          movieManiaApi.get("/getMovie"+movieIId)
-          .then((res) => { 
-            selectedMovies.push(res.data)
-        })
-    
-      // Catch errors if any
-      .catch((err) => { 
-        console.log(err)
-      });
+          const movie = JSON.parse( localStorage.getItem("singleMovie"))  
+          setMovieId(movie.movieId)
+          movies.push(movie.movieId)
+          selectedMovies.push(movie)
+          setRequestCount(movie.rate)
+          SetSelectedPrice(movie.price)
+          setMovieName(movie.name)
         }
-      }
       },[])
+
+
   return (
     <>
       <p className={styles.h1}>Buying information</p>
@@ -182,15 +192,19 @@ function BuyMovie() {
             <Col span={8}>
               <Select
                 className={styles.p}
-                defaultValue="Doctor Strange 2020"
+                value={movieName}
+onChange={(e)=>veiwMovie(e.target.value)}
                 style={{
                   width: "200px",
                 }}
-                onChange={null}
+               
               >
-                <Option value="Doctor Strange 2020">Doctor Strange 2020</Option>
-                <Option value="lucy">Lucy</Option>
-                <Option value="Yiminghe">yiminghe</Option>
+                {
+                  selectedMovies.map((movie)=>(
+                      <option value={movie.name}>{movie.name}</option>
+                  ))
+                }
+                
               </Select>
             </Col>
             <Col span={8}>
@@ -206,14 +220,14 @@ function BuyMovie() {
               <p className={styles.pName}>Movie Count :</p>
             </Col>
             <Col span={8}>
-              <p className={styles.p}>{movieCount}</p>
+              <p className={styles.p}>{requestCount}</p>
             </Col>
             <Col span={8}></Col>
             <Col span={8}>
               <p className={styles.pName}>Payable Amount :</p>
             </Col>
             <Col span={8}>
-              <p className={styles.p}>Rs {payableAmount}</p>
+              <p className={styles.p}>Rs {selectPrice}</p>
             </Col>
             <Col span={8}></Col>
 
@@ -235,6 +249,7 @@ function BuyMovie() {
               <Input
                 placeholder="Paste the Drive link here"
                 className={styles.p}
+                onChange={(e) => setDriverLink(e.target.value)}
               />
             </Col>
             <Col span={8}>
@@ -257,6 +272,7 @@ function BuyMovie() {
               <Input
                 placeholder="Enter name"
                 style={{ width: "300px", float: "left" }}
+                onChange={(e) => setCustomerName(e.target.value)}
               />
             </Col>
 
@@ -267,6 +283,7 @@ function BuyMovie() {
               <Input
                 placeholder="Enter contact no "
                 style={{ width: "300px", float: "left" }}
+                onChange={(e) => setContact(e.target.value)}
               />
             </Col>
 
@@ -277,12 +294,14 @@ function BuyMovie() {
               <Input
                 placeholder="Enter email address "
                 style={{ width: "300px", float: "left" }}
+                onChange={(e) => setCustomerEmail(e.target.value)}
               />
             </Col>
 
+
             <Col span={8}>
               <Button className={styles.button}>SUBMIT REQUEST</Button>
-              <Button className={styles.button}>Add More Movies</Button>
+              <Button className={styles.button} onClick={addMultipleMovies}>Add More Movies</Button>
             </Col>
           </Row>
         </div>
