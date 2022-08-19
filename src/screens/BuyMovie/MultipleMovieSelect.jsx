@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import {useNavigate} from 'react-router-dom';
+import movieManiaApi from "../../api/movieManiaApi";
 
 function MultipleMovieSelect(){
 
@@ -109,8 +110,12 @@ function MultipleMovieSelect(){
   });
     },[])
 
+
+
     return (
-        <div></div>
+        <div>
+
+        </div>
     )
 }
 
