@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import MovieRequest  from "./MovieRequest";
 import {useNavigate} from 'react-router-dom';
+import movieManiaApi from "../../api/movieManiaApi";
 
 
 function AdminHomePageLayout()
@@ -28,8 +29,11 @@ function AdminHomePageLayout()
     function changeAdmin(){
 
         const admin = {username,password , oldUsername,oldPassword}
-        movieManiaApi.get("/deleteMovie"+id,{
-            body:{admin},
+        movieManiaApi.post("/deleteMovie",{
+            username,
+            password,
+            oldPassword,
+            oldUsername,
             headers:{"header":releaseToken(localStorage.getItem("user"))}
         })
         .then((res) => { 
@@ -47,8 +51,9 @@ function AdminHomePageLayout()
 
         const admin = {username , password}
 
-        movieManiaApi.get("/deleteMovie"+id,{
-            admin,
+        movieManiaApi.post("/deleteMovie",{
+            username,
+            password,
             headers:{"header":releaseToken(localStorage.getItem("user"))}
         })
         .then((res) => { 

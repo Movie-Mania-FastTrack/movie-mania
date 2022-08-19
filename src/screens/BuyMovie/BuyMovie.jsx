@@ -55,7 +55,12 @@ function BuyMovie() {
      
         const reques = {customerName,customerEmail,contact,driverLink,payableStatus:"payable",movies}
       movieManiaApi.post("/addRequest",{
-        reques
+        customerName,
+        customerEmail,
+        contact,
+        driverLink,
+        payableStatus:"payable",
+        movies
       })
       .then((res) => { 
         alert(res.data)
@@ -76,7 +81,11 @@ function BuyMovie() {
     function addNotPayableRequest(){
       const reques = {customerName,customerEmail,contact,driverLink,movies}
       movieManiaApi.post("/addRequest",{
-        reques
+        customerName,
+        customerEmail,
+        contact,
+        driverLink,
+        movies
       })
       .then((res) => { 
         alert(res.data)
@@ -273,6 +282,7 @@ function BuyMovie() {
 
             <Col span={8}>
               <Button className={styles.button}>SUBMIT REQUEST</Button>
+              <Button className={styles.button}>Add More Movies</Button>
             </Col>
           </Row>
         </div>

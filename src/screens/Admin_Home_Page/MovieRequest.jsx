@@ -30,7 +30,7 @@ function MovieRequest(requestID)
     }
 
     function showPayedRequests(){
-        movieManiaApi.get("/getPayedRequests"+id,{
+        movieManiaApi.get("/getPayedRequests",{
           headers:{"header":releaseToken(localStorage.getItem("user"))}
         })
         .then((res) => { 
@@ -47,7 +47,7 @@ function MovieRequest(requestID)
     }
 
     function showNotPayedRequests(){
-        movieManiaApi.get("/getPayableRequests"+id,{
+        movieManiaApi.get("/getPayableRequests",{
           headers:{"header":releaseToken(localStorage.getItem("user"))}
         })
         .then((res) => { 
@@ -64,7 +64,7 @@ function MovieRequest(requestID)
     }
 
     function showNotPayableRequests(){
-        movieManiaApi.get("/getNotPayableRequests"+id,{
+        movieManiaApi.get("/getNotPayableRequests",{
           headers:{"header":releaseToken(localStorage.getItem("user"))}
         })
         .then((res) => { 
@@ -127,7 +127,8 @@ function MovieRequest(requestID)
         setReasonLogic(false)
         const rejectDto = {id : reqId , reason : reason}
         movieManiaApi.put("/rejectRequest",{
-            rejectDto,
+            id : reqId,
+            reason : reason,
             headers:{"header":releaseToken(localStorage.getItem("user"))}
 
         })

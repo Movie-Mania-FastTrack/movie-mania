@@ -40,14 +40,23 @@ return token
 
 function addMovie(){
   
-    const movie = {name , story , category, imageUrl , launchingImageUrl , trailerLink , actors , price}
-    movieManiaApi.get("/addMovie",{
-      movie,
-      headers:{"header":releaseToken(localStorage.getItem("user"))}
+  alert(imageUrl)
+  alert(name)
+    const movie = {name : name , story : story , category, imageUrl , launchingImageUrl , trailerLink , actors , price}
+    movieManiaApi.post("/addMovie",{
+        name : name,
+        story,
+        category,
+        imageUrl,
+        launchingImageUrl,
+        trailerLink,
+        actors,
+        price
+     // headers:{"header":releaseToken(localStorage.getItem("user"))}
     })
     .then((res) => { 
         console.log("result - ",res.data)
-        alert(res.data)
+        alert("HELLOOO "+res.data)
     })
   
   // Catch errors if any
@@ -110,7 +119,7 @@ function submit(){
   uploadTrailer();
   uploadReleaseImage();
 
-  const delay = setTimeout(addMovie,20000)
+  const delay = setTimeout(addMovie,10000)
 
 }
 
