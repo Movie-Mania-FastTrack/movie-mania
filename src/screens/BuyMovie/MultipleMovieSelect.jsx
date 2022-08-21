@@ -13,9 +13,9 @@ function MultipleMovieSelect(){
 
     function selectMovie(id){
         movieIds.push(id)
-        movieManiaApi.post("/getMoviesWithoutSelect",{
+        movieManiaApi.post("/getMoviesWithoutSelect",
             movieIds
-        })
+        )
         .then((res) => { 
             console.log("result - ",res.data)
             setMovies(res.data)
@@ -81,13 +81,15 @@ function MultipleMovieSelect(){
     }
 
     useEffect(()=>{
+      console.log("sstore- " ,localStorage.getItem("movies"))
         const moviesOld = (JSON.parse(localStorage.getItem("movies")))
+        console.log(moviesOld)
         setMovieIds(moviesOld)
-        movieManiaApi.get("/getMoviesWithoutSelect",{
-
-        })
+        movieManiaApi.post("/getMoviesWithoutSelect",
+          moviesOld
+        )
         .then((res) => { 
-            console.log("result - ",res.data)
+            console.log("result - without selected",res.data)
             setMovies(res.data)
         })
   
@@ -96,11 +98,11 @@ function MultipleMovieSelect(){
         console.log(err)
       });
 
-      movieManiaApi.post("/getMoviesByID",{
-        movieIds
-    })
+      movieManiaApi.post("/getMoviesByID",
+        moviesOld
+    )
     .then((res) => { 
-        console.log("result - ",res.data)
+        console.log("result - selected",res.data)
         setSelectedMovies(res.data)
     })
 
@@ -113,9 +115,22 @@ function MultipleMovieSelect(){
 
 
     return (
-        <div>
-
+      <>
+      <div>
+        <h2>Not Selected Movies</h2>
+          {movies.map((movie)=>(<div>
+            <p>{movie.name}</p>
+            <button>select</button>
+          </div>))}
         </div>
+        <div>
+          <h2>Selected Movies</h2>
+          {selectedMovies.map((movie)=>(<div>
+            <p>{movie.name}</p>
+            <button>Remove</button>
+          </div>))}
+        </div></>
+      
     )
 }
 

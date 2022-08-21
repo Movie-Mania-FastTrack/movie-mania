@@ -32,7 +32,7 @@ function BuyMovie() {
       const request = {customerName,customerEmail,contact,driverLink,payableStatus:"payable"}
       localStorage.setItem("request",JSON.stringify(request))
       localStorage.setItem("movies",JSON.stringify(movies))
-      navigate("/add_more_movies")
+      navigate("/multiple_movie_select")
     }
 
     function getRequestByCode(){
