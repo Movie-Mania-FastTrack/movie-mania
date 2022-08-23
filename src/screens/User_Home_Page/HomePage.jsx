@@ -1,5 +1,6 @@
 import React, {useState , useEffect} from "react";
 import {Row, Col, Modal} from 'antd';
+import { Button, Space } from 'antd';
 import {LeftCircleOutlined,RightCircleOutlined} from '@ant-design/icons';
 import {useNavigate} from 'react-router-dom';
 
@@ -13,6 +14,7 @@ import admin from '../../resources/images/admin.png';
 function HomePage()
 {
     const [isModalVisible, setIsModalVisible] = useState(false);
+    const [isModal2Visible, setIsModal2Visible] = useState(false);
     const[username , setUsername] = useState("")
     const[password , setPassword] = useState("")
     const[login , setLogin] = useState(false)
@@ -24,7 +26,13 @@ function HomePage()
     const navigate = useNavigate();
 
     const showModal = () => {
-      setIsModalVisible(true);
+      if(login){
+        setIsModalVisible(true)
+      }
+      else{
+        info()
+      }
+      
     };
 
     function tokenChange(token){
@@ -32,21 +40,37 @@ function HomePage()
         var key = "qwerty"
         return token+key
        }
+
+       const info = () => {
+        Modal.info({
+          title: 'This is a notification message',
+          content: (
+            <div>
+              <p>Your ip has blocked please try again late</p>
+            </div>
+          ),
+      
+          onOk() {},
+        });
+      };
   
     function Login(){
 
         const admin ={username,password}
+        alert(admin.password+" "+admin.username)
+        alert(ip)
         var position = document.getElementById("id1")
        // console.log(student)
-       movieManiaApi.post("/getKey?ip="+ip,{
-        
+       movieManiaApi.post("/getKey/"+ip,{
+        username,
+        password
     })
     .then((res) => { 
         console.log("result - ",res.data)
         console.log(res.data)
           var error = "Error username or password"
           if(error==res.data){
-            position.innerHTML = res.data
+            //position.innerHTML = res.data
             alert(res.data)
             if(localStorage.getItem("count")==null){
               localStorage.setItem("count",1)
@@ -55,6 +79,7 @@ function HomePage()
             else{    
                   var count = parseInt(localStorage.getItem("count"))
                   count++
+                  alert(count)
                   localStorage.setItem("count",count)
                   if(count>=3){
                     localStorage.removeItem("count")
@@ -80,6 +105,7 @@ function HomePage()
             localStorage.setItem("user",tokenChange(res.data))
             localStorage.removeItem("count")
            // window.location="/category"
+           navigate("/admin_home_page");
           }
     })
 
@@ -141,20 +167,15 @@ function HomePage()
       setIsModalVisible(false);
       navigate("/admin_home_page");
     };
+
+    const handleCancle = () => {
+      setIsModalVisible(false);
+      //navigate("/admin_home_page");
+    };
   
      useEffect(()=>{
 
       localStorage.clear()
-
-      movieManiaApi.get("/getCategories")
-      .then((res) => { 
-        setCategories(res.data)
-    })
-
-  // Catch errors if any
-  .catch((err) => { 
-    console.log(err)
-  });
 
   getAdminMails()
 
@@ -166,7 +187,7 @@ function HomePage()
     .then((result1)=>{
       setIp(JSON.stringify(result1))
       //alert("ip "+JSON.stringify(result1))
-      fetch("https://into-uncommon.herokuapp.com/intouncommon/getLogin/status?ip="+JSON.stringify(result1),{
+      fetch("https://movieania.herokuapp.com/movie/getLogin/status?ip="+JSON.stringify(result1),{
         headers:{"header":"subhath"}
       })
       .then(res=>res.text())
@@ -231,10 +252,10 @@ function HomePage()
                          <button style={{height:'50px', width:'70px', opacity:'0.2', marginTop:'5px'}} onClick={showModal}><img src={admin} style={{height:'50px', width:'70px'}}></img></button>  
                          <Modal 
                          style={{height:'300px', width:'600px', borderRadius:'15px', backgroundColor:'wheat'}}
-                         title="Basic Modal" visible={isModalVisible} onOk={handleOk} >
+                         title="Basic Modal" visible={isModalVisible} onOk={Login} onCancel={handleCancle}>
                             <div>
-                                <p>Admin UserName: <input type='text'/></p>
-                                <p>Admin Password: <input type='password'/></p>
+                                <p>Admin UserName: <input type='text' onChange={(e) => setUsername(e.target.value)} /></p>
+                                <p>Admin Password: <input type='password' onChange={(e) => setPassword(e.target.value)}/></p>
                             </div>
                         </Modal>
                         </Col>
