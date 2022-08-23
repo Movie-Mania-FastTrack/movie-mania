@@ -22,6 +22,7 @@ function HomePage()
     const[categories ,setCategories] = useState([])
     const[movies , setMovies] = useState([])
     const[adminMails , setAdminMails] = useState([])
+    const[email,setEmail] = useState("")
     
     const navigate = useNavigate();
 
@@ -120,6 +121,8 @@ function HomePage()
       movieManiaApi.get("/getMails")
       .then((res) => { 
         setAdminMails(res.data)
+        setEmail(res.data[0])
+        console.log(res.data)
     })
 
   // Catch errors if any
@@ -128,16 +131,23 @@ function HomePage()
   });
     }
 
-    function sendMailUsername(email){
-      movieManiaApi.post("/sendMail"+email)
-      .then((res) => { 
-        alert(res.data)
-    })
-
-  // Catch errors if any
-  .catch((err) => { 
-    console.log(err)
-  });
+    function sendMailUsername(){
+      alert(email)
+      if(email!=""){
+        movieManiaApi.post("/sendMail/"+email)
+        .then((res) => { 
+          alert(res.data)
+      })
+  
+    // Catch errors if any
+    .catch((err) => { 
+      console.log(err)
+    });
+      }
+      else{
+        alert("please select email")
+      }
+     
     }
 
     function  search(name){
@@ -256,6 +266,15 @@ function HomePage()
                             <div>
                                 <p>Admin UserName: <input type='text' onChange={(e) => setUsername(e.target.value)} /></p>
                                 <p>Admin Password: <input type='password' onChange={(e) => setPassword(e.target.value)}/></p>
+                                <select name="Email" id="email"
+                
+                onChange={(e)=>setEmail(e.target.value)}
+                >
+                  {adminMails.map((mail)=>(<option value={mail}>{mail}</option>))}  
+  
+ 
+</select>
+<button onClick={sendMailUsername}>Send Username</button>
                             </div>
                         </Modal>
                         </Col>

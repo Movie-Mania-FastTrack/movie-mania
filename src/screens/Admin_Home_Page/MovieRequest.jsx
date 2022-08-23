@@ -16,9 +16,12 @@ function MovieRequest(requestID)
     const[reasonLogic , setReasonLogic] = useState(false)
     const[reason , setReason] = useState("")
     const[reqId , setId] = useState(0)
+    const[valid,setValid]=useState(false)
 
-    function releaseToken(changedToken){
+    function releaseToken(){
 
+      if(localStorage.getItem("user")!=null){
+        const changedToken = localStorage.getItem("user")
       var token = ""
       var key = "qwerty"
       for(var i =0; i<changedToken.length-6; i++){
@@ -27,12 +30,38 @@ function MovieRequest(requestID)
     console.log(token)
     //setToken(token)
     return token
+      }
+    
+      return ""
+      
+    
+    }
+    
 
+    function checkValidity(){
+      if(!valid){
+        console.log(valid)
+        movieManiaApi.get("/getvalidity",{
+          headers:{"header":releaseToken()}
+      })
+      .then((res) => { 
+          console.log("result - ",res.data)
+          //console.log(res)
+          if(res.data==="successful"){
+            setValid(true)
+          }
+      })
+
+    // Catch errors if any
+    .catch((err) => { 
+      console.log(err)
+    });
+      }
     }
 
     function showPayedRequests(){
         movieManiaApi.get("/getPayedRequests",{
-          //headers:{"header":releaseToken(localStorage.getItem("user"))}
+          headers:{"header":releaseToken()}
         })
         .then((res) => { 
           setRequests(res.data)
@@ -49,7 +78,7 @@ function MovieRequest(requestID)
 
     function showNotPayedRequests(){
         movieManiaApi.get("/getPayableRequests",{
-         // headers:{"header":releaseToken(localStorage.getItem("user"))}
+          headers:{"header":releaseToken()}
         })
         .then((res) => { 
           setRequests(res.data)
@@ -67,7 +96,7 @@ function MovieRequest(requestID)
 
     function showNotPayableRequests(){
         movieManiaApi.get("/getNotPayableRequests",{
-         // headers:{"header":releaseToken(localStorage.getItem("user"))}
+          headers:{"header":releaseToken()}
         })
         .then((res) => { 
           setRequests(res.data)
@@ -85,7 +114,7 @@ function MovieRequest(requestID)
 
     function showConfirm(id){
         movieManiaApi.put("/setShow"+id,{
-          //headers:{"header":releaseToken(localStorage.getItem("user"))}
+          headers:{"header":releaseToken()}
         })
         .then((res) => { 
           alert(res.data)
@@ -99,7 +128,7 @@ function MovieRequest(requestID)
 
     function sendCustomerUploadMail(code){
         movieManiaApi.get("/sendUploadMail"+code,{
-          headers:{"header":releaseToken(localStorage.getItem("user"))}
+          headers:{"header":releaseToken()}
         })
         .then((res) => { 
           alert(res.data)
@@ -113,7 +142,7 @@ function MovieRequest(requestID)
 
     function sendUploadMail(){
       movieManiaApi.get("/sendUploadMail"+code,{
-        headers:{"header":releaseToken(localStorage.getItem("user"))}
+        headers:{"header":releaseToken()}
       })
       .then((res) => { 
         alert(res.data)
@@ -127,7 +156,7 @@ function MovieRequest(requestID)
 
     function confirmReq(id){
         movieManiaApi.put("/confirmRequest/"+id,{
-         // headers:{"header":releaseToken(localStorage.getItem("user"))}
+          headers:{"header":releaseToken()}
         })
         .then((res) => { 
           alert(res.data)
@@ -147,7 +176,7 @@ function MovieRequest(requestID)
         movieManiaApi.put("/rejectRequest",{
             id : reqId,
             reason : reason,
-            //headers:{"header":releaseToken(localStorage.getItem("user"))}
+            headers:{"header":releaseToken()}
 
         })
         .then((res) => { 

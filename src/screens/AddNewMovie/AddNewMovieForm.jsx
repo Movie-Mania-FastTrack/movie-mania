@@ -26,8 +26,10 @@ const[releaseImageUpload,setReleaseImageUpload] = useState(null)
 const[videoUpload,setVideoUpload] = useState(null)
 const[characters , setCharacters] = useState([])
 
-function releaseToken(changedToken){
+function releaseToken(){
 
+  if(localStorage.getItem("user")!=null){
+    const changedToken = localStorage.getItem("user")
   var token = ""
   var key = "qwerty"
   for(var i =0; i<changedToken.length-6; i++){
@@ -36,8 +38,13 @@ function releaseToken(changedToken){
 console.log(token)
 //setToken(token)
 return token
+  }
+
+  return ""
+  
 
 }
+
 
 function addCharacter(){
   
@@ -60,8 +67,8 @@ function addMovie(){
         launchingImageUrl,
         trailerLink,
         characters,
-        price
-     // headers:{"header":releaseToken(localStorage.getItem("user"))}
+        price,
+      headers:{"header":releaseToken()}
     })
     .then((res) => { 
         console.log("result - ",res.data)
@@ -172,6 +179,13 @@ function submit(){
                 />
               </Form.Item>
             </Col>
+            <Col span={12}>
+                <Form.Item label="Movie Price" className={formStyles.moviePrice}>
+                  <Input className={formStyles.category} 
+                   onChange={(e) => setPrice(e.target.value)}
+                  />
+                </Form.Item>
+              </Col>
             <Form.Item label="Characters">
               <Row gutter={[16, 16]}>
                 <Col span={6}>

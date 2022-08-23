@@ -9,6 +9,7 @@ function TopRatedMovieCard ()
     const [topMovies , setTopMovies] = useState([])
 
     useEffect(()=>{
+        localStorage.removeItem("singleMovie")
         movieManiaApi.get("/getMovieTop",{
 
         })

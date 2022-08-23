@@ -44,6 +44,7 @@ const[removableCharacters , setRemoveCharacters] = useState([])
 const[imageUpload,setImageUpload] = useState(null)
 const[releaseImageUpload,setReleaseImageUpload] = useState(null)
 const[videoUpload,setVideoUpload] = useState(null)
+const[valid,setValid]=useState(false)
 
 function releaseToken(){
 
@@ -62,6 +63,27 @@ return token
   return ""
   
 
+}
+
+function checkValidity(){
+  if(!valid){
+    console.log(valid)
+    movieManiaApi.get("/getvalidity",{
+      headers:{"header":releaseToken()}
+  })
+  .then((res) => { 
+      console.log("result - ",res.data)
+      //console.log(res)
+      if(res.data==="successful"){
+        setValid(true)
+      }
+  })
+
+// Catch errors if any
+.catch((err) => { 
+  console.log(err)
+});
+  }
 }
 
 function addCharacter(){

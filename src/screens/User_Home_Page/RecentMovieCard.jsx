@@ -10,6 +10,7 @@ function RecentMovieCard (movieImage)
     const navigate = useNavigate();
     
     useEffect(()=>{
+        localStorage.removeItem("singleMovie")
         movieManiaApi.get("/getMovies",{
 
         })

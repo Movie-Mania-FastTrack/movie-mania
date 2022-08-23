@@ -7,22 +7,50 @@ function MovieCard()
 {
     const [recentMovies , setRecentMovies] = useState([])
     const [deleteLogic , setDeleteLogic] = useState(false)
+    const[valid,setValid]=useState(false)
 
     const navigate = useNavigate();
 
-    function releaseToken(changedToken){
+    function releaseToken(){
 
-        var token = ""
-        var key = "qwerty"
-        for(var i =0; i<changedToken.length-6; i++){
-          token+=changedToken[i]
-        }
-      console.log(token)
-      //setToken(token)
-      return token
-  
+      if(localStorage.getItem("user")!=null){
+        const changedToken = localStorage.getItem("user")
+      var token = ""
+      var key = "qwerty"
+      for(var i =0; i<changedToken.length-6; i++){
+        token+=changedToken[i]
       }
+    console.log(token)
+    //setToken(token)
+    return token
+      }
+    
+      return ""
+      
+    
+    }
 
+    function checkValidity(){
+      if(!valid){
+        console.log(valid)
+        movieManiaApi.get("/getvalidity",{
+          headers:{"header":releaseToken()}
+      })
+      .then((res) => { 
+          console.log("result - ",res.data)
+          //console.log(res)
+          if(res.data==="successful"){
+            setValid(true)
+          }
+      })
+
+    // Catch errors if any
+    .catch((err) => { 
+      console.log(err)
+    });
+      }
+    }
+    
     useEffect(()=>{
         movieManiaApi.get("/getMovies",{
 
@@ -36,13 +64,15 @@ function MovieCard()
       .catch((err) => { 
         console.log(err)
       });
+
+      localStorage.removeItem("movieId")
           
         },[])
 
         function deleteMovie(id){
             if(deleteLogic){
               movieManiaApi.delete("/deleteMovie"+id,{
-                headers:{"header":releaseToken(localStorage.getItem("user"))}
+                headers:{"header":releaseToken()}
             })
             .then((res) => { 
                 console.log("result - ",res.data)

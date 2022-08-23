@@ -168,6 +168,8 @@ function BuyMovie() {
           setDriverLink(reques.driverLink)
           alert("hello")
           const moviesOld = JSON.parse(localStorage.getItem("movies"))
+          localStorage.removeItem("movies")
+          localStorage.removeItem("request")
           console.log("moviesOld",moviesOld)
         movieManiaApi.post("/getMoviesByID",
           moviesOld
