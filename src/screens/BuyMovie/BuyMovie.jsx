@@ -32,6 +32,7 @@ function BuyMovie() {
       const request = {customerName,customerEmail,contact,driverLink,payableStatus:"payable"}
       localStorage.setItem("request",JSON.stringify(request))
       localStorage.setItem("movies",JSON.stringify(movies))
+      console.log(localStorage.getItem("movies"))
       navigate("/multiple_movie_select")
     }
 
@@ -54,56 +55,74 @@ function BuyMovie() {
 
     function addPayableRequest(){
       
-      
-     
-        const reques = {customerName,customerEmail,contact,driverLink,payableStatus:"payable",movies}
-      movieManiaApi.post("/addRequest",{
-        customerName,
-        customerEmail,
-        contact,
-        driverLink,
-        payableStatus:"payable",
-        movies
+      if(customerEmail!="" && customerName !="" && driverLink != "" && contact!=""){
+        const request = {customerName,customerEmail,contact,driverLink,payableStatus:"payable"}
+        const requestDto = {request:request,movies}
+        console.log("movies",requestDto)
+        movieManiaApi.post("/addRequest",{
+          customerName,
+          customerEmail,
+          contact,
+          driverLink,
+          payableStatus:"payable",
+          movies
+        })
+        .then((res) => { 
+          alert(res.data)
+          if(res.data=="error"){
+            navigate("/movie_trailor_page")
+          }
+          else{
+            navigate("/slip_upload_page");
+          }
       })
-      .then((res) => { 
-        alert(res.data)
-        if(res.data=="added"){
-          navigate("/slip_upload_page");
-        }
-        else{
-          navigate("/movie_trailor_page")
-        }
-    })
-
-  // Catch errors if any
+      // Catch errors if any
   .catch((err) => { 
     console.log(err)
   });
+      }
+      else{
+        alert("please Fill The form")
+      }
+        
     }
 
     function addNotPayableRequest(){
-      const reques = {customerName,customerEmail,contact,driverLink,movies}
-      movieManiaApi.post("/addRequest",{
-        customerName,
-        customerEmail,
-        contact,
-        driverLink,
-        movies
+      if(customerEmail!="" && customerName !="" && contact!=""){
+        const request = {customerName,customerEmail,contact,driverLink,payableStatus:"payable"}
+        const requestDto = {request:request,movies}
+        console.log("movies",requestDto)
+        movieManiaApi.post("/addRequest",{
+          customerName,
+          customerEmail,
+          contact,
+          payableStatus:"notPayable",
+          driverLink,
+          movies
+        })
+        .then((res) => { 
+          alert("your codes are")
+          alert(res.data)
+          for(let i=0;i<res.data.length; i++){
+            alert(res.data[i])
+          }
+          if(res.data==[]){
+            navigate("/movie_trailor_page")
+          }
+          else{
+            navigate("/slip_upload_page");
+          }
       })
-      .then((res) => { 
-        alert(res.data)
-        if(res.data=="added"){
-          navigate("/slip_upload_page");
-        }
-        else{
-          navigate("/movie_trailor_page")
-        }
-    })
-
-  // Catch errors if any
+      // Catch errors if any
   .catch((err) => { 
     console.log(err)
   });
+      }
+      else{
+        alert("please Fill The form")
+      }
+
+  
     }
 
     function cancleRequest(){
@@ -142,16 +161,19 @@ function BuyMovie() {
     useEffect(()=>{
         if(localStorage.getItem("request")!=null){
           const reques = JSON.parse(localStorage.getItem("request"))
+          console.log(reques)
           setContact(reques.contact)
           setCustomerEmail(reques.customerEmail)
           setCustomerName(reques.customerName)
           setDriverLink(reques.driverLink)
           alert("hello")
-          const moviesOld = (JSON.parse(localStorage.getItem("movies")))
-        movieManiaApi.post("/getMoviesByID",{
+          const moviesOld = JSON.parse(localStorage.getItem("movies"))
+          console.log("moviesOld",moviesOld)
+        movieManiaApi.post("/getMoviesByID",
           moviesOld
-        })
+        )
           .then((res) => { 
+            console.log(res.data)
             setSelectedMovies(res.data)
             setRequestCount(res.data[0].rate)
             SetSelectedPrice(res.data[0].price)
@@ -167,7 +189,10 @@ function BuyMovie() {
         else{
           const movie = JSON.parse( localStorage.getItem("singleMovie"))  
           setMovieId(movie.movieId)
+          console.log("movies : ",movies)
+          console.log("id : ",movie.movieId)
           movies.push(movie.movieId)
+          console.log("movies : ",movies)
           selectedMovies.push(movie)
           setRequestCount(movie.rate)
           SetSelectedPrice(movie.price)
@@ -300,7 +325,8 @@ onChange={(e)=>veiwMovie(e.target.value)}
 
 
             <Col span={8}>
-              <Button className={styles.button}>SUBMIT REQUEST</Button>
+              <Button className={styles.button} onClick={addPayableRequest}>SUBMIT PAYABLE REQUEST</Button>
+              <Button className={styles.button} onClick={addNotPayableRequest}>SUBMIT NOT PAYABLE REQUEST</Button> 
               <Button className={styles.button} onClick={addMultipleMovies}>Add More Movies</Button>
             </Col>
           </Row>

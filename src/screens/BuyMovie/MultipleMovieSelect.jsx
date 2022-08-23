@@ -26,9 +26,9 @@ function MultipleMovieSelect(){
         console.log(err)
       });
 
-      movieManiaApi.post("/getMoviesByID",{
+      movieManiaApi.post("/getMoviesByID",
         movieIds
-    })
+    )
     .then((res) => { 
         console.log("result - ",res.data)
         setSelectedMovies(res.data)
@@ -48,9 +48,9 @@ function MultipleMovieSelect(){
             }
         }
         setMovieIds(movieIdsAssis)
-        movieManiaApi.post("/getMoviesWithoutSelect",{
+        movieManiaApi.post("/getMoviesWithoutSelect",
             movieIdsAssis
-        })
+        )
         .then((res) => { 
             console.log("result - ",res.data)
             setMovies(res.data)
@@ -61,9 +61,9 @@ function MultipleMovieSelect(){
         console.log(err)
       });
 
-      movieManiaApi.post("/getMoviesByID",{
+      movieManiaApi.post("/getMoviesByID",
         movieIdsAssis
-    })
+    )
     .then((res) => { 
         console.log("result - ",res.data)
         setSelectedMovies(res.data)
@@ -82,7 +82,7 @@ function MultipleMovieSelect(){
 
     useEffect(()=>{
       console.log("sstore- " ,localStorage.getItem("movies"))
-        const moviesOld = (JSON.parse(localStorage.getItem("movies")))
+        const moviesOld = JSON.parse(localStorage.getItem("movies"))
         console.log(moviesOld)
         setMovieIds(moviesOld)
         movieManiaApi.post("/getMoviesWithoutSelect",
@@ -110,6 +110,7 @@ function MultipleMovieSelect(){
   .catch((err) => { 
     console.log(err)
   });
+  //localStorage.removeItem("");
     },[])
 
 
@@ -120,15 +121,16 @@ function MultipleMovieSelect(){
         <h2>Not Selected Movies</h2>
           {movies.map((movie)=>(<div>
             <p>{movie.name}</p>
-            <button>select</button>
+            <button onClick={()=>selectMovie(movie.movieId)}>select</button>
           </div>))}
         </div>
         <div>
           <h2>Selected Movies</h2>
           {selectedMovies.map((movie)=>(<div>
             <p>{movie.name}</p>
-            <button>Remove</button>
+            <button onClick={()=>removeMovie(movie.movieId)}>Remove</button>
           </div>))}
+          <button onClick={submit}>Submit</button>
         </div></>
       
     )

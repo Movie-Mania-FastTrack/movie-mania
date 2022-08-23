@@ -77,10 +77,17 @@ function AdminHomePageLayout()
         navigate("/add_new_movie")
     }
 
+    function onclickRequest(){
+      //navigate to add movie
+      navigate("/movie_requests")
+  }
+
     return(
         <>
         <div style={{height:'auto', width:'100vw', position: 'absolute', backgroundColor:'#040819'}}>
-            <MovieRequest/>
+            <button onClick={onclickAdd}>Add Movie</button>
+            <button onClick={onclickEdit}>Manage Movie</button>
+            <button onClick={onclickRequest}>Manage Requests</button>
         </div>
 
         </>

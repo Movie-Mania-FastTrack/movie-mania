@@ -144,6 +144,8 @@ function HomePage()
   
      useEffect(()=>{
 
+      localStorage.clear()
+
       movieManiaApi.get("/getCategories")
       .then((res) => { 
         setCategories(res.data)

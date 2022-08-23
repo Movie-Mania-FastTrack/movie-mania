@@ -12,6 +12,7 @@ import ManageMoviesHome  from "./screens/Admin_Manage_Movies/ManageMoviesHome";
 import AddNewMovieScreen from "./screens/AddNewMovie/AddNewMovieScreen";
 import EditNewMovieScreen from "./screens/EditNewMovie/EditMovieScreen";
 import MultipleMovieSelect from "./screens/BuyMovie/MultipleMovieSelectHome";
+import MovieRequest from "./screens/Admin_Home_Page/MovieRequest";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
         <Route path="/manage_movie_home" element={<ManageMoviesHome />} />
         <Route path="/edit_movie" element={<EditNewMovieScreen />} />
         <Route path="/multiple_movie_select" element={<MultipleMovieSelect />} />
+        <Route path="/movie_requests" element={<MovieRequest />} />
       </Routes>
     </Router>
   );

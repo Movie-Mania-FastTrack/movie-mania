@@ -62,6 +62,7 @@ function MovieCard()
         function editMovie(id){
             localStorage.setItem("movieId",id)
             //navigate to edit movie page
+            navigate("/edit_movie")
         }
 
         function cancleDelete(){
@@ -73,10 +74,10 @@ function MovieCard()
         {recentMovies.length!=0&&recentMovies.map((movie)=>(
                     <div style={{height:'200px',width:'180px', borderRadius:'8px', backgroundColor:'grey'}}> 
                     <p>name - {movie.name}</p>
-                    <button onClick={editMovie}>Edit</button>
-                    <button onClick={deleteMovie(movie.movieId)}>Delete</button>
+                    <button onClick={()=>editMovie(movie.movieId)}>Edit</button>
+                    <button onClick={()=>deleteMovie(movie.movieId)}>Delete</button>
                     <div>
-                      <button onClick={deleteMovie(movie.movieId)}>Confirm Delete</button>
+                      <button onClick={()=>deleteMovie(movie.movieId)}>Confirm Delete</button>
                       <button onClick={cancleDelete}>Cancle</button>
                     </div>
                     </div>
