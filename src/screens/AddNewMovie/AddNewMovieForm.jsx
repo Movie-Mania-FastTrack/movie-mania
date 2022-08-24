@@ -7,6 +7,8 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import formStyles from "./AddNewMovie.module.css";
 import "./AddNewMovie.css";
+import {useNavigate} from 'react-router-dom';
+
 const { TextArea } = Input;
 function AddNewMovieForm() {
   const tailLayout = {
@@ -25,6 +27,8 @@ const[imageUpload,setImageUpload] = useState(null)
 const[releaseImageUpload,setReleaseImageUpload] = useState(null)
 const[videoUpload,setVideoUpload] = useState(null)
 const[characters , setCharacters] = useState([])
+
+const navigate = useNavigate();
 
 function releaseToken(){
 
@@ -45,6 +49,9 @@ return token
 
 }
 
+function reloadW(){
+  window.location.reload()
+}
 
 function addCharacter(){
   
@@ -72,7 +79,8 @@ function addMovie(){
     })
     .then((res) => { 
         console.log("result - ",res.data)
-        alert("HELLOOO "+res.data)
+        alert(res.data)
+        window.location.reload()
     })
   
   // Catch errors if any
@@ -223,6 +231,7 @@ function submit(){
             </Form.Item>
           </Form>
         </Row>
+        
       </center>
     </div>
   );
