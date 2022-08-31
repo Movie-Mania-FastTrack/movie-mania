@@ -1,29 +1,25 @@
 .ant-form-item {
     text-align: left;
     
-    margin-bottom: 40px;
+    margin-bottom: 1vw;
     width: 100%;
 }
 
-.ant-input {
-    margin-bottom: 10px;
-    margin-right: 10px;
-    padding-right: 10px;
-    color: rgba(255, 253, 253, 0.85);
-    background-color: #1f1d2b;;
+input{
+    width: 15vw;
+    height: 2vw;
+    position: absolute;
+}
 
-    border: 1px solid yellow;
-    border-radius: 10px;
-    height: 40px;
-margin-left: 10px;
-
-
+label{
+    color: white;
+    position: absolute;
 }
 
 .ant-form-item-label>label {
-    padding-right:10px;
-    color: white;
-    font-size: 16px;
+    padding-right:0.5vw;
+    color: black;
+    font-size: 1vw;
 }
 
 .ant-select:not(.ant-select-customize-input) .ant-select-selector {
@@ -38,6 +34,6 @@ margin-left: 10px;
 
 .ant-select-arrow {
    
-    color: white;
+    color: black;
     
 }

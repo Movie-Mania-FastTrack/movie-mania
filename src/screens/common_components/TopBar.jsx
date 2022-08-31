@@ -33,7 +33,7 @@ function Topbar_Management({
           justifyContent: "flex-start",
         }}
       >
-        <Link to={back} state={{ department: department }}>
+        {/* <Link to={back} state={{ department: department }}>
           <Button
             type="primary"
             icon={<LeftOutlined />}
@@ -47,9 +47,9 @@ function Topbar_Management({
             type="primary"
             icon={<HomeFilled />}
             size={size}
-            style={{fontSize:'45px', margin:'17px 0px 0px 17px'}}
+            style={{fontSize:'1vw', margin:'17px 0px 0px 17px'}}
           />
-        </Link>
+        </Link> */}
 
         <h1 className={Screen_Layout_Styles.h1}>{department}</h1>
         <br />

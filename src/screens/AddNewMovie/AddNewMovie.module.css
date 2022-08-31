@@ -1,18 +1,24 @@
-.heading{
+/* .heading{
     color:white;
     padding-left: 20px;
     padding-top: 10px;
+    width: 100vw;
 
-}
+} */
 
-.form{
+/* .form{
     color:white;
-    width: 100%;
+    width: 100vw;
     text-align: left;
-        /* background-color: aqua; */
+        /* background-color: aqua; 
         padding-left: 15%;
     
 
+} */
+
+input{
+    width: 20vw;
+    height: 8vw;
 }
 
 .button {
@@ -30,7 +36,9 @@
 }
 
 .category{
-    width:300px;
+    position: absolute;
+    left: 10vw;
+    top: 1vw;
 }
 
 .movieName{

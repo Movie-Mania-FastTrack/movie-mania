@@ -3,6 +3,7 @@ import MovieRequest  from "./MovieRequest";
 import {useNavigate} from 'react-router-dom';
 import movieManiaApi from "../../api/movieManiaApi";
 import { useEffect } from "react";
+import "./Admin.css"
 
 
 function AdminHomePageLayout()
@@ -53,6 +54,10 @@ function AdminHomePageLayout()
     });
       }
     }
+    const current = new Date();
+    const date = `${current.getDate()}/${
+      current.getMonth() + 1
+    }/${current.getFullYear()}`;
 
     function changeAdmin(){
 
@@ -119,24 +124,31 @@ function AdminHomePageLayout()
 
     return(
         <>
-        <div style={{height:'auto', width:'100vw', position: 'absolute', backgroundColor:'#040819'}}>
-            <button onClick={onclickAdd}>Add Movie</button>
-            <button onClick={onclickEdit}>Manage Movie</button>
-            <button onClick={onclickRequest}>Manage Requests</button>
-            <label>Add Admin</label><br></br>
-            <label>username</label><br></br>
-            <input onChange={(e) => setUsername(e.target.value)}></input><br></br>
-            <label>password</label><br></br>
-            <input onChange={(e)=>setPassword(e.target.value)}></input><button onClick={addAdmin}>Add Admin</button><br></br>
-            <label>Change Admin</label><br></br>
-            <label>OldUsername</label><br></br>
-            <input onChange={(e)=>setOldusername(e.target.value)}></input><br></br>
-            <label>OldPassword</label><br></br>
-            <input onChange={(e)=>setOldPassword(e.target.value)}></input><br></br>
-            <label>Username</label><br></br>
-            <input onChange={(e)=>setUsername(e.target.value)}></input><br></br>
-            <label>Password</label><br></br>
-            <input onChange={(e)=>setPassword(e.target.value)}></input><button onClick={changeAdmin}>Change Admin</button><br></br>
+        <div className="header">
+          <h1 className="h1">ADMINISTRATION</h1>
+          <h2 className="date">
+          <span style={{ fontWeight: "bold" , fontSize:"1vw"}}>TODAY : </span>
+          {date}
+        </h2>
+        </div>
+        <div style={{height:'40vw', width:"100vw", position: 'absolute', backgroundColor:'#040819'}}>
+            <button style={{height:'5%', width:"10%", position: 'absolute',left:"0",top:"0",fontSize:"1vw" , cursor:"pointer"}} onClick={onclickAdd}>Add Movie</button>
+            <button style={{height:'5%', width:"10%", position: 'absolute',left:"10%",top:"0",fontSize:"1vw" , cursor:"pointer"}} onClick={onclickEdit}>Manage Movie</button>
+            <button style={{height:'5%', width:"10%", position: 'absolute',left:"20%",top:"0",fontSize:"1vw" , cursor:"pointer"}} onClick={onclickRequest}>Manage Requests</button>
+            <label style={{ color:"white",position: 'absolute',left:"0",top:"7%",fontSize:"1vw"}}>Add Admin</label><br></br>
+            <label style={{ color:"white",position: 'absolute',left:"0",top:"10%",fontSize:"1vw"}}>username</label><br></br>
+            <input onChange={(e) => setUsername(e.target.value)} placeholder="username" style={{height:'5%', width:"15%", color:"white",position: 'absolute',left:"0",top:"15%",fontSize:"1vw"}}></input><br></br>
+            <label style={{ color:"white",position: 'absolute',left:"0",top:"20%",fontSize:"1vw"}}>password</label><br></br>
+            <input  style={{height:'5%', width:"15%", color:"black",position: 'absolute',left:"0",top:"25%",fontSize:"1vw"}} onChange={(e)=>setPassword(e.target.value)} placeholder="password"></input><button style={{height:'5%', cursor:"pointer", width:"10%", position: 'absolute',left:"18%",top:"25%",fontSize:"1vw"}} onClick={addAdmin}>Add Admin</button><br></br>
+            <label style={{ color:"white",position: 'absolute',left:"0",top:"32%",fontSize:"1vw"}} >Change Admin</label><br></br>
+            <label style={{ color:"white",position: 'absolute',left:"0",top:"35%",fontSize:"1vw"}}>OldUsername</label><br></br>
+            <input placeholder="Oldusername" style={{height:'5%', width:"15%", color:"black",position: 'absolute',left:"0",top:"40%",fontSize:"1vw"}} onChange={(e)=>setOldusername(e.target.value)}></input><br></br>
+            <label style={{ color:"white",position: 'absolute',left:"0",top:"45%",fontSize:"1vw"}}>OldPassword</label><br></br>
+            <input placeholder="Oldpassword" style={{height:'5%', width:"15%", color:"black",position: 'absolute',left:"0",top:"50%",fontSize:"1vw"}} onChange={(e)=>setOldPassword(e.target.value)}></input><br></br>
+            <label style={{ color:"white",position: 'absolute',left:"0",top:"55%",fontSize:"1vw"}}>NewUsername</label><br></br>
+            <input placeholder="Newusername" style={{height:'5%', width:"15%", color:"black",position: 'absolute',left:"0",top:"60%",fontSize:"1vw"}} onChange={(e)=>setUsername(e.target.value)}></input><br></br>
+            <label style={{ color:"white",position: 'absolute',left:"0",top:"65%",fontSize:"1vw"}}>NewPassword</label><br></br>
+            <input placeholder="Newpassword" style={{height:'5%', width:"15%", color:"black",position: 'absolute',left:"0",top:"70%",fontSize:"1vw"}}s onChange={(e)=>setPassword(e.target.value)}></input><button style={{height:'5%', width:"10%", cursor:"pointer" ,position: 'absolute',left:"18%",top:"70%",fontSize:"1vw"}} onClick={changeAdmin}>Change Admin</button><br></br>
 
         </div>
 

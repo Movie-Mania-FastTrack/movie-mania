@@ -13,14 +13,15 @@
 
 .h1{
     color: white;
-    font-size: 35px;
-    margin-left: 40px;
-    margin-top: 0;
+    font-size: 3vw;
+    position: absolute;
+    left: 40vw;
+    top: 1%;
 }
 
 .header{
-    background-color: #262836;
-    padding-top: 5px;
+    background-color: #2d3626;
+    height: 7vw;
     margin: 0;
 }
 .topleft{
@@ -28,29 +29,33 @@
     color: white;  
 }
 
-.subcontent{
-    background-color: #1f1d2b;
+/* .subcontent{
+    background-color: #b9c73d;
     border-radius: 10px;
-    margin: 15px;
-    /* min-height: 97%; */
+    margin: 1vw;
+    /* min-height: 97%; 
     height: 90vh;
     width: 98vw;
     position: relative;
     
-}
+} */
 
-.content{
-   background-color: #262836;
-   height: 100%;
-}
+/* .content{
+   background-color: #abaed4;
+   height: auto;
+   width: 100vw;
+} */
 
 
 
 .date{
-    font-size: 16px;
+    font-size: 1vw;
     color: white;
-    text-align: right;
-    vertical-align: middle;
+    /* text-align: right; */
+    right: 0;
+    top: 0;
+    position: absolute;
+  
     
 }
 .searchbar{
@@ -70,12 +75,12 @@
     padding: 0;
 }
 
-.topright{
+/* .topright{
     float: right;
     height: 100%;
     width: auto;
     margin-bottom: 10px;
-}
+} */
 
 .button{
  

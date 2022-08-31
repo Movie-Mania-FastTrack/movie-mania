@@ -6,13 +6,16 @@ function AdminHomePage()
 {
    
     return(  
-        <Screen_Layout 
-        department={'Administration'} 
-        back={0}
-        home={'/'}
-        Component={<AdminHomePageLayout/>}
-        manageMovies={1}
-        />
+        // <Screen_Layout 
+        // // department={'Administration'} 
+        // // back={0}
+        // // home={'/'}
+        // Component={<AdminHomePageLayout/>}
+        // // manageMovies={1}
+        // />
+        <div>
+            {<AdminHomePageLayout/>}
+        </div>
 
     );
 

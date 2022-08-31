@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import {Row, Col, Space} from 'antd';
 import movieManiaApi from "../../api/movieManiaApi";
+import "../Admin_Home_Page/Admin.css"
 
 
 function MovieRequest(requestID)
@@ -17,7 +18,12 @@ function MovieRequest(requestID)
     const[reason , setReason] = useState("")
     const[reqId , setId] = useState(0)
     const[valid,setValid]=useState(false)
+    const[height , setHeight] = useState(40)
 
+    const current = new Date();
+    const date = `${current.getDate()}/${
+      current.getMonth() + 1
+    }/${current.getFullYear()}`;
     function releaseToken(){
 
       if(localStorage.getItem("user")!=null){
@@ -65,6 +71,10 @@ function MovieRequest(requestID)
         })
         .then((res) => { 
           setRequests(res.data)
+          var length = res.data.length*40
+          if(length>40){
+            setHeight(length)
+          }
           setLogicNPayable(false)
           setLogicNPayed(false)
           setLogicPayed(true)
@@ -82,6 +92,10 @@ function MovieRequest(requestID)
         })
         .then((res) => { 
           setRequests(res.data)
+          var length = res.data.length*40
+          if(length>40){
+            setHeight(length)
+          }
           console.log(res.data)
           setLogicNPayable(false)
           setLogicNPayed(true)
@@ -100,6 +114,10 @@ function MovieRequest(requestID)
         })
         .then((res) => { 
           setRequests(res.data)
+          var length = res.data.length*40
+          if(length>40){
+            setHeight(length)
+          }
           console.log(res.data)
           setLogicNPayable(true)
           setLogicNPayed(false)
@@ -212,10 +230,18 @@ function MovieRequest(requestID)
 
     return(
         <>
-        {logicNPayed?<div>
-          <button onClick={showPayedRequests}>Payed Request</button>
-      <button onClick={showNotPayableRequests}>Not Payable Request</button>
-      <button onClick={sendMail}>Send Uploaded Mail</button>
+        <div className="header">
+          <h1 className="h1">ADMINISTRATION</h1>
+          <h2 className="date">
+          <span style={{ fontWeight: "bold" , fontSize:"1vw"}}>TODAY : </span>
+          {date}
+        </h2>
+        </div>
+        <div style={{height:height+"vw", width:"100vw", position: 'absolute', backgroundColor:'#040819'}}>
+        {logicNPayed?<div >
+          <button style={{height:'2vw', width:"10%", position: 'absolute',left:"0",top:"0",fontSize:"1vw" , cursor:"pointer"}} onClick={showPayedRequests}>Payed Request</button>
+      <button style={{height:'2vw', width:"15%", position: 'absolute',left:"10%",top:"0",fontSize:"1vw" , cursor:"pointer"}} onClick={showNotPayableRequests}>Not Payable Request</button>
+      <button style={{height:'2vw', width:"15%", position: 'absolute',left:"20%",top:"0",fontSize:"1vw" , cursor:"pointer"}} onClick={sendMail}>Send Uploaded Mail</button>
 
           {requests.map((request , index)=>(
             <div style={{height:'auto', width:'100%', backgroundColor:'#171723'}}>
@@ -237,7 +263,7 @@ function MovieRequest(requestID)
                 <Col span={4}>
                     <h3 style={{color:'white'}}>Request Completion </h3>
                 </Col>
-                <Col span={4}><button style={{backgroundColor:'#FFF504', borderRadius:'20px'}}> {request.request.adminStatus} </button></Col>
+                <Col span={4}><button style={{backgroundColor:'#FFF504', borderRadius:'2vw'}}> {request.request.adminStatus} </button></Col>
             </Row><br/><br/>
             <Row>
                 <Col span={8}>
@@ -261,7 +287,7 @@ function MovieRequest(requestID)
             </Row><br/><br/>
             <Row><h3 style={{paddingLeft:'20px',color:'white'}}>Drive Link : {request.request.driverLink}</h3></Row>
  
-            <button onClick={()=>rejectReq(request.request.requestId)}>Reject</button>   
+            <button style={{fontSize:"1vw",height:"2vw",width:"8vw"}} onClick={()=>rejectReq(request.request.requestId)}>Reject</button>   
 
             {reasonLogic&&<div style={{height:"7vw",width:"30vw",position:"absolute",right:"0",background:"blue" , top:"0"}}>
   <label>Reason</label>
@@ -274,9 +300,9 @@ function MovieRequest(requestID)
        
         </div>:<div>
   {logicPayed?<div>
-      <button onClick={showNotPayedRequests}>Not Payed Payable Request</button>
-      <button onClick={showNotPayableRequests}>Not Payable Request</button>
-      <button onClick={sendMail}>Send Uploaded Mail</button>
+      <button style={{height:'2vw', width:"10%", position: 'absolute',left:"0",top:"0",fontSize:"1vw" , cursor:"pointer"}} onClick={showNotPayedRequests}>Not Payed Payable Request</button>
+      <button style={{height:'2vw', width:"10%", position: 'absolute',left:"10%",top:"0",fontSize:"1vw" , cursor:"pointer"}} onClick={showNotPayableRequests}>Not Payable Request</button>
+      <button style={{height:'2vw', width:"10%", position: 'absolute',left:"20%",top:"0",fontSize:"1vw" , cursor:"pointer"}} onClick={sendMail}>Send Uploaded Mail</button>
 
     {requests.map((request , index)=>(
             <div style={{height:'auto', width:'100%', backgroundColor:'#171723'}}>
@@ -332,9 +358,9 @@ function MovieRequest(requestID)
           ))}
   </div>:<div>
     {logicNPayable?<div>
-      <button onClick={showPayedRequests}>Payed Request</button>
-      <button onClick={showNotPayedRequests}>Not Payed Payable Request</button>
-      <button onClick={sendMail}>Send Uploaded Mail</button>
+      <button style={{height:'2vw', width:"10%", position: 'absolute',left:"0",top:"0",fontSize:"1vw" , cursor:"pointer"}} onClick={showPayedRequests}>Payed Request</button>
+      <button style={{height:'2vw', width:"15%", position: 'absolute',left:"10%",top:"0",fontSize:"1vw" , cursor:"pointer"}} onClick={showNotPayedRequests}>Not Payed Payable Request</button>
+      <button style={{height:'2vw', width:"15%", position: 'absolute',left:"25%",top:"0",fontSize:"1vw" , cursor:"pointer"}} onClick={sendMail}>Send Uploaded Mail</button>
 
       {requests.map((request , index)=>(
             <div style={{height:'auto', width:'100%', backgroundColor:'#171723'}}>
@@ -380,8 +406,8 @@ function MovieRequest(requestID)
             </Row><br/><br/>
             <Row><h3 style={{paddingLeft:'20px',color:'white'}}>Drive Link : {request.request.driverLink}</h3></Row>
  
-            <button onClick={()=>rejectReq(request.request.requestId)}>Reject</button>
-            <button onClick={()=>showConfirm(request.request.requestId)}>Confirm</button>
+            <button style={{fontSize:"1vw",height:"2vw",width:"8vw"}} onClick={()=>rejectReq(request.request.requestId)}>Reject</button>
+            <button style={{fontSize:"1vw",height:"2vw",width:"8vw"}} onClick={()=>showConfirm(request.request.requestId)}>Confirm</button>
       
 
             {reasonLogic&&<div style={{height:"7vw",width:"30vw",position:"absolute",right:"0",background:"blue" , top:"0"}}>
@@ -395,19 +421,20 @@ function MovieRequest(requestID)
 
 
     </div>:<div>
-      <button onClick={showPayedRequests}>Payed Request</button>
-      <button onClick={showNotPayedRequests}>Not Payed Payable Request</button>
-      <button onClick={showNotPayableRequests}>Not Payable Request</button>
-      <button onClick={sendMail}>Send Uploaded Mail</button>
+      <button style={{height:'2vw', width:"10%", position: 'absolute',left:"0",top:"0",fontSize:"1vw" , cursor:"pointer"}} onClick={showPayedRequests}>Payed Request</button>
+      <button style={{height:'2vw', width:"15%", position: 'absolute',left:"10%",stop:"0",fontSize:"1vw" , cursor:"pointer"}} onClick={showNotPayedRequests}>Not Payed Payable Request</button>
+      <button style={{height:'2vw', width:"15%", position: 'absolute',left:"25%",top:"0",fontSize:"1vw" , cursor:"pointer"}} onClick={showNotPayableRequests}>Not Payable Request</button>
+      <button style={{height:'2vw', width:"15%", position: 'absolute',left:"40%",top:"0",fontSize:"1vw" , cursor:"pointer"}} onClick={sendMail}>Send Uploaded Mail</button>
       </div>}
     </div>}
   </div>}
   {logicMail&&<div style={{height:"7vw",width:"30vw",position:"absolute",right:"0",background:"blue" , top:"0"}}>
-  <label>Code</label>
-  <input value={code} onChange={(e) => setCode(e.target.value)}></input>
-  <button onClick={()=>sendUploadMail}>Send</button>
-  <button onClick={cancleMail}>Cancel</button>
+  <label style={{fontSize:"1vw"}}>Code</label>
+  <input style={{fontSize:"1vw",width :"40%",position:"absolute" , height:"25%",left:"10%",top:"3%"}} value={code} onChange={(e) => setCode(e.target.value)}></input>
+  <button style={{fontSize:"1vw",width :"10%",position:"absolute" , height:"25%",left:"53%",top:"3%"}} onClick={()=>sendUploadMail}>Send</button>
+  <button style={{fontSize:"1vw",width :"12%",position:"absolute" , height:"25%",left:"65%",top:"3%"}} onClick={cancleMail}>Cancel</button>
   </div>}
+        </div>
         </>
     );
 }

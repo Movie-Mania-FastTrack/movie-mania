@@ -28,6 +28,11 @@ const[releaseImageUpload,setReleaseImageUpload] = useState(null)
 const[videoUpload,setVideoUpload] = useState(null)
 const[characters , setCharacters] = useState([])
 
+const current = new Date();
+const date = `${current.getDate()}/${
+  current.getMonth() + 1
+}/${current.getFullYear()}`;
+
 const navigate = useNavigate();
 
 function releaseToken(){
@@ -148,92 +153,27 @@ function submit(){
 }
 
   return (
-    <div>
-      <h2 className={formStyles.heading}>Add New Movie</h2>
-      <center>
-        <Row gutter={[16, 16]}>
-          <Form
-            labelCol={{
-              span: 0,
-            }}
-            wrapperCol={{
-              span: 16,
-            }}
-            layout="horizontal"
-            className={formStyles.form}
-          >
-            <Row gutter={[16, 16]}>
-              <Col span={8}>
-                <Form.Item label="Category">
-                  {/* <p className={formStyles.p}>Category</p> */}
-                  <Input className={formStyles.category} 
-                  onChange={(e) => setCategory(e.target.value)}
-                  />
-                </Form.Item>
-              </Col>
-
-              <Col span={12}>
-                <Form.Item label="Movie Name" className={formStyles.movieName}>
-                  <Input className={formStyles.category} 
-                   onChange={(e) => setName(e.target.value)}
-                  />
-                </Form.Item>
-              </Col>
-            </Row>
-            <Col span={24}>
-              <Form.Item label="Story">
-                <TextArea rows={4} 
-                onChange={(e) => setStory(e.target.value)}
-                />
-              </Form.Item>
-            </Col>
-            <Col span={12}>
-                <Form.Item label="Movie Price" className={formStyles.moviePrice}>
-                  <Input className={formStyles.category} 
-                   onChange={(e) => setPrice(e.target.value)}
-                  />
-                </Form.Item>
-              </Col>
-            <Form.Item label="Characters">
-              <Row gutter={[16, 16]}>
-                <Col span={6}>
-                  {" "}
-                  <Input 
-                   onChange={(e) => setActors(e.target.value)}
-                  />
-                  <button onClick={addCharacter}>Add Actor</button>
-                </Col>
-              </Row>
-            </Form.Item>
-
-            <Row gutter={[16, 16]}>
-              <Col span={8}>
-                <Form.Item label="Partner Image">
-                <input type="file" name="file" onChange={(e)=>setReleaseImageUpload(e.target.files[0])}/>
-                </Form.Item>
-              </Col>
-              <Col span={8} offset={1}>
-                <Form.Item label="Movie Image">
-                <input type="file" name="file" onChange={(e)=>setImageUpload(e.target.files[0])} />
-                </Form.Item>
-              </Col>
-
-
-              <Form.Item label="Trailer Clip">
-              <input type="file" name="file" onChange={(e)=>setVideoUpload(e.target.files[0])} />
-              </Form.Item>
-            </Row>
-            <Form.Item {...tailLayout}>
-              <Space>
-                <button className={formStyles.button} onClick={submit}>Add Movie</button>
-               <Link to="/"><button className={formStyles.button}>Cancel</button></Link> 
-              </Space>
-            </Form.Item>
-          </Form>
-        </Row>
-        
-      </center>
+    <>
+    <div className="header">
+          <h1 className="h1">ADMINISTRATION</h1>
+          <h2 className="date">
+          <span style={{ fontWeight: "bold" , fontSize:"1vw"}}>TODAY : </span>
+          {date}
+        </h2>
+        </div>
+        <div style={{height:"40vw", width:"100vw", position: 'absolute', backgroundColor:'#040819'}}>
+      <h2 className={formStyles.heading} style={{fontSize:"1.4vw",color:"white"}}>Add New Movie</h2>
+      <lable style={{ color:"white",position: 'absolute',left:"0",top:"20%",fontSize:"1vw"}}>Movie Name</lable>
+      <input style={{left:"0"}} onChange={(e) => setName(e.target.value)}></input>
+      <label>Story</label>
+      <input  onChange={(e) => setStory(e.target.value)}></input>
+      <lable>Price</lable>
+      <input onChange={(e) => setPrice(e.target.value)}></input>
+      <lable>Actor</lable>
+      <input  onChange={(e) => setActors(e.target.value)}></input>
+      <button onClick={addCharacter}>Add Actor</button>
     </div>
+    </>
   );
 }
 

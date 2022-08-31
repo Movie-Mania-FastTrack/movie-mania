@@ -1,0 +1,35 @@
+.h1{
+    color: white;
+    font-size: 3vw;
+    position: absolute;
+    left: 40vw;
+    top: 1%;
+}
+
+.date{
+    font-size: 1vw;
+    color: white;
+    /* text-align: right; */
+    right: 0;
+    top: 0;
+    position: absolute;
+}
+
+.header{
+    background-color: #2d3626;
+    height: 7vw;
+    margin: 0;
+}
+
+button{
+    font-size: 1vw;
+    width: 8vw;
+    height: 2vw;
+}
+
+h3{
+    font-size: 1vw;
+}
+label{
+    font-size: 1vw;
+}

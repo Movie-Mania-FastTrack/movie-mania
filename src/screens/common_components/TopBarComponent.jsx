@@ -18,27 +18,26 @@ function Topbar({ department, home, back, add, manageMovies }) {
     <>
       <div className={Screen_Layout_Styles.topleft}>
         <Space size="large">
-          <Link to={back}>
+          {/* <Link to={back}>
             <Button
               icon={<LeftOutlined />}
               size={size}
               style={{ background: "#FFF504", borderColor: "black" }}
             />
-          </Link>
+          </Link> */}
 
           {/* Home Icon */}
-          <Link to={home}>
+          {/* <Link to={home}>
             <Button
               icon={<HomeFilled />}
-              size={size}
+              size={"small"}
               style={{
-                fontSize: "45px",
-                margin: "12px 0px 0px 17px",
+                fontSize: "2vw",
                 backgroundColor: "#FFF504",
                 borderColor: "black",
               }}
             />
-          </Link>
+          </Link> */}
 
           <h1 className={Screen_Layout_Styles.h1}>{department}</h1>
           <br />
@@ -47,7 +46,7 @@ function Topbar({ department, home, back, add, manageMovies }) {
 
       <div className={Screen_Layout_Styles.topright}>
         {/* Add Icon */}
-        {add === 1 ? (
+        {/* {add === 1 ? (
           <Link to="/add_new_movie">
             <Button
               icon={<PlusCircleOutlined />}
@@ -60,16 +59,9 @@ function Topbar({ department, home, back, add, manageMovies }) {
               }}
             />
           </Link>
-        ) : null}
-        {manageMovies === 1 ? (
-          <Link to="/manage_movie_home">
-            <Button className={Screen_Layout_Styles.button}>
-              Manage Movies
-            </Button>
-          </Link>
-        ) : null}
+        ) : null} */}
         <h2 className={Screen_Layout_Styles.date}>
-          <span style={{ fontWeight: "bold" }}>TODAY : </span>
+          <span style={{ fontWeight: "bold" , fontSize:"1vw"}}>TODAY : </span>
           {date}
         </h2>
       </div>

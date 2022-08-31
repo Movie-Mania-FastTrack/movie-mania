@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Navigate } from "react-router-dom";
 import movieManiaApi from "../../api/movieManiaApi";
 import {useNavigate} from 'react-router-dom';
+import "../Admin_Home_Page/Admin.css"
 
 function MovieCard()
 {
@@ -102,13 +103,19 @@ function MovieCard()
     return(
         <>
         {recentMovies.length!=0&&recentMovies.map((movie)=>(
-                    <div style={{height:'200px',width:'180px', borderRadius:'8px', backgroundColor:'grey'}}> 
-                    <p>name - {movie.name}</p>
-                    <button onClick={()=>editMovie(movie.movieId)}>Edit</button>
-                    <button onClick={()=>deleteMovie(movie.movieId)}>Delete</button>
                     <div>
-                      <button onClick={()=>deleteMovie(movie.movieId)}>Confirm Delete</button>
-                      <button onClick={cancleDelete}>Cancle</button>
+                      <div style={{height:'15vw',width:'12vw', borderRadius:'8px', backgroundColor:'grey'}}> 
+                    <p>name - {movie.name}</p>
+                    
+                    </div>
+                   
+                    <div>
+                       <button style={{width:"6vw"}} onClick={()=>editMovie(movie.movieId)}>Edit</button>
+                    <button style={{width:"6vw"}} onClick={()=>deleteMovie(movie.movieId)}>Delete</button>
+                      {deleteLogic&&<div>
+                        <button style={{width:"6vw"}} onClick={()=>deleteMovie(movie.movieId)}>Confirm Delete</button>
+                      <button style={{width:"6vw"}} onClick={cancleDelete}>Cancle</button>
+                        </div>}
                     </div>
                     </div>
                 ))}
