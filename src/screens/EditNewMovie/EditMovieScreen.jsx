@@ -4,12 +4,7 @@ import Screen_Layout from "../common_components/ScreenLayout";
 
 function EditNewMovieScreen() {
   return (
-    <Screen_Layout
-      department={"Administration"}
-      back={"/"}
-      home={"/"}
-      Component={<EditMovieForm />}
-    />
+    <div><EditMovieForm></EditMovieForm></div>
   );
 }
 

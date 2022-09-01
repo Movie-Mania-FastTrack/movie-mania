@@ -72,12 +72,13 @@ function MovieCard()
 
         function deleteMovie(id){
             if(deleteLogic){
-              movieManiaApi.delete("/deleteMovie"+id,{
+              movieManiaApi.delete("/deleteMovie/"+id,{
                 headers:{"header":releaseToken()}
             })
             .then((res) => { 
                 console.log("result - ",res.data)
                 alert(res.data)
+                window.location.reload()
             })
       
           // Catch errors if any

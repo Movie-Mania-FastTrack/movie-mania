@@ -163,15 +163,24 @@ function submit(){
         </div>
         <div style={{height:"40vw", width:"100vw", position: 'absolute', backgroundColor:'#040819'}}>
       <h2 className={formStyles.heading} style={{fontSize:"1.4vw",color:"white"}}>Add New Movie</h2>
-      <lable style={{ color:"white",position: 'absolute',left:"0",top:"20%",fontSize:"1vw"}}>Movie Name</lable>
-      <input style={{left:"0"}} onChange={(e) => setName(e.target.value)}></input>
-      <label>Story</label>
-      <input  onChange={(e) => setStory(e.target.value)}></input>
-      <lable>Price</lable>
-      <input onChange={(e) => setPrice(e.target.value)}></input>
-      <lable>Actor</lable>
-      <input  onChange={(e) => setActors(e.target.value)}></input>
-      <button onClick={addCharacter}>Add Actor</button>
+      <lable style={{ color:"white",position: 'absolute',left:"0",top:"5%",fontSize:"1vw"}}>Movie Category</lable>
+      <input style={{ color:"black",position: 'absolute',left:"0",top:"10%",fontSize:"1vw"}} onChange={(e) => setCategory(e.target.value)}></input>
+      <lable style={{ color:"white",position: 'absolute',left:"0",top:"15%",fontSize:"1vw"}}>Movie Name</lable>
+      <input style={{ color:"black",position: 'absolute',left:"0",top:"20%",fontSize:"1vw"}} onChange={(e) => setName(e.target.value)}></input>
+      <label style={{ color:"white",position: 'absolute',left:"0",top:"25%",fontSize:"1vw"}}>Story</label>
+      <input  style={{ color:"black",position: 'absolute',left:"0",top:"30%",fontSize:"1vw"}} onChange={(e) => setStory(e.target.value)}></input>
+      <lable style={{ color:"white",position: 'absolute',left:"0",top:"35%",fontSize:"1vw"}}>Price</lable>
+      <input style={{ color:"black",position: 'absolute',left:"0",top:"40%",fontSize:"1vw"}} onChange={(e) => setPrice(e.target.value)}></input>
+      <lable style={{ color:"white",position: 'absolute',left:"0",top:"45%",fontSize:"1vw"}} >Actor</lable>
+      <input style={{ color:"black",position: 'absolute',left:"0",top:"50%",fontSize:"1vw"}} onChange={(e) => setActors(e.target.value)}></input>
+      <button style={{ color:"white",position: 'absolute',left:"0",top:"57%",fontSize:"1vw" , color:"black",background:"yellow"}} onClick={addCharacter}>Add Actor</button>
+      <lable style={{ color:"white",position: 'absolute',left:"0",top:"65%",fontSize:"1vw"}}>Movie Image</lable>
+      <input style={{ color:"black",position: 'absolute',left:"0",top:"70%",fontSize:"1vw"}} type="file" onChange={(e) => setImageUpload(e.target.files[0])}></input>
+      <lable style={{ color:"white",position: 'absolute',left:"20%",top:"65%",fontSize:"1vw"}}>Releas Partner Image</lable>
+      <input style={{ color:"black",position: 'absolute',left:"20%",top:"70%",fontSize:"1vw"}} type="file" onChange={(e) => setReleaseImageUpload(e.target.files[0])}></input>
+      <lable style={{ color:"white",position: 'absolute',left:"40%",top:"65%",fontSize:"1vw"}}>Movie Trailer</lable>
+      <input style={{ color:"black",position: 'absolute',left:"40%",top:"70%",fontSize:"1vw"}} type="file" onChange={(e) => setVideoUpload(e.target.files[0])}></input>
+      <button style={{ color:"white",position: 'absolute',left:"0",top:"77%",fontSize:"1vw" , color:"black" , background:"green"}} onClick={submit}>Submit All</button>
     </div>
     </>
   );

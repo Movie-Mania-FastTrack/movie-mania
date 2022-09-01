@@ -261,20 +261,20 @@ function HomePage()
                         <Col span={2}>
                          <button style={{height:'50px', width:'70px', opacity:'0.2', marginTop:'5px'}} onClick={showModal}><img src={admin} style={{height:'50px', width:'70px'}}></img></button>  
                          <Modal 
-                         style={{height:'300px', width:'600px', borderRadius:'15px', backgroundColor:'wheat'}}
-                         title="Basic Modal" visible={isModalVisible} onOk={Login} onCancel={handleCancle}>
+                         style={{height:'30vw', width:'60vw', borderRadius:'1vw', backgroundColor:'wheat',fontSize:"1vw"}}
+                         title="Login" visible={isModalVisible} onOk={Login}  onCancel={handleCancle}>
                             <div>
-                                <p>Admin UserName: <input type='text' onChange={(e) => setUsername(e.target.value)} /></p>
-                                <p>Admin Password: <input type='password' onChange={(e) => setPassword(e.target.value)}/></p>
-                                <select name="Email" id="email"
+                                <p style={{fontSize:"1vw"}}>Admin UserName: <input type='text' onChange={(e) => setUsername(e.target.value)} /></p>
+                                <p style={{fontSize:"1vw"}}>Admin Password: <input type='password' onChange={(e) => setPassword(e.target.value)}/></p>
+                                <select name="Email" id="email" style={{fontSize:"1vw" , width:"17vw"}}
                 
                 onChange={(e)=>setEmail(e.target.value)}
                 >
-                  {adminMails.map((mail)=>(<option value={mail}>{mail}</option>))}  
+                  {adminMails.map((mail)=>(<option  value={mail}>{mail}</option>))}  
   
  
 </select>
-<button onClick={sendMailUsername}>Send Username</button>
+<button style={{fontSize:"1vw" , width:"8vw" , height:"4vw"}} onClick={sendMailUsername}>Send Username</button>
                             </div>
                         </Modal>
                         </Col>
