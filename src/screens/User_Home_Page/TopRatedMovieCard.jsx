@@ -109,11 +109,11 @@ function TopRatedMovieCard ()
         }
 
         function moveNextSlide(){
-            setMoviesSlide(testMovies)
+            setMoviesSlide(topMovies)
         }
 
         function movePreviosSlide(){
-            setMoviesSlide2(testMovies)
+            setMoviesSlide2(topMovies)
         }
         
 
@@ -128,15 +128,15 @@ function TopRatedMovieCard ()
         <>
          
          <div>
-            {testMovies.length!== 0 && slideMovies.map((movie,index)=>(
+            {topMovies.length!== 0 && slideMovies.map((movie,index)=>(
                     <div style={{position:"absolute",height:'12vw', width:'10vw',backgroundColor:'white', borderRadius:'0.9vw',top:"0",left:width*index+2+"vw"}} onClick={()=>moveToSingle(movie)}> 
                      <p style={{fontSize:"1vw",color:"red"}}><span style={{color:"blue"}}>name</span> - <b>{movie.name}</b></p>
                     <img style={{position:"absolute",height:'70%', width:'100%',backgroundColor:'white', borderRadius:'0.9vw',top:"30%",left:"0vw"}} src={movie.imageUrl}></img>
                     </div>
                 ))}
-                <RightCircleOutlined style={{fontSize:'3vw', color:'#676523', float:'right', padding:'2vw 0px 0px 1vw', opacity:'0.8'}}/>
-                <LeftCircleOutlined style={{fontSize:'3vw', color:'#676523', float:'left', padding:'2vw 0px 0px 1vw', opacity:'0.8'}}/>
-          
+                <div style={{fontSize:'2.4vw', color:'black',position:"absolute",background:"#676523",width:"3vw",height:"3vw",borderWidth:"10px",borderColor:"red",borderRadius:"100%",right:"0", padding:'1vw 0px 0px 1vw', opacity:'0.8' , cursor:"pointer"}} onClick={moveNextSlide}><b style={{position:"absolute",left:"29%",top:"-24%"}}>{'>'}</b></div>
+              <div style={{fontSize:'2.4vw', color:'black',position:"absolute",background:"#676523",width:"3vw",height:"3vw",borderWidth:"10px",borderColor:"red",borderRadius:"100%",left:"-3vw", padding:'1vw 0px 0px 1vw', opacity:'0.8' , cursor:"pointer"}} onClick={movePreviosSlide}><b style={{position:"absolute",left:"29%",top:"-24%"}}>{'<'}</b></div>
+              
             </div>
          
        

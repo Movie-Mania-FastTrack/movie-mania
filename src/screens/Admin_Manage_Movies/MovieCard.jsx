@@ -68,6 +68,7 @@ function MovieCard()
         .then((res) => { 
             console.log("result - ",res.data)
             setRecentMovies(res.data)
+            setMoviesSlide(res.data)
         })
   
       // Catch errors if any
@@ -76,7 +77,7 @@ function MovieCard()
       });
 
       localStorage.removeItem("movieId")
-      setMoviesSlide(testMovies)
+      
         },[])
 
         function setMoviesSlide(movies){
@@ -155,11 +156,11 @@ function MovieCard()
       }
 
       function moveNextSlide(){
-          setMoviesSlide(testMovies)
+          setMoviesSlide(recentMovies)
       }
 
       function movePreviosSlide(){
-          setMoviesSlide2(testMovies)
+          setMoviesSlide2(recentMovies)
       }
 
         function deleteMovie(id){
@@ -203,11 +204,12 @@ function MovieCard()
         </h2>
         </div>
         <div style={{height:"40vw", width:"100vw", position: 'absolute', backgroundColor:'#040819'}}>
-            {testMovies.length!== 0 && slideMovies.map((movie,index)=>(
+            {recentMovies.length!== 0 && slideMovies.map((movie,index)=>(
                     <div>
                       <div style={{position:"absolute",height:'12vw', width:'10vw',backgroundColor:'white', borderRadius:'0.9vw',top:"0",left:width*index+2+"vw"}}> 
-                    <p>name - {movie.name}</p>
-                    <img src={movie.imageUrl}></img>
+                      <p style={{fontSize:"1vw",color:"red"}}><span style={{color:"blue"}}>name</span> - <b>{movie.name}</b></p>
+                    <img style={{position:"absolute",height:'70%', width:'100%',backgroundColor:'white', borderRadius:'0.9vw',top:"30%",left:"0vw"}} src={movie.imageUrl}></img>
+                   
                     <div>
                        <button style={{position:'absolute',width:"5vw",top:"100%"}} onClick={()=>editMovie(movie.movieId)}>Edit</button>
                     <button style={{position:'absolute',width:"5vw",top:"100%",right:"0"}} onClick={()=>deleteMovie(movie.movieId)}>Delete</button>

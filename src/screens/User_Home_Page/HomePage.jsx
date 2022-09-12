@@ -217,7 +217,7 @@ function HomePage()
             {/* Nav Bar */}
             <div className={HomePageStyles.navBar}>
                 <Row style={{height:'17vw'}}></Row>
-                <Row style={{height:'3vw', width:'100%', backgroundColor: ' rgb(4, 4, 31)'}}>
+                {/* <Row style={{height:'3vw', width:'100%', backgroundColor: ' rgb(4, 4, 31)'}}>
                   <Col span={2}></Col> 
                   <Col span={3}><button style={{fontSize:"1.2vw"}} onClick={null} className={HomePageStyles.categoryBtn}>English</button></Col> 
                   <Col span={3}><button style={{fontSize:"1.2vw"}} onClick={null} className={HomePageStyles.categoryBtn}>Sinhala</button></Col> 
@@ -226,7 +226,7 @@ function HomePage()
                   <Col span={3}><button style={{fontSize:"1.2vw"}} onClick={null} className={HomePageStyles.categoryBtn}>Hindi</button></Col>  
                   <Col span={2}></Col> 
                   <Col span={2}><button style={{fontSize:"1.2vw"}} onClick={null} className={HomePageStyles.categoryBtn}>More ...</button></Col>  
-                </Row>
+                </Row> */}
 
 
             </div>
@@ -235,7 +235,9 @@ function HomePage()
             <div className={HomePageStyles.topRated}>
                 <h2 style={{color:'#FFF504', textAlign:'left', paddingLeft:'1vw', fontSize:"1vw"}}>Top Rated</h2>
                 <Row>
-                    <Col span={20}><TopRatedMovieCard/></Col>
+                <Col span={1}></Col>
+                    <Col span={22}><TopRatedMovieCard/></Col>
+                    <Col span={1}></Col>
                 </Row>
             </div>
             {/* Recent Movies */}

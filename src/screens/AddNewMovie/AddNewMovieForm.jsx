@@ -29,6 +29,7 @@ const[releaseImageUpload,setReleaseImageUpload] = useState(null)
 const[videoUpload,setVideoUpload] = useState(null)
 const[characters , setCharacters] = useState([])
 const[categories , setCategories] = useState([])
+const[latestId , setLatestId] = useState(0)
 
 const current = new Date();
 const date = `${current.getDate()}/${
@@ -114,7 +115,7 @@ function uploadTrailer(){
   if(videoUpload == null){
       alert("video clip has not selected")
       return}
-      const imageRef = ref(storage ,"movieMania/trailer"+"/video")
+      const imageRef = ref(storage ,"movieMania/trailer/"+latestId)
       uploadBytes(imageRef,videoUpload).then((snapshot)=>{
           alert("submited Trailer")
           getDownloadURL(snapshot.ref).then((url) => {
@@ -131,7 +132,7 @@ function uploadMovieImage(){
   if(imageUpload == null){
       alert("image has not selected")
       return}
-      const imageRef = ref(storage ,"movieMania/movieImage"+"/image")
+      const imageRef = ref(storage ,"movieMania/movieImage/"+latestId)
       uploadBytes(imageRef,imageUpload).then((snapshot)=>{
           alert("submited  Moie Image")
           getDownloadURL(snapshot.ref).then((url) => {
@@ -146,7 +147,7 @@ function uploadReleaseImage(){
   if(releaseImageUpload == null){
       alert("image has not selected")
       return}
-      const imageRef = ref(storage ,"movieMania/releaseImage"+"/image")
+      const imageRef = ref(storage ,"movieMania/releaseImage/"+latestId)
       uploadBytes(imageRef,releaseImageUpload).then((snapshot)=>{
           alert("submited Partner image")
           getDownloadURL(snapshot.ref).then((url) => {
@@ -183,6 +184,19 @@ useEffect(()=>{
 // Catch errors if any
 .catch((err) => { 
   console.log(err)
+});
+
+movieManiaApi.get("/getLatestMovieId",{
+
+})
+.then((res) => { 
+    console.log("latestId - ",res.data)
+    setLatestId(res.data)
+})
+
+// Catch errors if any
+.catch((err) => { 
+console.log(err)
 });
 
   },[])
