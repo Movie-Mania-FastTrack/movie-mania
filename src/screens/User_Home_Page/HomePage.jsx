@@ -219,13 +219,13 @@ function HomePage()
                 <Row style={{height:'17vw'}}></Row>
                 <Row style={{height:'3vw', width:'100%', backgroundColor: ' rgb(4, 4, 31)'}}>
                   <Col span={2}></Col> 
-                  <Col span={3}><button onClick={null} className={HomePageStyles.categoryBtn}>English</button></Col> 
-                  <Col span={3}><button onClick={null} className={HomePageStyles.categoryBtn}>Sinhala</button></Col> 
-                  <Col span={3}><button onClick={null} className={HomePageStyles.categoryBtn}>Malayalam</button></Col> 
-                  <Col span={3}><button onClick={null} className={HomePageStyles.categoryBtn}>Tamil</button></Col> 
-                  <Col span={3}><button onClick={null} className={HomePageStyles.categoryBtn}>Hindi</button></Col>  
+                  <Col span={3}><button style={{fontSize:"1.2vw"}} onClick={null} className={HomePageStyles.categoryBtn}>English</button></Col> 
+                  <Col span={3}><button style={{fontSize:"1.2vw"}} onClick={null} className={HomePageStyles.categoryBtn}>Sinhala</button></Col> 
+                  <Col span={3}><button style={{fontSize:"1.2vw"}} onClick={null} className={HomePageStyles.categoryBtn}>Malayalam</button></Col> 
+                  <Col span={3}><button style={{fontSize:"1.2vw"}} onClick={null} className={HomePageStyles.categoryBtn}>Tamil</button></Col> 
+                  <Col span={3}><button style={{fontSize:"1.2vw"}} onClick={null} className={HomePageStyles.categoryBtn}>Hindi</button></Col>  
                   <Col span={2}></Col> 
-                  <Col span={2}><button onClick={null} className={HomePageStyles.categoryBtn}>More ...</button></Col>  
+                  <Col span={2}><button style={{fontSize:"1.2vw"}} onClick={null} className={HomePageStyles.categoryBtn}>More ...</button></Col>  
                 </Row>
 
 
@@ -233,20 +233,14 @@ function HomePage()
 
             {/* Top Rated */}
             <div className={HomePageStyles.topRated}>
-                <h2 style={{color:'#FFF504', textAlign:'left', paddingLeft:'20px', fontWeight:'600'}}>Top Rated</h2>
+                <h2 style={{color:'#FFF504', textAlign:'left', paddingLeft:'1vw', fontSize:"1vw"}}>Top Rated</h2>
                 <Row>
-                    <Col span={2}>
-                        <LeftCircleOutlined style={{fontSize:'52px', color:'#676523', float:'left', padding:'40px 0px 0px 10px', opacity:'0.8'}}/>
-                    </Col>
                     <Col span={20}><TopRatedMovieCard/></Col>
-                    <Col span={2}>
-                        <RightCircleOutlined style={{fontSize:'52px', color:'#676523', float:'right', padding:'40px 10px 0px 0px', opacity:'0.8'}}/>
-                    </Col>
                 </Row>
             </div>
             {/* Recent Movies */}
             <div className={HomePageStyles.recentMovies}>
-            <h2 style={{color:'#FFF504', textAlign:'left', paddingLeft:'20px', fontWeight:'600'}}>Recent</h2>
+            <h2 style={{color:'#FFF504', textAlign:'left', paddingLeft:'1vw', fontSize:"1vw"}}>Recent</h2>
                 <Row>
                     <Col span={1}></Col>
                     <Col span={22} style={{width:'6'}}><RecentMovieCard/></Col>
@@ -255,11 +249,11 @@ function HomePage()
                 {/* Footer */}
                 <div className={HomePageStyles.footer}>
                     <Row>
-                        <Col span={10}><h4 style={{color:'white', opacity:'0.7', paddingLeft:'20px'}}>Website <br/> www.fasttrack.com</h4></Col>
-                        <Col span={8}><h4 style={{color:'white', opacity:'0.7'}}>Fast Track Computers <br/> Negombo Rd, Narammala.</h4></Col>
-                        <Col span={4}><h4 style={{color:'white', opacity:'0.7'}}>Contact   <br/> +94 77 158 1542 <br/> +94 77 158 1542</h4></Col>
+                        <Col span={10}><h4 style={{color:'white', opacity:'0.7', paddingLeft:'1vw', fontSize:"1vw"}}>Website <br/> www.fasttrack.com</h4></Col>
+                        <Col span={8}><h4 style={{color:'white', opacity:'0.7', fontSize:"1vw"}}>Fast Track Computers <br/> Negombo Rd, Narammala.</h4></Col>
+                        <Col span={4}><h4 style={{color:'white', opacity:'0.7', fontSize:"1vw"}}>Contact   <br/> +94 77 158 1542 <br/> +94 77 158 1542</h4></Col>
                         <Col span={2}>
-                         <button style={{height:'50px', width:'70px', opacity:'0.2', marginTop:'5px'}} onClick={showModal}><img src={admin} style={{height:'50px', width:'70px'}}></img></button>  
+                         <button style={{height:'2vw', width:'2vw', opacity:'0.2', marginTop:'0.3vw'}} onClick={showModal}><img src={admin} style={{height:'2vw', width:'2vw'}}></img></button>  
                          <Modal 
                          style={{height:'30vw', width:'60vw', borderRadius:'1vw', backgroundColor:'wheat',fontSize:"1vw"}}
                          title="Login" visible={isModalVisible} onOk={Login}  onCancel={handleCancle}>

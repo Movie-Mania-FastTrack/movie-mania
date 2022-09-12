@@ -11,52 +11,39 @@ function MovieCast()
 {
 
     const[movie , setMovie] = useState({})
+    const[characters , setCharacters] = useState([])
+    const array = [{character:"subi"},{character:"dini"}]
     useEffect(()=>{
         const movie = JSON.parse( localStorage.getItem("singleMovie")) 
-        setMovie(movie)   
+        setMovie(movie)
+        setCharacters(movie.characters)   
         },[])
 
     const text ="Doctor Strange teams up with a mysterious teenage girl from his dreams who can travel across multiverses, to battle multiple threats, including other-universe versions of himself, which threaten to wipe out millions across the multiverse. They seek help from Wanda the Scarlet Witch, Wong and others.";
-    const characters ="Peter Derrol";
+   // const characters ="Peter Derrol";
 
     return(
         <>
-        <div style={{height:'100%', width:'100%', position: 'fixed', backgroundColor:'#040819'}}>
-        {/* Story Part */}
-            <div
-            style={{height:'50%', width:'100%', position:'relative'}}
-            >
-                <h2 style={{textAlign:'center', color:'#E2F1FF', paddingTop:'30px', fontWeight:'650',fontSize:'24px'}}>Story</h2>
-                <h2 style={{textAlign:'center', color:'#E2F1FF', margin:'20px 0px 0px 150px', fontWeight:'500',fontSize:'16px',width: '1200px',
-                overflowWrap: 'break-word',wordWrap: 'break-word', wordBreak: 'break-word'}}>
-                    {movie.story} <br/><br/>
-                    {text} <br/><br/>
-                    {text}
-                </h2>
-            </div>
-        {/* Characters */}
-            <div
-            style={{height:'17%', width:'100%', position:'relative'}}
-            >
-                <h2 style={{textAlign:'center', color:'#E2F1FF', fontWeight:'650',fontSize:'24px'}}>Characters</h2>
-                <Row style={{marginTop:'20px'}}>
-                    <Col span={1}></Col>
-                    <Col span={4} style={{color:'white', fontSize:'16px', fontWeight:'600'}}>{characters}</Col>
-                    <Col span={4} style={{color:'white', fontSize:'16px', fontWeight:'600'}}>{characters}</Col>
-                    <Col span={4}style={{color:'white', fontSize:'16px', fontWeight:'600'}}>{characters}</Col>
-                    <Col span={4} style={{color:'white', fontSize:'16px', fontWeight:'600'}}>{characters}</Col>
-                    <Col span={4}style={{color:'white', fontSize:'16px', fontWeight:'600'}}>{characters}</Col>
-                    <Col span={3} style={{color:'white', fontSize:'16px', fontWeight:'600'}}>{characters}</Col>
-                </Row>
-            </div>
-        {/* Released partner logo */}
-            <div
-            style={{height:'25%', width:'100%', position:'relative'}}
-            >
-            <h2 style={{textAlign:'center', color:'#E2F1FF', fontWeight:'650',fontSize:'24px'}}>Exclusive Release Partner</h2>
-                <img src={movie.launchingImageUrl} style={{height:'100px', width:'300px', marginLeft:'600px'}}></img>
-            </div>
-
+        <div style={{height:'47vw', width:'100vw', position:"absolute", backgroundColor:'#040819'}}>
+            
+            
+            <div >
+            <div ><h2 style={{fontSize:"3vw",color:"purple"}}>Characters :</h2></div>
+            <div  >{characters.map((character,index)=>(
+                <div >
+                    <p style={{fontSize:"1.5vw",color:"yellow"}}>{character.character}</p>
+                </div>
+            ))}</div>
+                </div>
+                <div >
+                <h2 style={{fontSize:"3vw",color:"purple"}}>Story : <p style={{fontSize:"2vw",color:"yellow"}}>{movie.story}</p></h2>
+                </div>
+                <h2 style={{fontSize:"3vw",color:"purple"}}>Release Partner</h2>
+                <img style={{position:"absolute",height:'10vw', width:'10vw',backgroundColor:'white', borderRadius:'0.9vw',left:"0vw"}} src={movie.launchingImageUrl}></img>
+                <div >
+                
+                </div>
+            
         </div>
         </>
     );

@@ -2,6 +2,7 @@ import React , {useEffect , useState} from "react";
 import {Link} from 'react-router-dom';
 import movieManiaApi from "../../api/movieManiaApi";
 import {useNavigate} from 'react-router-dom';
+import {LeftCircleOutlined,RightCircleOutlined} from '@ant-design/icons';
 
 function RecentMovieCard (movieImage)
 {
@@ -23,6 +24,7 @@ function RecentMovieCard (movieImage)
         .then((res) => { 
             console.log("result - ",res.data)
             setRecentMovies(res.data)
+            setMoviesSlide(res.data)
         })
   
       // Catch errors if any
@@ -30,7 +32,7 @@ function RecentMovieCard (movieImage)
         console.log(err)
       });
 
-      setMoviesSlide(testMovies)
+      
           
         },[])
 
@@ -130,13 +132,13 @@ function RecentMovieCard (movieImage)
        <div>
             {testMovies.length!== 0 && slideMovies.map((movie,index)=>(
                     <div style={{position:"absolute",height:'12vw', width:'10vw',backgroundColor:'white', borderRadius:'0.9vw',top:"0",left:width*index+2+"vw"}} onClick={()=>moveToSingle(movie)}> 
-                    <p>name - {movie.name}</p>
-                    <img src={movie.imageUrl}></img>
+                    <p style={{fontSize:"1vw",color:"red"}}><span style={{color:"blue"}}>name</span> - <b>{movie.name}</b></p>
+                    <img style={{position:"absolute",height:'70%', width:'100%',backgroundColor:'white', borderRadius:'0.9vw',top:"30%",left:"0vw"}} src={movie.imageUrl}></img>
                     </div>
                 ))}
-                <button style={{position:"absolute",right:"0",top:"-4vw"}} onClick={moveNextSlide}>Next</button>
-                <button style={{position:"absolute",right:"6vw",top:"-4vw"}} onClick={movePreviosSlide}>Previos</button>
-            </div>
+               <RightCircleOutlined style={{fontSize:'3vw', color:'#676523', float:'right', padding:'2vw 0px 0px 1vw', opacity:'0.8'}}/>
+                <LeftCircleOutlined style={{fontSize:'3vw', color:'#676523',position:"absolute", left:"0", padding:'1vw 0px 0px 1vw', opacity:'0.8'}}/>
+              </div>
          
        
         </>

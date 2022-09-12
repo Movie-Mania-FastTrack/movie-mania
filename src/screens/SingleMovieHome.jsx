@@ -3,9 +3,13 @@ import {Row, Col, Card, Space} from 'antd';
 import {HomeFilled} from '@ant-design/icons';
 import {Link} from 'react-router-dom';
 
-import SingleHomeStyles from "./SingleMovieHome.module.css"
+
 import { useEffect } from "react";
 import { useState } from "react";
+import image from "../resources/images/doctorStrange.jpeg"
+import {useNavigate} from 'react-router-dom';
+import "./SinglePag.css";
+import { hover } from "@testing-library/user-event/dist/hover";
 
 
 
@@ -14,67 +18,59 @@ import { useState } from "react";
 function SingleMovieHome()
 {
 
+    const navigate = useNavigate();
+
     const[movie , setMovie] = useState({})
+    const[TrailerLogic , setTrailerLogic] = useState(false)
     useEffect(()=>{
         const movie = JSON.parse( localStorage.getItem("singleMovie")) 
         setMovie(movie)   
         },[])
 
+        function triler(){
+            if(TrailerLogic){
+                setTrailerLogic(false)
+            }
+            else{
+                setTrailerLogic(true)
+            }
+        }
+
+        function slipUpload(){
+            navigate("/slip_upload_page")
+        }
+
+        function buy(){
+            navigate("/buy_page")
+        }
+
+        function showMovie(){
+            navigate("/cast_page")
+        }
     return(
         <>
-    <div className={SingleHomeStyles.fullScreen}>
-
-           {/* Left Content*/}
-
-           
-              <div className={SingleHomeStyles.leftContent} >
-
-                {/* Home button */}
-                  <Link to="/"> 
-                    <div
-                        style={{height:'80px', width:'80px', 
-                        borderRadius:'50%', backgroundColor:'#38370e',
-                        margin:'20px 20px 0px 0px'}}>
-                            <HomeFilled style={{fontSize:'45px', margin:'17px 0px 0px 17px', color:'#c5bf1d'}}/>
-                    </div>
-                 </Link> 
-                 
-                <h3 style={{color:'#c5bf1d', fontSize:'18px', paddingTop:'3vw'}}>
-                    {movie.name}
-                </h3>
-                       {/* Single movie Options */}
-                    <div style={{paddingTop:'8vw'}}>
-                            <Space direction='vertical'>
-                                <Link to='/movie_trailor_page'>
-                                    <Card className={SingleHomeStyles.cardHover} style={{height:'60px', width:'200px',backgroundColor:'#38370e', border:'none', borderRadius:'8px'}}> 
-                                        <h3 style={{textAlign:'center', color:'#c5bf1d', fontWeight:'bold'}}>Watch Trailor</h3>
-                                    </Card> 
-                                </Link><br/>
-                                <Link to='/cast_page'>
-                                    <Card style={{height:'60px', width:'200px',backgroundColor:'#38370e', border:'none', borderRadius:'8px' }}> 
-                                        <h3 style={{textAlign:'center', color:'#c5bf1d', fontWeight:'bold'}}>Story</h3>
-                                    </Card> 
-                                </Link><br/>
-                                <Link to='/buy_page'>
-                                    <Card style={{height:'60px', width:'200px',backgroundColor:'#38370e', border:'none', borderRadius:'8px' }}> 
-                                        <h3 style={{textAlign:'center', color:'#c5bf1d', fontWeight:'bold'}}>Buy</h3>
-                                    </Card> 
-                                </Link>
-                            </Space>
-                        </div>
-                    
-                </div>
-
-
-
-            {/* Right Content*/}
-            <div className={SingleHomeStyles.rightContent}>
-
-     
+        <div style={{height:"47.5vw", width:"100vw", position: 'absolute', backgroundColor:'#040819'}}>
+        <div style={{height:"100%", width:"25%", position: 'absolute',left:"0"}}>
             
+            <button style={{height:"5vw", width:"12vw", background:"wheate", position: 'absolute',left:"2vw",top:"20%"}} className="trailerButton" onMouseEnter={triler}>Movie Trailer</button>
+            <button style={{height:"5vw", width:"12vw", position: 'absolute',left:"2vw",top:"35%"}} onClick={showMovie}>Movie</button>
+            <button style={{height:"5vw", width:"12vw", position: 'absolute',left:"2vw",top:"50%"}} onClick={slipUpload}>Slip Upload</button>
+            <button style={{height:"5vw", width:"12vw", position: 'absolute',left:"2vw",top:"65%"}} onClick={buy}>Buy</button>
+</div>
+<div style={{height:"100%", width:"75%", position: 'absolute', backgroundColor:"black",left:"25%"}}>
+    {TrailerLogic?<div style={{height:"100%", width:"100%", position: 'absolute', backgroundColor:"black"}}><img src={image} style={{height:"100%", width:"100%", position: 'absolute', left:"0"}}></img></div>:<div>
+    <div>
+                <video loop autoPlay style={{position:"absolute",top:"15%",left:"15%",height:'70%',width:'70%', float:'center', marginLeft:'10vw'}} controls>
+                    <source
+                    src={movie.trailerLink}
+                    type="video/mp4"
+                    />
+                    Your browser does not support the video tag.
+                </video>
             </div>
+        </div>}
 
-   
+</div>
         </div>
         </>
     );

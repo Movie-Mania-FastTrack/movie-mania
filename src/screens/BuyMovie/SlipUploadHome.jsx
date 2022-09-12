@@ -5,12 +5,9 @@ import Screen_Layout from "../common_components/ScreenLayout";
 function BuyMovieHome()
 {
     return(  
-        <Screen_Layout 
-        department={'Upload Payement Slip'} 
-        back={'/buy_page'}
-        home={'/'}
-        Component={<SlipUpload/>}
-        />
+        <div>
+            <SlipUpload></SlipUpload>
+        </div>
 
     );
 

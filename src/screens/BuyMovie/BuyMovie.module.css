@@ -14,14 +14,14 @@ width: 70%;
 
 }
 
-.ignoreDriveLink{
+/* .ignoreDriveLink{
   background-color:rgba(255, 245, 4, 0.32);
   border-radius: 15px 15px 15px 0px;
   width: 300px;
     height: 40px;
     color:rgba(226, 241, 255, 0.64);
     padding-top: 5px;
-}
+} */
 
 .button {
   background-color: yellow;

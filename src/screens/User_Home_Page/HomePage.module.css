@@ -5,11 +5,15 @@
     background-color: rgb(10, 9, 9);
 }
 
+.trailerButton:hover{
+    background: yellow;
+}
+
 .navBar{
     height:20vw;
     width:100%;
     position:relative;
-    background-image: url("../../resources/images/MovieMania.png");
+    /* background-image: url("../../resources/images/MovieMania.png"); */
 }
 
 .topRated{

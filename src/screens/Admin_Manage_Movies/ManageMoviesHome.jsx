@@ -5,14 +5,9 @@ import ManageMovies from "./ManageMovies";
 function ManageMoviesHome()
 {
     return(  
-        <Screen_Layout 
-        department={'Administration'} 
-        add={1}
-        back={'/admin_home_page'}
-        home={'/'}
-        Component={<ManageMovies/>}
-       
-        />
+        <div>
+            <ManageMovies></ManageMovies>
+        </div>
 
     );
 
