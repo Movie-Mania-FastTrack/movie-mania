@@ -6,8 +6,8 @@ import {useNavigate} from 'react-router-dom';
 
 import movieManiaApi from "../../api/movieManiaApi";
 import TopRatedMovieCard from './TopRatedMovieCard';
-import RecentMovieCard from './RecentMovieCard';
-
+import RecentMovieCardCopy from './RecentMovieCard'
+import SearchMovies from './SearchMovie'
 import HomePageStyles from "./HomePage.module.css";
 import admin from '../../resources/images/admin.png';
 
@@ -23,6 +23,7 @@ function HomePage()
     const[movies , setMovies] = useState([])
     const[adminMails , setAdminMails] = useState([])
     const[email,setEmail] = useState("")
+    const[height , setHeight] = useState(55)
     
     const navigate = useNavigate();
 
@@ -182,12 +183,35 @@ function HomePage()
       setIsModalVisible(false);
       //navigate("/admin_home_page");
     };
+
+    function getRecentMoviesCount(){
+      movieManiaApi.get("/getMovies",{
+
+      })
+      .then((res) => { 
+          console.log("result - ",res.data)
+          let rows = Math.floor(res.data.length/6)
+          if(res.data.length%6>0){
+            rows++
+          }
+          console.log("rows " , rows)
+          rows-=1
+          setHeight(height+5+rows*15)
+
+      })
+
+    // Catch errors if any
+    .catch((err) => { 
+      console.log(err)
+    });
+    }
   
      useEffect(()=>{
 
       localStorage.clear()
 
   getAdminMails()
+  getRecentMoviesCount()
 
     fetch("https://api.ipify.org?format=json?callback=?",{
       method:"GET",
@@ -213,27 +237,21 @@ function HomePage()
 
     return(
         <>
-        <div className={HomePageStyles.fullScreen}>
+        <div style={{position:"absolute" , width:"100vw" , height:height+"vw", background:"rgb(10, 9, 9)"}}>
             {/* Nav Bar */}
             <div className={HomePageStyles.navBar}>
-                <Row style={{height:'17vw'}}></Row>
-                {/* <Row style={{height:'3vw', width:'100%', backgroundColor: ' rgb(4, 4, 31)'}}>
-                  <Col span={2}></Col> 
-                  <Col span={3}><button style={{fontSize:"1.2vw"}} onClick={null} className={HomePageStyles.categoryBtn}>English</button></Col> 
-                  <Col span={3}><button style={{fontSize:"1.2vw"}} onClick={null} className={HomePageStyles.categoryBtn}>Sinhala</button></Col> 
-                  <Col span={3}><button style={{fontSize:"1.2vw"}} onClick={null} className={HomePageStyles.categoryBtn}>Malayalam</button></Col> 
-                  <Col span={3}><button style={{fontSize:"1.2vw"}} onClick={null} className={HomePageStyles.categoryBtn}>Tamil</button></Col> 
-                  <Col span={3}><button style={{fontSize:"1.2vw"}} onClick={null} className={HomePageStyles.categoryBtn}>Hindi</button></Col>  
-                  <Col span={2}></Col> 
-                  <Col span={2}><button style={{fontSize:"1.2vw"}} onClick={null} className={HomePageStyles.categoryBtn}>More ...</button></Col>  
-                </Row> */}
+                <Row style={{height:'17vw'}}>
+                  <Col span={1}></Col>
+                  <Col span={22}><SearchMovies/></Col>
+                </Row>
+                
 
 
             </div>
 
             {/* Top Rated */}
             <div className={HomePageStyles.topRated}>
-                <h2 style={{color:'#FFF504', textAlign:'left', paddingLeft:'1vw', fontSize:"1vw"}}>Top Rated</h2>
+                <h2 style={{color:'#FFF504', textAlign:'left', paddingLeft:'1vw', fontSize:"2vw"}}>Top Rated Movies</h2>
                 <Row>
                 <Col span={1}></Col>
                     <Col span={22}><TopRatedMovieCard/></Col>
@@ -241,11 +259,13 @@ function HomePage()
                 </Row>
             </div>
             {/* Recent Movies */}
+            
             <div className={HomePageStyles.recentMovies}>
-            <h2 style={{color:'#FFF504', textAlign:'left', paddingLeft:'1vw', fontSize:"1vw"}}>Recent</h2>
+              <p></p>
+            <h2 style={{color:'#FFF504', textAlign:'left', paddingLeft:'1vw', fontSize:"2vw"}}>Recent Movies</h2>
                 <Row>
                     <Col span={1}></Col>
-                    <Col span={22} style={{width:'6'}}><RecentMovieCard/></Col>
+                    <Col span={22} style={{width:'6'}}><RecentMovieCardCopy/></Col>
                     <Col span={1}></Col>
                 </Row>
                 {/* Footer */}
