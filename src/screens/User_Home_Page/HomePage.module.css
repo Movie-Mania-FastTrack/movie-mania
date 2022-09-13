@@ -1,5 +1,5 @@
 .fullScreen{
-    height: auto;
+    height: 100vw;
     width: 100vw;
     position:absolute;
     background-color: rgb(10, 9, 9);

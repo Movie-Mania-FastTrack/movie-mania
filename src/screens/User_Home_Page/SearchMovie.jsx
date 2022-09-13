@@ -4,11 +4,12 @@ import movieManiaApi from "../../api/movieManiaApi";
 import {useNavigate} from 'react-router-dom';
 import {LeftCircleOutlined,RightCircleOutlined} from '@ant-design/icons';
 
-function RecentMovieCard (movieImage)
+function SearchMovies (movieImage)
 {
-    const [recentMovies , setRecentMovies] = useState([])
+    const [searchMovies , setSearchMovies] = useState([])
     const[slideIndex , setSlideIndex] = useState(0)
     const[slideMovies , setSlideMovies] = useState([])
+    const[searchKey , setSearchKey] = useState("")
     const testMovies = [{name:"m1"},{name:"m2"},{name:"m3"},{name:"m4"},{name:"m5"},{name:"m6"},{name:"m7"},{name:"m8"},{name:"m9"}]
     const width= 15;
     const height = 17;
@@ -19,40 +20,32 @@ function RecentMovieCard (movieImage)
     
     useEffect(()=>{
         localStorage.removeItem("singleMovie")
-        movieManiaApi.get("/getMovies",{
-
-        })
-        .then((res) => { 
-            console.log("result - ",res.data)
-            let singleArray = []
-            let doubleArray = []
-            let indexSingle = 0
-            let indexDouble=0
-            for(var i=0; i<res.data.length; i++){
-                singleArray[indexSingle] = res.data[i]
-                indexSingle++
-                if(indexSingle>5){
-                    console.log("Single Array ",singleArray)
-                    doubleArray[indexDouble] = singleArray
-                    singleArray=[]
-                    indexSingle=0
-                    indexDouble+=1
-                }
-            }
-            doubleArray[indexDouble] = singleArray
-            setRecentMovies(doubleArray)
-            console.log("Double Array ",doubleArray)
-            //setMoviesSlide(res.data)
-        })
-  
-      // Catch errors if any
-      .catch((err) => { 
-        console.log(err)
-      });
-
-      
-          
+        // if(localStorage.getItem("searchMovies")!=null){
+           
+        //     setSearchMovies( JSON.parse(localStorage.getItem("searchMovies")) )
+        //     setMoviesSlide( JSON.parse(localStorage.getItem("searchMovies")) )
+        // }
+       
         },[])
+
+        function serachMoviesByName(key){
+            movieManiaApi.get("/getMovieByName/"+key,{
+
+            })
+            .then((res) => { 
+                console.log("result - ",res.data)
+                setSearchMovies(res.data)
+                setSlideMovies(res.data)
+                setMoviesSlide(res.data)
+            //    localStorage.setItem("searchMovies",JSON.stringify(res.data))
+            //     window.location.reload()
+            })
+      
+          // Catch errors if any
+          .catch((err) => { 
+            console.log(err)
+          });
+        }
 
         function setMoviesSlide(movies){
             if(slideIndex+6<movies.length){
@@ -130,11 +123,11 @@ function RecentMovieCard (movieImage)
         }
 
         function moveNextSlide(){
-            setMoviesSlide(recentMovies)
+            setMoviesSlide(searchMovies)
         }
 
         function movePreviosSlide(){
-            setMoviesSlide2(recentMovies)
+            setMoviesSlide2(searchMovies)
         }
         
         function moveToSingle(movie){
@@ -148,19 +141,18 @@ function RecentMovieCard (movieImage)
         <>
        
        <div>
-            {recentMovies.length!== 0 && recentMovies.map((movieList,index)=>(
-                    <div style={{position:"absolute",height:'12vw', width:'100vw',top:height*index+2+"vw",left:"0"}}>
-                        {movieList.map((movie,index)=>(
-
-<div style={{position:"absolute",height:'12vw', width:'10vw',backgroundColor:'white', borderRadius:'0.9vw',top:"0",left:width*index+2+"vw"}} onClick={()=>moveToSingle(movie)}> 
-<p style={{fontSize:"1vw",color:"red"}}><span style={{color:"blue"}}>name</span> - <b>{movie.name}</b></p>
-<img style={{position:"absolute",height:'70%', width:'100%',backgroundColor:'white', borderRadius:'0.9vw',top:"30%",left:"0vw"}} src={movie.imageUrl}></img>
-</div>
-
-
-                        ))}
+       <lable style={{ color:"#FFF504",position: 'absolute',left:"-3vw",top:"0",fontSize:"2vw"}}>Search Movie</lable>
+      <input style={{ color:"black",position: 'absolute',left:"0",top:"20%",fontSize:"1vw"}}  onChange={(e) => serachMoviesByName(e.target.value)} placeholder="Enter Key"></input>
+     
+      {searchMovies.length!== 0 && slideMovies.map((movie,index)=>(
+                    <div style={{position:"absolute",height:'12vw', width:'10vw',backgroundColor:'white', borderRadius:'0.9vw',top:"35%",left:width*index+2+"vw"}} onClick={()=>moveToSingle(movie)}> 
+                     <p style={{fontSize:"1vw",color:"red"}}><span style={{color:"blue"}}>name</span> - <b>{movie.name}</b></p>
+                    <img style={{position:"absolute",height:'70%', width:'100%',backgroundColor:'white', borderRadius:'0.9vw',top:"30%",left:"0vw"}} src={movie.imageUrl}></img>
                     </div>
                 ))}
+                <div style={{fontSize:'2.4vw', color:'black',position:"absolute",background:"#676523",width:"3vw",height:"3vw",borderWidth:"10px",borderColor:"red",borderRadius:"100%",right:"0",top:"35%", padding:'1vw 0px 0px 1vw', opacity:'0.8' , cursor:"pointer"}} onClick={moveNextSlide}><b style={{position:"absolute",left:"29%",top:"-24%"}}>{'>'}</b></div>
+              <div style={{fontSize:'2.4vw', color:'black',position:"absolute",background:"#676523",width:"3vw",height:"3vw",borderWidth:"10px",borderColor:"red",borderRadius:"100%",left:"-3vw",top:"35%", padding:'1vw 0px 0px 1vw', opacity:'0.8' , cursor:"pointer"}} onClick={movePreviosSlide}><b style={{position:"absolute",left:"29%",top:"-24%"}}>{'<'}</b></div>
+              
                 </div>
          
        
@@ -168,4 +160,4 @@ function RecentMovieCard (movieImage)
     );
 }
 
-export default RecentMovieCard;
+export default SearchMovies;

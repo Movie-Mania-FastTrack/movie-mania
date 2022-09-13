@@ -194,6 +194,13 @@ function MovieCard()
           setDeleteLogic(false)
         }
 
+        function moveToSingle(movie){
+          //console.log("movie",movie)
+          localStorage.setItem("singleMovie",JSON.stringify(movie))
+          localStorage.setItem("admin","yes")
+          navigate("/single_movie_home")
+    
+      }
     return(
         <>
         <div className="header">
@@ -206,7 +213,7 @@ function MovieCard()
         <div style={{height:"40vw", width:"100vw", position: 'absolute', backgroundColor:'#040819'}}>
             {recentMovies.length!== 0 && slideMovies.map((movie,index)=>(
                     <div>
-                      <div style={{position:"absolute",height:'12vw', width:'10vw',backgroundColor:'white', borderRadius:'0.9vw',top:"0",left:width*index+2+"vw"}}> 
+                      <div style={{position:"absolute",height:'12vw', width:'10vw',backgroundColor:'white', borderRadius:'0.9vw',top:"0",left:width*index+2+"vw"}} onClick={()=>moveToSingle(movie)}> 
                       <p style={{fontSize:"1vw",color:"red"}}><span style={{color:"blue"}}>name</span> - <b>{movie.name}</b></p>
                     <img style={{position:"absolute",height:'70%', width:'100%',backgroundColor:'white', borderRadius:'0.9vw',top:"30%",left:"0vw"}} src={movie.imageUrl}></img>
                    

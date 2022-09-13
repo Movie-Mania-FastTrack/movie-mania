@@ -26,74 +26,37 @@ function MultipleMovieSelect(){
 
     function selectMovie(id){
         movieIds.push(id)
-        movieManiaApi.post("/getMoviesWithoutSelect",
-            movieIds
-        )
-        .then((res) => { 
-            console.log("result - ",res.data)
-            setMovies(res.data)
-        })
-  
-      // Catch errors if any
-      .catch((err) => { 
-        console.log(err)
-      });
-
-      movieManiaApi.post("/getMoviesByID",
-        movieIds
-    )
-    .then((res) => { 
-        console.log("result - ",res.data)
-        setSelectedMovies(res.data)
-    })
-
-  // Catch errors if any
-  .catch((err) => { 
-    console.log(err)
-  });
+        localStorage.setItem("movies",JSON.stringify(movieIds))
+        window.location.reload()
     }
 
     function removeMovie(id){
         const movieIdsAssis = []
         for(let i=0; movieIds[i]!=null; i++){
             if(movieIds[i]!=id){
-                movieIdsAssis.push(movieIds)
+                movieIdsAssis.push(movieIds[i])
             }
         }
         setMovieIds(movieIdsAssis)
-        movieManiaApi.post("/getMoviesWithoutSelect",
-            movieIdsAssis
-        )
-        .then((res) => { 
-            console.log("result - ",res.data)
-            setMovies(res.data)
-        })
-  
-      // Catch errors if any
-      .catch((err) => { 
-        console.log(err)
-      });
+        localStorage.setItem("movies",JSON.stringify(movieIdsAssis))
+        window.location.reload()
 
-      movieManiaApi.post("/getMoviesByID",
-        movieIdsAssis
-    )
-    .then((res) => { 
-        console.log("result - ",res.data)
-        setSelectedMovies(res.data)
-    })
-
-  // Catch errors if any
-  .catch((err) => { 
-    console.log(err)
-  });
     }
 
     function submit(){
+       if(movieIds.length>0){
         localStorage.setItem("movies",JSON.stringify(movieIds))
         navigate("/buy_page")
+       }
+       else{
+        alert("You Havent Select Any Movie To Buy")
+       }
     }
 
     useEffect(()=>{
+      if(localStorage.getItem("request")==null){
+        navigate("/")
+      }
       console.log("sstore- " ,localStorage.getItem("movies"))
         const moviesOld = JSON.parse(localStorage.getItem("movies"))
         console.log(moviesOld)
@@ -104,6 +67,7 @@ function MultipleMovieSelect(){
         .then((res) => { 
             console.log("result - without selected",res.data)
             setMovies(res.data)
+            setMoviesSlide(res.data)
         })
   
       // Catch errors if any
@@ -117,6 +81,7 @@ function MultipleMovieSelect(){
     .then((res) => { 
         console.log("result - selected",res.data)
         setSelectedMovies(res.data)
+        setMoviesSlideSelected(res.data)
     })
 
   // Catch errors if any
@@ -124,8 +89,8 @@ function MultipleMovieSelect(){
     console.log(err)
   });
   //localStorage.removeItem("");
-  setMoviesSlide(testMovies)
-  setMoviesSlideSelected(testMoviesSelected)
+ 
+  
   //moveNextSlideSelected()
     },[])
 
@@ -205,11 +170,11 @@ function MultipleMovieSelect(){
   }
 
   function moveNextSlide(){
-      setMoviesSlide(testMovies)
+      setMoviesSlide(movies)
   }
 
   function movePreviosSlide(){
-      setMoviesSlide2(testMovies)
+      setMoviesSlide2(movies)
   }
 
 
@@ -225,7 +190,7 @@ function MultipleMovieSelect(){
 
         }
         setSlideMoviesSelected(slideMoviesCopy)
-        setSlideIndexSelected(slideIndex+6)
+        setSlideIndexSelected(slideIndexSelected+6)
     }
     else{
        if(slideIndexSelected<movies.length){
@@ -255,7 +220,7 @@ function setMoviesSlideSelected2(movies){
 
             }
             setSlideMoviesSelected(slideMoviesCopy)
-            setSlideIndexSelected(slideIndex-6)
+            setSlideIndexSelected(slideIndexSelected-6)
         }
         // else{
         //    if(slideIndex>0){
@@ -283,7 +248,7 @@ function setMoviesSlideSelected2(movies){
 
             }
             setSlideMoviesSelected(slideMoviesCopy)
-            setSlideIndexSelected(slideIndex-index)
+            setSlideIndexSelected(slideIndexSelected-index)
 
         }
         
@@ -291,11 +256,19 @@ function setMoviesSlideSelected2(movies){
 }
 
 function moveNextSlideSelected(){
-    setMoviesSlideSelected(testMoviesSelected)
+    setMoviesSlideSelected(selectedMovies)
 }
 
 function movePreviosSlideSelected(){
-    setMoviesSlideSelected2(testMoviesSelected)
+    setMoviesSlideSelected2(selectedMovies)
+}
+
+function moveToSingle(movie){
+  //console.log("movie",movie)
+  localStorage.setItem("singleMovie",JSON.stringify(movie))
+  localStorage.setItem("movies",JSON.stringify(movieIds))
+  navigate("/single_movie_home")
+
 }
 
     return (
@@ -308,32 +281,35 @@ function movePreviosSlideSelected(){
         </h2>
         </div>
         <div style={{height:"39.72vw", width:"100vw", position: 'absolute', backgroundColor:'#040819'}}>
-        <div style={{height:"15vw", width:"100vw", position: 'absolute', backgroundColor:'#040819',top:"1vw"}}>
+        <div style={{height:"15vw", width:"100vw", position: 'absolute', backgroundColor:'#040819',top:"1vw",left:"5vw"}}>
         <h2 style={{color:"white" , fontSize:"1vw"}}>Not Selected Movies</h2>
-        {testMovies.length!== 0 && slideMovies.map((movie,index)=>(
+        {movies.length!== 0 && slideMovies.map((movie,index)=>(
                     <div style={{position:"absolute",height:'15vw', width:'10vw', borderRadius:'0.9vw',top:"0",left:width*index+2+"vw"}}>
                       <div style={{position:"absolute",height:'12vw', width:'10vw',backgroundColor:'white', borderRadius:'0.9vw',top:"10%",left:"0"}} > 
-                    <p>name - {movie.name}</p>
-                    <img src={movie.imageUrl}></img>
-                    </div>
+                      <p style={{fontSize:"1vw",color:"red"}}><span style={{color:"blue"}}>name</span> - <b>{movie.name}</b></p>
+                    <img style={{position:"absolute",height:'70%', width:'100%',backgroundColor:'white', borderRadius:'0.9vw',top:"30%",left:"0vw"}} src={movie.imageUrl}  onClick={()=>moveToSingle(movie)}></img>
+                   </div>
                     <button style={{position:"absolute",height:'2vw', width:'8vw',backgroundColor:'green', borderRadius:'0.9vw',top:"90%",left:"0"}}  onClick={()=>selectMovie(movie.movieId)}>select</button>
                     </div>
                     
                 ))}
+                <div style={{fontSize:'2.4vw', color:'black',position:"absolute",background:"#676523",width:"3vw",height:"3vw",borderWidth:"10px",borderColor:"red",borderRadius:"100%",right:"8vw", padding:'1vw 0px 0px 1vw', opacity:'0.8' , cursor:"pointer"}} onClick={moveNextSlide}><b style={{position:"absolute",left:"29%",top:"-24%"}}>{'>'}</b></div>
+              <div style={{fontSize:'2.4vw', color:'black',position:"absolute",background:"#676523",width:"3vw",height:"3vw",borderWidth:"10px",borderColor:"red",borderRadius:"100%",left:"-3vw", padding:'1vw 0px 0px 1vw', opacity:'0.8' , cursor:"pointer"}} onClick={movePreviosSlide}><b style={{position:"absolute",left:"29%",top:"-24%"}}>{'<'}</b></div>
         </div>
-        <div style={{height:"15vw", width:"100vw", position: 'absolute', backgroundColor:'#040819',top:"18vw"}}>
+        <div style={{height:"15vw", width:"100vw", position: 'absolute', backgroundColor:'#040819',top:"18vw",left:"5vw"}}>
           <h2 style={{color:"white" , fontSize:"1vw"}}>Selected Movies</h2>
-          {testMoviesSelected.length!== 0 && slideMoviesSelected.map((movie,index)=>(
+          {selectedMovies.length!== 0 && slideMoviesSelected.map((movie,index)=>(
                     <div style={{position:"absolute",height:'15vw', width:'10vw', borderRadius:'0.9vw',top:"0",left:width*index+2+"vw"}}>
                       <div style={{position:"absolute",height:'12vw', width:'10vw',backgroundColor:'white', borderRadius:'0.9vw',top:"10%",left:"0"}} > 
-                    <p>name - {movie.name}</p>
-                    <img src={movie.imageUrl}></img>
-                    </div>
+                      <p style={{fontSize:"1vw",color:"red"}}><span style={{color:"blue"}}>name</span> - <b>{movie.name}</b></p>
+                    <img style={{position:"absolute",height:'70%', width:'100%',backgroundColor:'white', borderRadius:'0.9vw',top:"30%",left:"0vw"}} src={movie.imageUrl}></img>
+                  </div>
                     <button style={{position:"absolute",height:'2vw', width:'8vw',backgroundColor:'red', borderRadius:'0.9vw',top:"90%",left:"0"}} onClick={()=>removeMovie(movie.movieId)}>Remove</button>
                     </div>
                     
                 ))}
-          
+                <div style={{fontSize:'2.4vw', color:'black',position:"absolute",background:"#676523",width:"3vw",height:"3vw",borderWidth:"10px",borderColor:"red",borderRadius:"100%",right:"8vw", padding:'1vw 0px 0px 1vw', opacity:'0.8' , cursor:"pointer"}} onClick={moveNextSlideSelected}><b style={{position:"absolute",left:"29%",top:"-24%"}}>{'>'}</b></div>
+              <div style={{fontSize:'2.4vw', color:'black',position:"absolute",background:"#676523",width:"3vw",height:"3vw",borderWidth:"10px",borderColor:"red",borderRadius:"100%",left:"-3vw", padding:'1vw 0px 0px 1vw', opacity:'0.8' , cursor:"pointer"}} onClick={movePreviosSlideSelected}><b style={{position:"absolute",left:"29%",top:"-24%"}}>{'<'}</b></div>
         </div>
         <button style={{position:"absolute",height:'2vw', width:'8vw',backgroundColor:'yellow', borderRadius:'0.9vw',bottom:"0",left:"0"}}  onClick={submit}>Submit</button>
         </div>

@@ -12,11 +12,15 @@ function MovieCast()
 
     const[movie , setMovie] = useState({})
     const[characters , setCharacters] = useState([])
-    const array = [{character:"subi"},{character:"dini"}]
+    const[wHeight , setWHeight] = useState(47)
     useEffect(()=>{
         const movie = JSON.parse( localStorage.getItem("singleMovie")) 
         setMovie(movie)
-        setCharacters(movie.characters)   
+        setCharacters(movie.characters)
+        if(movie.characters.length>3){
+            var height = wHeight+(movie.characters.length-3)*7
+            setWHeight(height)
+        }   
         },[])
 
     const text ="Doctor Strange teams up with a mysterious teenage girl from his dreams who can travel across multiverses, to battle multiple threats, including other-universe versions of himself, which threaten to wipe out millions across the multiverse. They seek help from Wanda the Scarlet Witch, Wong and others.";
@@ -24,7 +28,7 @@ function MovieCast()
 
     return(
         <>
-        <div style={{height:'47vw', width:'100vw', position:"absolute", backgroundColor:'#040819'}}>
+        <div style={{height:wHeight+"vw", width:'100vw', position:"absolute", backgroundColor:'#040819'}}>
             
             
             <div >

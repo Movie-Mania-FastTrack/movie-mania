@@ -27,6 +27,20 @@ function BuyMovie() {
     const[requestCount , setRequestCount] = useState(0)
     const[selectPrice , SetSelectedPrice] = useState(0)
     const[movieName , setMovieName] = useState("")
+    const[slideIndexSelected , setSlideIndexSelected] = useState(0)
+    const[slideMoviesSelected , setSlideMoviesSelected] = useState([])
+    const[paymentMethod , setPaymentMethod] = useState(0)
+    const[driverLinkLogic , setDriverLinkLogic] = useState(false)
+    const[moreMovies , setMoreMovies] = useState(false)
+
+    const payment_methods = [{method:"Pickup from the shop",value:0},{method:"Collect To The Drive",value:1}]
+
+    const width= 15;
+
+    const current = new Date();
+    const date = `${current.getDate()}/${
+      current.getMonth() + 1
+    }/${current.getFullYear()}`;
 
     function addMultipleMovies(){
       const request = {customerName,customerEmail,contact,driverLink,payableStatus:"payable"}
@@ -144,15 +158,6 @@ function BuyMovie() {
 
     }
 
-    function veiwMovie(id){
-      alert(id)
-      for(let i=0; i<selectedMovies.length ; i++){
-        if(selectedMovies[i].movieId==id){
-          setRequestCount(selectedMovies[i].rate)
-            SetSelectedPrice(selectedMovies[i].price)
-        }
-      }
-    }
 
     function onclickCheck(){
       alert("hee")
@@ -166,8 +171,11 @@ function BuyMovie() {
           setCustomerEmail(reques.customerEmail)
           setCustomerName(reques.customerName)
           setDriverLink(reques.driverLink)
-          alert("hello")
+          //alert("hello")
           const moviesOld = JSON.parse(localStorage.getItem("movies"))
+          if(moviesOld==0){
+            navigate("/")
+          }
           localStorage.removeItem("movies")
           localStorage.removeItem("request")
           console.log("moviesOld",moviesOld)
@@ -177,8 +185,14 @@ function BuyMovie() {
           .then((res) => { 
             console.log(res.data)
             setSelectedMovies(res.data)
-            setRequestCount(res.data[0].rate)
-            SetSelectedPrice(res.data[0].price)
+            setMoviesSlideSelected(res.data)
+           // setRequestCount(res.data[0].rate)
+           var price =0 ;
+           for(let i=0; i<res.data.length; i++){
+            price+=res.data[i].price
+           }
+            SetSelectedPrice(price)
+            setMoreMovies(true)
         })
     
       // Catch errors if any
@@ -191,6 +205,7 @@ function BuyMovie() {
         else{
           const movie = JSON.parse( localStorage.getItem("singleMovie"))  
           setMovieId(movie.movieId)
+          setMoreMovies(false)
           console.log("movies : ",movies)
           console.log("id : ",movie.movieId)
           movies.push(movie.movieId)
@@ -199,143 +214,203 @@ function BuyMovie() {
           setRequestCount(movie.rate)
           SetSelectedPrice(movie.price)
           setMovieName(movie.name)
+          movieManiaApi.get("/getMovie/"+movie.movieId )
+          .then((res) => { 
+            console.log(res.data)
+            //selectedMovies.push(res.data)
+            setMovie(res.data)
+           // setRequestCount(res.data[0].rate)
+        })
+    
+      // Catch errors if any
+      .catch((err) => { 
+        console.log(err)
+      });
         }
       },[])
 
 
-  return (
-    <>
-      <p className={styles.h1}>Buying information</p>
-      <hr />
-      <Link to='/slip_upload_page'><h3>Already Requested ?</h3></Link>
-      <center>
-        <div className={styles.BuyingInfoContainer}>
-          {/* Buying info */}
-          <Row gutter={[48, 24]}>
-            <Col span={8}>
-              {/* Movie name selection */}
-              <p className={styles.pName}>Movie Name :</p>
-            </Col>
-            <Col span={8}>
-              <Select
-                className={styles.p}
-                value={movieName}
-onChange={(e)=>veiwMovie(e.target.value)}
-                style={{
-                  width: "200px",
-                }}
-               
-              >
-                {
-                  selectedMovies.map((movie)=>(
-                      <option value={movie.name}>{movie.name}</option>
-                  ))
-                }
+      function setMoviesSlideSelected(movies){
+        if(slideIndexSelected+6<movies.length){
+            const slideMoviesCopy = []
+            for(let i = slideIndexSelected; i<slideIndexSelected+6; i++){
                 
-              </Select>
-            </Col>
-            <Col span={8}>
-              <Button
-                className={styles.addButton}
-                type="primary"
-                shape="circle"
-                icon={<PlusCircleOutlined />}
-              />
-            </Col>
-            <Col span={8}>
-              {/* Movie count */}
-              <p className={styles.pName}>Movie Count :</p>
-            </Col>
-            <Col span={8}>
-              <p className={styles.p}>{requestCount}</p>
-            </Col>
-            <Col span={8}></Col>
-            <Col span={8}>
-              <p className={styles.pName}>Payable Amount :</p>
-            </Col>
-            <Col span={8}>
-              <p className={styles.p}>Rs {selectPrice}</p>
-            </Col>
-            <Col span={8}></Col>
+                slideMoviesCopy.push(movies[i])
+                console.log(movies[i])
+    
+            }
+            setSlideMoviesSelected(slideMoviesCopy)
+            setSlideIndexSelected(slideIndexSelected+6)
+        }
+        else{
+           if(slideIndexSelected<movies.length){
+            const slideMoviesCopy = []
+            for(let i = slideIndexSelected; i<movies.length; i++){
+                
+                slideMoviesCopy.push(movies[i])
+    
+            }
+            setSlideMoviesSelected(slideMoviesCopy)
+            setSlideIndexSelected(movies.length)
+           }
+        }
+    }
+    
+    function setMoviesSlideSelected2(movies){
+    
+        let index = slideIndexSelected%6
+      //  alert(index)
+        if(index==0){
+            if(slideIndexSelected-6>0){
+                const slideMoviesCopy = []
+                for(let i = slideIndexSelected-12; i<slideIndexSelected-6; i++){
+                    
+                    slideMoviesCopy.push(movies[i])
+                    console.log(movies[i])
+    
+                }
+                setSlideMoviesSelected(slideMoviesCopy)
+                setSlideIndexSelected(slideIndexSelected-6)
+            }
+            // else{
+            //    if(slideIndex>0){
+            //     const slideMoviesCopy = []
+            //     for(let i = 0; i<slideIndex; i++){
+                    
+            //         slideMoviesCopy.push(movies[i])
+                    
+    
+            //     }
+            //     console.log(slideMoviesCopy)
+            //     setSlideMovies(slideMoviesCopy)
+            //     setSlideIndex(0)
+            //    }
+            // } 
+        }
+        else{
+            if(movies.length>6){
+            let start = index+6
+            const slideMoviesCopy = []
+                for(let i = slideIndexSelected-start; i<slideIndexSelected-index; i++){
+                    
+                    slideMoviesCopy.push(movies[i])
+                    console.log(movies[i])
+    
+                }
+                setSlideMoviesSelected(slideMoviesCopy)
+                setSlideIndexSelected(slideIndexSelected-index)
+    
+            }
+            
+        }
+    }
+    
+    function moveNextSlideSelected(){
+        setMoviesSlideSelected(selectedMovies)
+    }
+    
+    function movePreviosSlideSelected(){
+        setMoviesSlideSelected2(selectedMovies)
+    }
 
-            <Col span={8}>
-              <p className={styles.pName}>Collection Method :</p>
-            </Col>
-            <Col span={8}>
-              <Radio style={{ color: "white" }} className={styles.p}>
-                To the drive
-              </Radio>
-            </Col>
-            <Col span={8}>
-              <Radio style={{ color: "white" }}>Pickup from the shop</Radio>
-            </Col>
-            <Col span={8}>
-              <p className={styles.pName}>Drive Link :</p>
-            </Col>
-            <Col span={8}>
-              <Input
-                placeholder="Paste the Drive link here"
-                className={styles.p}
-                onChange={(e) => setDriverLink(e.target.value)}
-              />
-            </Col>
-            <Col span={8}>
-              <p className={styles.ignoreDriveLink}>
-                Ignore, if you chose pickup option
-              </p>
-            </Col>
-          </Row>
+    function onchangeCollection(value){
+     // alert(value)
+     setPaymentMethod(value)
+      if(value==1){
+        setDriverLinkLogic(true)
+      }
+      else{
+        setDriverLinkLogic(false)
+      }
+    }
+
+    function submit(){
+      if(paymentMethod==0){
+        if(customerName==""||customerEmail==""||contact==""){
+          alert("Please Fill The Full Form")
+          return
+        }
+
+        addNotPayableRequest()
+        
+      }
+      else{
+        if(customerName==""||customerEmail==""||contact==""||driverLink==""){
+          alert("Please Fill The Full Form")
+          return
+        }
+        addPayableRequest()
+      }
+    }
+
+    function moveToSingle(movie){
+      //console.log("movie",movie)
+      localStorage.setItem("singleMovie",JSON.stringify(movie))
+      const request = {customerName,customerEmail,contact,driverLink,payableStatus:"payable"}
+      localStorage.setItem("request",JSON.stringify(request))
+      localStorage.setItem("movies",JSON.stringify(movies))
+      navigate("/single_movie_home")
+
+  }
+
+return(
+  <>
+   <div className="header">
+          <h1 className="h1">SELECT MORE MOVIES</h1>
+          <h2 className="date">
+          <span style={{ fontWeight: "bold" , fontSize:"1vw"}}>TODAY : </span>
+          {date}
+        </h2>
         </div>
-      </center>
-      <p className={styles.h1}>Contact information</p>
-      <hr />
-      <center>
-        <div className={styles.BuyingInfoContainer}>
-          <Row gutter={[48, 24]}>
-            <Col span={8}>
-              <p className={styles.pName}>Name :</p>
-            </Col>
-            <Col span={16}>
-              <Input
-                placeholder="Enter name"
-                style={{ width: "300px", float: "left" }}
-                onChange={(e) => setCustomerName(e.target.value)}
-              />
-            </Col>
-
-            <Col span={8}>
-              <p className={styles.pName}>Contact No :</p>
-            </Col>
-            <Col span={16}>
-              <Input
-                placeholder="Enter contact no "
-                style={{ width: "300px", float: "left" }}
-                onChange={(e) => setContact(e.target.value)}
-              />
-            </Col>
-
-            <Col span={8}>
-              <p className={styles.pName}>Email Address :</p>
-            </Col>
-            <Col span={8}>
-              <Input
-                placeholder="Enter email address "
-                style={{ width: "300px", float: "left" }}
-                onChange={(e) => setCustomerEmail(e.target.value)}
-              />
-            </Col>
-
-
-            <Col span={8}>
-              <Button className={styles.button} onClick={addPayableRequest}>SUBMIT PAYABLE REQUEST</Button>
-              <Button className={styles.button} onClick={addNotPayableRequest}>SUBMIT NOT PAYABLE REQUEST</Button> 
-              <Button className={styles.button} onClick={addMultipleMovies}>Add More Movies</Button>
-            </Col>
-          </Row>
+        <div style={{height:"50vw", width:"100vw", position: 'absolute', backgroundColor:'#040819'}}>
+        {moreMovies?<div style={{height:"15vw", width:"100vw", position: 'absolute', backgroundColor:'#040819',top:"0",left:"5vw"}}>
+          <h2 style={{color:"white" , fontSize:"1vw"}}>Selected Movies</h2>
+          {selectedMovies.length!== 0 && slideMoviesSelected.map((movie,index)=>(
+                    <div style={{position:"absolute",height:'15vw', width:'10vw', borderRadius:'0.9vw',top:"0",left:width*index+2+"vw"}} onClick={()=>moveToSingle(movie)}>
+                      <div style={{position:"absolute",height:'12vw', width:'10vw',backgroundColor:'white', borderRadius:'0.9vw',top:"10%",left:"0"}} > 
+                      <p style={{fontSize:"1vw",color:"red"}}><span style={{color:"blue"}}>name</span> - <b>{movie.name}</b></p>
+                    <img style={{position:"absolute",height:'70%', width:'100%',backgroundColor:'white', borderRadius:'0.9vw',top:"30%",left:"0vw"}} src={movie.imageUrl}></img>
+                  </div>
+                    </div>
+                    
+                ))}
+                <div style={{fontSize:'2.4vw', color:'black',position:"absolute",background:"#676523",width:"3vw",height:"3vw",borderWidth:"10px",borderColor:"red",borderRadius:"100%",right:"8vw", padding:'1vw 0px 0px 1vw', opacity:'0.8' , cursor:"pointer"}} onClick={moveNextSlideSelected}><b style={{position:"absolute",left:"29%",top:"-24%"}}>{'>'}</b></div>
+              <div style={{fontSize:'2.4vw', color:'black',position:"absolute",background:"#676523",width:"3vw",height:"3vw",borderWidth:"10px",borderColor:"red",borderRadius:"100%",left:"-3vw", padding:'1vw 0px 0px 1vw', opacity:'0.8' , cursor:"pointer"}} onClick={movePreviosSlideSelected}><b style={{position:"absolute",left:"29%",top:"-24%"}}>{'<'}</b></div>
+        </div>:<div style={{height:"15vw", width:"100vw", position: 'absolute', backgroundColor:'#040819',top:"0",left:"5vw"}}>
+        <h2 style={{color:"white" , fontSize:"1vw"}}>Selected Movies</h2>
+        <div style={{position:"absolute",height:'12vw', width:'10vw',backgroundColor:'white', borderRadius:'0.9vw',top:"10%",left:"0"}} onClick={()=>moveToSingle(movie)}> 
+                      <p style={{fontSize:"1vw",color:"red"}}><span style={{color:"blue"}}>name</span> - <b>{movie.name}</b></p>
+                    <img style={{position:"absolute",height:'70%', width:'100%',backgroundColor:'white', borderRadius:'0.9vw',top:"30%",left:"0vw"}} src={movie.imageUrl}></img>
+                  </div>
+          </div>}
+        <div div style={{height:"32vw", width:"100vw", position: 'absolute', backgroundColor:'#040819',top:"18vw",left:"5vw"}}>
+          <button style={{position:"absolute",width:"10vw",height:"2vw",top:"0",left:"0",background:"yellow"}} onClick={addMultipleMovies}>Add More Movies</button>
+          <lable style={{ color:"white",position: 'absolute',left:"0",top:"15%",fontSize:"1vw"}}>Name :</lable>
+      <input style={{ color:"black",position: 'absolute',left:"0",top:"22%",fontSize:"1vw"}} value={customerName} onChange={(e) => setCustomerName(e.target.value)}></input>
+      <lable style={{ color:"white",position: 'absolute',left:"0",top:"29%",fontSize:"1vw"}}>Contact No :</lable>
+      <input style={{ color:"black",position: 'absolute',left:"0",top:"36%",fontSize:"1vw"}} value={contact} onChange={(e) => setContact(e.target.value)}></input>
+      <lable style={{ color:"white",position: 'absolute',left:"0",top:"43%",fontSize:"1vw"}}>Email Address :</lable>
+      <input style={{ color:"black",position: 'absolute',left:"0",top:"50%",fontSize:"1vw"}} value={customerEmail} onChange={(e) => setCustomerEmail(e.target.value)}></input>
+      <label style={{ color:"white",position: 'absolute',left:"0",top:"57%",fontSize:"1vw"}} >Collection Method : </label><br></br>
+                <select name="Category" id="cate" style={{ color:"black",position: 'absolute',left:"0",top:"64%",fontSize:"1vw"}}
+                onChange={(e)=>onchangeCollection(e.target.value)}
+                >
+                  {payment_methods.map((method)=>(<option value={method.value}>{method.method}</option>))}  
+  
+ 
+</select>
+{driverLinkLogic?<div>
+  <lable style={{ color:"white",position: 'absolute',left:"0",top:"71%",fontSize:"1vw"}}>Driver Link :</lable>
+      <input style={{ color:"black",position: 'absolute',left:"0",top:"78%",fontSize:"1vw"}} value={driverLink} onChange={(e) => setDriverLink(e.target.value)}></input>
+      <button style={{position:"absolute",width:"10vw",height:"2vw",top:"85%",left:"0",background:"yellow"}} onClick={submit}>Add Request</button>
+</div>:<div>
+<button style={{position:"absolute",width:"10vw",height:"2vw",top:"75%",left:"0",background:"green"}} onClick={submit}>Add Request</button>
+  </div>}
         </div>
-      </center>
-    </>
-  );
+       </div>
+  </>
+)
+  
 }
 
 export default BuyMovie;
