@@ -42,6 +42,73 @@ function BuyMovie() {
       current.getMonth() + 1
     }/${current.getFullYear()}`;
 
+    function ValidateEmail(email) 
+{
+    var atCount = 0
+    var atIndex = 0
+    var dotIndex=0
+    var dotCount =0
+    let letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz123456790"
+    for(let i=0; i<email.length ; i++){
+        if(email[i]==' '){
+            alert("space")
+            return(false)
+        }
+        else{
+            if(email[i]=='@'){
+                atIndex=i
+                atCount+=1
+            }
+        }
+    }
+
+    if(atCount==1){
+        if(letters.includes(email[email.length-1])&&letters.includes(email[atIndex+1])){
+            for(let i=atIndex+1; i<email.length; i++){
+                if(email[i]=="."){
+                    dotIndex=i
+                    dotCount+=1
+                }
+            }
+            if(dotCount==1){
+                if(letters.includes(email[dotIndex+1])){
+                    dotCount=0
+                    for(let i=0; i<atIndex; i++){
+                        if(email[i]=="."){
+                            dotCount+=1
+                        }
+                    }
+                    if(dotCount==1||dotCount==0){
+                        return(true)
+                    }
+                    else{
+                       // alert("2. in username")
+                        return(false)
+                    }
+                }
+                else{
+                   // alert("after . not a letter")
+                    return(false)
+                }
+            }
+            else{
+               // alert("2.")
+                return(false)
+            }
+        }
+        else{
+          //  alert("not a letter")
+            return(false)
+        }
+    }
+    else{
+      //  alert("2@")
+        return(false)
+    }
+
+
+}
+
     function addMultipleMovies(){
       const request = {customerName,customerEmail,contact,driverLink,payableStatus:"payable"}
       localStorage.setItem("request",JSON.stringify(request))
@@ -68,18 +135,20 @@ function BuyMovie() {
     }
 
     function addPayableRequest(){
-      
+      console.log("length ")
       if(customerEmail!="" && customerName !="" && driverLink != "" && contact!=""){
+        var string = "none"
+        
         const request = {customerName,customerEmail,contact,driverLink,payableStatus:"payable"}
         const requestDto = {request:request,movies}
         console.log("movies",requestDto)
-        movieManiaApi.post("/addRequest",{
+        movieManiaApi.post("/addRequest/"+string,{
           customerName,
           customerEmail,
           contact,
           driverLink,
           payableStatus:"payable",
-          movies
+          movie : movie.movieId
         })
         .then((res) => { 
           alert(res.data)
@@ -87,7 +156,31 @@ function BuyMovie() {
             navigate("/movie_trailor_page")
           }
           else{
-            navigate("/slip_upload_page");
+            for(let i=2; i<movies.length; i++){
+              movieManiaApi.post("/addRequest/"+res.data,{
+                customerName,
+                customerEmail,
+                contact,
+                driverLink,
+                payableStatus:"payable",
+                movie : movies[i]
+              })
+              .then((res2) => { 
+              if(i==movies.length-1){
+                alert(res2.data)
+                
+              }
+                
+                
+            })
+            // Catch errors if any
+        .catch((err) => { 
+          console.log(err)
+        });
+            }
+
+            alert("Your Full Payment For This Request : "+selectPrice)
+            
           }
       })
       // Catch errors if any
@@ -103,28 +196,50 @@ function BuyMovie() {
 
     function addNotPayableRequest(){
       if(customerEmail!="" && customerName !="" && contact!=""){
+        var string = "none"
+        
         const request = {customerName,customerEmail,contact,driverLink,payableStatus:"payable"}
         const requestDto = {request:request,movies}
         console.log("movies",requestDto)
-        movieManiaApi.post("/addRequest",{
+        movieManiaApi.post("/addRequest/"+string,{
           customerName,
           customerEmail,
           contact,
-          payableStatus:"notPayable",
           driverLink,
-          movies
+          payableStatus:"notPayable",
+          movie : movie.movieId
         })
         .then((res) => { 
-          alert("your codes are")
           alert(res.data)
-          for(let i=0;i<res.data.length; i++){
-            alert(res.data[i])
-          }
-          if(res.data==[]){
+          if(res.data=="error"){
             navigate("/movie_trailor_page")
           }
           else{
-            navigate("/slip_upload_page");
+            for(let i=2; i<movies.length; i++){
+              movieManiaApi.post("/addRequest/"+res.data,{
+                customerName,
+                customerEmail,
+                contact,
+                driverLink,
+                payableStatus:"notPayable",
+                movie : movies[i]
+              })
+              .then((res2) => { 
+              if(i==movies.length-1){
+                alert(res2.data)
+                
+              }
+                
+                
+            })
+            // Catch errors if any
+        .catch((err) => { 
+          console.log(err)
+        });
+            }
+
+            alert("Your Full Payment For This Request : "+selectPrice)
+            
           }
       })
       // Catch errors if any
@@ -200,6 +315,7 @@ function BuyMovie() {
         console.log(err)
       });
           setMovies(moviesOld)
+          setMovie(moviesOld[0])
 
         }
         else{
@@ -325,6 +441,11 @@ function BuyMovie() {
     }
 
     function submit(){
+      var emailValidity = ValidateEmail(customerEmail)
+      if(!emailValidity){
+        alert("Error Email Type")
+        return
+      }
       if(paymentMethod==0){
         if(customerName==""||customerEmail==""||contact==""){
           alert("Please Fill The Full Form")
@@ -388,7 +509,7 @@ return(
           <lable style={{ color:"white",position: 'absolute',left:"0",top:"15%",fontSize:"1vw"}}>Name :</lable>
       <input style={{ color:"black",position: 'absolute',left:"0",top:"22%",fontSize:"1vw"}} value={customerName} onChange={(e) => setCustomerName(e.target.value)}></input>
       <lable style={{ color:"white",position: 'absolute',left:"0",top:"29%",fontSize:"1vw"}}>Contact No :</lable>
-      <input style={{ color:"black",position: 'absolute',left:"0",top:"36%",fontSize:"1vw"}} value={contact} onChange={(e) => setContact(e.target.value)}></input>
+      <input style={{ color:"black",position: 'absolute',left:"0",top:"36%",fontSize:"1vw"}} type="number" value={contact} onChange={(e) => setContact(e.target.value)}></input>
       <lable style={{ color:"white",position: 'absolute',left:"0",top:"43%",fontSize:"1vw"}}>Email Address :</lable>
       <input style={{ color:"black",position: 'absolute',left:"0",top:"50%",fontSize:"1vw"}} value={customerEmail} onChange={(e) => setCustomerEmail(e.target.value)}></input>
       <label style={{ color:"white",position: 'absolute',left:"0",top:"57%",fontSize:"1vw"}} >Collection Method : </label><br></br>

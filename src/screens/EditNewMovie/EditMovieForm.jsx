@@ -221,14 +221,15 @@ useEffect(()=>{
         })
       })
   }
-  
-  function submit(){
+
+  function uploadFiles(){
     uploadMovieImage();
     uploadTrailer();
     uploadReleaseImage();
+  }
   
-    const delay = setTimeout(updateMovie,30000)
-  
+  function submit(){
+    updateMovie()
   }
 
   function removeCharacter(id){
@@ -280,7 +281,8 @@ useEffect(()=>{
           ))}
           
       </div>
-      <button style={{ color:"white",left:"0" , position:"absolute" ,top:"80%",fontSize:"1vw" , color:"black" , background:"green"}} onClick={submit}>Submit All</button>
+      <button style={{ color:"white",position: 'absolute',left:"0",top:"80%",fontSize:"1vw" , color:"black" , background:"yellow"}} onClick={uploadFiles}>Upload All Files</button>
+      <button style={{ color:"white",left:"0" , position:"absolute" ,top:"87%",fontSize:"1vw" , color:"black" , background:"green"}} onClick={submit}>Submit All</button>
     </div>
     </>
   );

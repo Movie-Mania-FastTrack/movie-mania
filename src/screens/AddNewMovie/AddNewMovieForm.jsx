@@ -38,6 +38,13 @@ const date = `${current.getDate()}/${
 
 const navigate = useNavigate();
 
+function validateFormRequired() {
+  if(category!=""&&story!=""&&name!=""&&price!=0){
+    return true
+  }
+  return false
+}
+
 function releaseToken(){
 
   if(localStorage.getItem("user")!=null){
@@ -81,9 +88,14 @@ function addMovie(){
   alert(name)
   alert(characters)
   var validation1 = checkUrls()
+  var validation2 = validateFormRequired()
 
   if(!validation1){
     alert("Enter Three Files First")
+    return
+  }
+  if(!validation2){
+    alert("Please Complete Full Form")
     return
   }
     const movie = {name : name , story : story , category, imageUrl , launchingImageUrl , trailerLink , actors , price}
@@ -228,7 +240,7 @@ console.log(err)
       <label style={{ color:"white",position: 'absolute',left:"0",top:"35%",fontSize:"1vw"}}>Story</label>
       <input  style={{ color:"black",position: 'absolute',left:"0",top:"40%",fontSize:"1vw"}} onChange={(e) => setStory(e.target.value)}></input>
       <lable style={{ color:"white",position: 'absolute',left:"0",top:"45%",fontSize:"1vw"}}>Price</lable>
-      <input style={{ color:"black",position: 'absolute',left:"0",top:"50%",fontSize:"1vw"}} onChange={(e) => setPrice(e.target.value)}></input>
+      <input style={{ color:"black",position: 'absolute',left:"0",top:"50%",fontSize:"1vw"}} type="number" onChange={(e) => setPrice(e.target.value)}></input>
       <lable style={{ color:"white",position: 'absolute',left:"0",top:"55%",fontSize:"1vw"}} >Actor</lable>
       <input style={{ color:"black",position: 'absolute',left:"0",top:"60%",fontSize:"1vw"}} onChange={(e) => setActors(e.target.value)}></input>
       <button style={{ color:"white",position: 'absolute',left:"0",top:"67%",fontSize:"1vw" , color:"black",background:"yellow"}} onClick={addCharacter}>Add Actor</button>
@@ -238,7 +250,7 @@ console.log(err)
       <input style={{ color:"white",position: 'absolute',left:"20%",top:"80%",fontSize:"1vw"}} type="file" onChange={(e) => setReleaseImageUpload(e.target.files[0])}></input>
       <lable style={{ color:"white",position: 'absolute',left:"40%",top:"75%",fontSize:"1vw"}}>Movie Trailer</lable>
       <input style={{ color:"white",position: 'absolute',left:"40%",top:"80%",fontSize:"1vw"}} type="file" onChange={(e) => setVideoUpload(e.target.files[0])}></input>
-      <button style={{ color:"white",position: 'absolute',left:"0",top:"87%",fontSize:"1vw" , color:"black" , background:"green"}} onClick={uploadFiles}>Upload All Files</button>
+      <button style={{ color:"white",position: 'absolute',left:"0",top:"87%",fontSize:"1vw" , color:"black" , background:"yellow"}} onClick={uploadFiles}>Upload All Files</button>
       <button style={{ color:"white",position: 'absolute',left:"0",top:"94%",fontSize:"1vw" , color:"black" , background:"green"}} onClick={submit}>Submit All</button>
     </div>
     </>
