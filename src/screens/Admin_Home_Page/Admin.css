@@ -1,6 +1,7 @@
 .h1{
     color: white;
-    font-size: 3vw;
+    font-size: 2.8vw;
+    opacity: 0.8;
     position: absolute;
     left: 40vw;
     top: 1%;
@@ -16,9 +17,10 @@
 }
 
 .header{
-    background-color: #2d3626;
+    background-color: black;
     height: 7vw;
-    margin: 0;
+    border: 1vw solid;
+    box-shadow:0px 3px  white;
 }
 
 button{

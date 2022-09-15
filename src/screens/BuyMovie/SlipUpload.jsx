@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import {storage} from "../../resources/Firebase"
 import {ref , uploadBytes , listAll, getDownloadURL} from "firebase/storage"
 import movieManiaApi from "../../api/movieManiaApi";
-import { Result } from "antd";
+import style from './BuyMovie.module.css';
 
 
 
@@ -96,24 +96,27 @@ function SlipUpload()
 
     return(
         <>
-        <div className="header">
+{/* Header Part */}
+        <div className="header" style={{boxShadow:'2px 5px white'}}>
           <h1 className="h1">UPLOAD SLIP</h1>
-          <h2 className="date">
-          <span style={{ fontWeight: "bold" , fontSize:"1vw"}}>TODAY : </span>
-          {date}
-        </h2>
+        
+       
         </div>
-        <div style={{height:"40vw", width:"100vw", position: "relative", backgroundColor:'#040819'}}>
-            <h3 style={{ fontWeight: "bold" , fontSize:"2vw" ,color:"yellow"}}>Enter Request Code: </h3>
+{/* Content Part */}
+
+        <div style={{height:"40vw", width:"100vw", position: "relative", backgroundColor:'#00010F'}}>
+          <center> <h3 style={{ fontWeight: "450" , fontSize:"1.3vw" ,color:"white", maxWidth:'80vw', paddingTop:'4vw'}}>Enter the request code, which you have obtained from the system, at the moment you made the request. Once you click on "Show Payment" button, you can see the relevant amount. A clear image of payment slip should be uploaded. Finally submit the form and you will receive the movies via the drive link, which you have provided at the request.</h3></center> 
             <br/>
-            <lable style={{ color:"white",position: 'absolute',left:"0",top:"15%",fontSize:"1vw"}}>Request Code</lable>
-            <input style={{ color:"black" ,background:"white",position: 'absolute',width:"20vw",height:"2vw",left:"0",top:"25%",fontSize:"1vw"}} value={code} onChange={(e) => setCode(e.target.value)}></input>
-            <button style={{ color:"black",position: 'absolute', height:"3vw",width:"10vw",left:"0",top:"33%",fontSize:"1vw"}} onClick={showPayment}>Show Payment</button>
+            <hr style={{color:'white'}}/>
+            <br/>
+            <label style={{ color:"yellow",opacity:'0.7',position: 'absolute',paddingLeft:"20vw",top:"38%",fontSize:"1.2vw"}}>Request Code</label>
+            <input style={{ color:"white" ,background:"transparent",borderColor:'#7C7E2E',position: 'absolute',width:"25vw",height:"3vw",marginLeft:"20vw",top:"43%",fontSize:"1.2vw", borderRadius:'0.5vw'}} value={code} onChange={(e) => setCode(e.target.value)}></input>
+            <button style={{ color:"black",position: 'absolute', height:"3vw",width:"10vw",marginLeft:"52vw",fontSize:"1.1vw", marginTop:'1.5vw', backgroundColor:'yellow', fontWeight:'650', opacity:'0.5'}} onClick={showPayment}>Show Payment</button>
           <br></br>
-          <lable style={{ color:"white",position: 'absolute',left:"0",top:"45%",fontSize:"1vw"}}>Slip Image</lable>
-      <input style={{ color:"green",position: 'absolute', height:"2vw",width:"20vw",left:"0",top:"55%",fontSize:"0.8vw"}} type="file"  onChange={(e)=>setImageUpload(e.target.files[0])}></input>
-     <br></br>
-            <button style={{ color:"black",position: 'absolute', height:"3vw",left:"0",top:"70%",fontSize:"1vw"}} onClick={uploadImage}>Submit</button>
+          <label style={{ color:"yellow",opacity:'0.7',position: 'absolute',paddingLeft:"20vw",top:"58%",fontSize:"1.2vw"}}>Slip Image</label>
+          <input style={{ color:"yellow",position: 'absolute', height:"2vw",width:"20vw",marginLeft:"20vw",top:"66%",fontSize:"0.8vw"}} type="file"  onChange={(e)=>setImageUpload(e.target.files[0])}></input>
+          <br></br>
+            <button style={{ backgroundColor:"yellow",opacity:'0.8',borderRadius:'0.5vw',position: 'absolute', height:"3.2vw",marginLeft:"35vw",top:"78%",fontSize:"1.2vw", fontWeight:'650', color:'red'}} onClick={uploadImage}>SUBMIT</button>
         </div>
         </>
     );
