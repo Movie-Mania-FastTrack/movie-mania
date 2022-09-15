@@ -25,6 +25,13 @@ function SlipUpload()
     }
 
     function uploadImage(){
+
+      var validation1 = validateFormRequired()
+      if(!validation1){
+        alert("Please Enter Code First")
+        return
+      }
+
         if(imageUpload == null){
             alert("image havent selected")
             return}
@@ -100,7 +107,7 @@ function SlipUpload()
             <h3 style={{ fontWeight: "bold" , fontSize:"2vw" ,color:"yellow"}}>Enter Request Code: </h3>
             <br/>
             <lable style={{ color:"white",position: 'absolute',left:"0",top:"15%",fontSize:"1vw"}}>Request Code</lable>
-            <input style={{ color:"black",position: 'absolute',width:"20vw",height:"2vw",left:"0",top:"25%",fontSize:"1vw"}} value={code} onChange={(e) => setCode(e.target.value)}></input>
+            <input style={{ color:"black" ,background:"white",position: 'absolute',width:"20vw",height:"2vw",left:"0",top:"25%",fontSize:"1vw"}} value={code} onChange={(e) => setCode(e.target.value)}></input>
             <button style={{ color:"black",position: 'absolute', height:"3vw",width:"10vw",left:"0",top:"33%",fontSize:"1vw"}} onClick={showPayment}>Show Payment</button>
           <br></br>
           <lable style={{ color:"white",position: 'absolute',left:"0",top:"45%",fontSize:"1vw"}}>Slip Image</lable>

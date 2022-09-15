@@ -285,8 +285,8 @@ function moveToSingle(movie){
         <h2 style={{color:"white" , fontSize:"1vw"}}>Not Selected Movies</h2>
         {movies.length!== 0 && slideMovies.map((movie,index)=>(
                     <div style={{position:"absolute",height:'15vw', width:'10vw', borderRadius:'0.9vw',top:"0",left:width*index+2+"vw"}}>
-                      <div style={{position:"absolute",height:'12vw', width:'10vw',backgroundColor:'white', borderRadius:'0.9vw',top:"10%",left:"0"}} > 
-                      <p style={{fontSize:"1vw",color:"red"}}><span style={{color:"blue"}}>name</span> - <b>{movie.name}</b></p>
+                      <div style={{position:"absolute",height:'12vw', width:'10vw',textAlign:"center",backgroundColor:'white', borderRadius:'0.9vw',top:"10%",left:"0"}} > 
+                      <p style={{fontSize:"1vw",color:"red"}}><span style={{color:"blue"}}></span> <b>{movie.name}</b></p>
                     <img style={{position:"absolute",height:'70%', width:'100%',backgroundColor:'white', borderRadius:'0.9vw',top:"30%",left:"0vw"}} src={movie.imageUrl}  onClick={()=>moveToSingle(movie)}></img>
                    </div>
                     <button style={{position:"absolute",height:'2vw', width:'8vw',backgroundColor:'green', borderRadius:'0.9vw',top:"90%",left:"0"}}  onClick={()=>selectMovie(movie.movieId)}>select</button>
@@ -300,8 +300,8 @@ function moveToSingle(movie){
           <h2 style={{color:"white" , fontSize:"1vw"}}>Selected Movies</h2>
           {selectedMovies.length!== 0 && slideMoviesSelected.map((movie,index)=>(
                     <div style={{position:"absolute",height:'15vw', width:'10vw', borderRadius:'0.9vw',top:"0",left:width*index+2+"vw"}}>
-                      <div style={{position:"absolute",height:'12vw', width:'10vw',backgroundColor:'white', borderRadius:'0.9vw',top:"10%",left:"0"}} > 
-                      <p style={{fontSize:"1vw",color:"red"}}><span style={{color:"blue"}}>name</span> - <b>{movie.name}</b></p>
+                      <div style={{position:"absolute",height:'12vw', width:'10vw',textAlign:"center",backgroundColor:'white', borderRadius:'0.9vw',top:"10%",left:"0"}} > 
+                      <p style={{fontSize:"1vw",color:"red"}}><span style={{color:"blue"}}></span> <b>{movie.name}</b></p>
                     <img style={{position:"absolute",height:'70%', width:'100%',backgroundColor:'white', borderRadius:'0.9vw',top:"30%",left:"0vw"}} src={movie.imageUrl}></img>
                   </div>
                     <button style={{position:"absolute",height:'2vw', width:'8vw',backgroundColor:'red', borderRadius:'0.9vw',top:"90%",left:"0"}} onClick={()=>removeMovie(movie.movieId)}>Remove</button>

@@ -137,18 +137,18 @@ function AdminHomePageLayout()
             <button style={{height:'5%', width:"10%", position: 'absolute',left:"20%",top:"0",fontSize:"1vw" , cursor:"pointer"}} onClick={onclickRequest}>Manage Requests</button>
             <label style={{ color:"white",position: 'absolute',left:"0",top:"7%",fontSize:"1vw"}}>Add Admin</label><br></br>
             <label style={{ color:"white",position: 'absolute',left:"0",top:"10%",fontSize:"1vw"}}>username</label><br></br>
-            <input onChange={(e) => setUsername(e.target.value)} placeholder="username" style={{height:'5%', width:"15%", color:"white",position: 'absolute',left:"0",top:"15%",fontSize:"1vw"}}></input><br></br>
+            <input onChange={(e) => setUsername(e.target.value)}  placeholder="username" style={{height:'5%',background:"white", width:"15%", color:"white",position: 'absolute',left:"0",top:"15%",fontSize:"1vw"}}></input><br></br>
             <label style={{ color:"white",position: 'absolute',left:"0",top:"20%",fontSize:"1vw"}}>password</label><br></br>
-            <input  style={{height:'5%', width:"15%", color:"black",position: 'absolute',left:"0",top:"25%",fontSize:"1vw"}} onChange={(e)=>setPassword(e.target.value)} placeholder="password"></input><button style={{height:'5%', cursor:"pointer", width:"10%", position: 'absolute',left:"18%",top:"25%",fontSize:"1vw"}} onClick={addAdmin}>Add Admin</button><br></br>
+            <input  style={{height:'5%',background:"white", width:"15%", color:"black",position: 'absolute',left:"0",top:"25%",fontSize:"1vw"}} onChange={(e)=>setPassword(e.target.value)} placeholder="password"></input><button style={{height:'5%', cursor:"pointer", width:"10%", position: 'absolute',left:"18%",top:"25%",fontSize:"1vw"}} onClick={addAdmin}>Add Admin</button><br></br>
             <label style={{ color:"white",position: 'absolute',left:"0",top:"32%",fontSize:"1vw"}} >Change Admin</label><br></br>
             <label style={{ color:"white",position: 'absolute',left:"0",top:"35%",fontSize:"1vw"}}>OldUsername</label><br></br>
-            <input placeholder="Oldusername" style={{height:'5%', width:"15%", color:"black",position: 'absolute',left:"0",top:"40%",fontSize:"1vw"}} onChange={(e)=>setOldusername(e.target.value)}></input><br></br>
+            <input placeholder="Oldusername" style={{height:'5%',background:"white", width:"15%", color:"black",position: 'absolute',left:"0",top:"40%",fontSize:"1vw"}} onChange={(e)=>setOldusername(e.target.value)}></input><br></br>
             <label style={{ color:"white",position: 'absolute',left:"0",top:"45%",fontSize:"1vw"}}>OldPassword</label><br></br>
-            <input placeholder="Oldpassword" style={{height:'5%', width:"15%", color:"black",position: 'absolute',left:"0",top:"50%",fontSize:"1vw"}} onChange={(e)=>setOldPassword(e.target.value)}></input><br></br>
+            <input placeholder="Oldpassword" style={{height:'5%',background:"white", width:"15%", color:"black",position: 'absolute',left:"0",top:"50%",fontSize:"1vw"}} onChange={(e)=>setOldPassword(e.target.value)}></input><br></br>
             <label style={{ color:"white",position: 'absolute',left:"0",top:"55%",fontSize:"1vw"}}>NewUsername</label><br></br>
-            <input placeholder="Newusername" style={{height:'5%', width:"15%", color:"black",position: 'absolute',left:"0",top:"60%",fontSize:"1vw"}} onChange={(e)=>setUsername(e.target.value)}></input><br></br>
+            <input placeholder="Newusername" style={{height:'5%',background:"white", width:"15%", color:"black",position: 'absolute',left:"0",top:"60%",fontSize:"1vw"}} onChange={(e)=>setUsername(e.target.value)}></input><br></br>
             <label style={{ color:"white",position: 'absolute',left:"0",top:"65%",fontSize:"1vw"}}>NewPassword</label><br></br>
-            <input placeholder="Newpassword" style={{height:'5%', width:"15%", color:"black",position: 'absolute',left:"0",top:"70%",fontSize:"1vw"}}s onChange={(e)=>setPassword(e.target.value)}></input><button style={{height:'5%', width:"10%", cursor:"pointer" ,position: 'absolute',left:"18%",top:"70%",fontSize:"1vw"}} onClick={changeAdmin}>Change Admin</button><br></br>
+            <input placeholder="Newpassword" style={{height:'5%',background:"white", width:"15%", color:"black",position: 'absolute',left:"0",top:"70%",fontSize:"1vw"}}s onChange={(e)=>setPassword(e.target.value)}></input><button style={{height:'5%', width:"10%", cursor:"pointer" ,position: 'absolute',left:"18%",top:"70%",fontSize:"1vw"}} onClick={changeAdmin}>Change Admin</button><br></br>
 
         </div>
 

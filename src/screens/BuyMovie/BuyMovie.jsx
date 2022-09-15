@@ -167,7 +167,7 @@ function BuyMovie() {
               })
               .then((res2) => { 
               if(i==movies.length-1){
-                alert(res2.data)
+                alert("Successfully Added & Your Code Is -: "+res2.data)
                 
               }
                 
@@ -180,6 +180,7 @@ function BuyMovie() {
             }
 
             alert("Your Full Payment For This Request : "+selectPrice)
+            window.location.reload()
             
           }
       })
@@ -226,7 +227,7 @@ function BuyMovie() {
               })
               .then((res2) => { 
               if(i==movies.length-1){
-                alert(res2.data)
+                alert("Successfully Added & Your Code Is -: "+res2.data)
                 
               }
                 
@@ -239,7 +240,7 @@ function BuyMovie() {
             }
 
             alert("Your Full Payment For This Request : "+selectPrice)
-            
+            window.location.reload()
           }
       })
       // Catch errors if any
@@ -440,8 +441,21 @@ function BuyMovie() {
       }
     }
 
+    function contactValidation(){
+      if(contact.length!=10){
+        return false
+      }
+      return true
+    }
+
     function submit(){
       var emailValidity = ValidateEmail(customerEmail)
+      var contactValidity = contactValidation()
+
+      if(!contactValidity){
+        alert("Error Contact Type Contact Length 10 Characters")
+        return
+      }
       if(!emailValidity){
         alert("Error Email Type")
         return
@@ -462,6 +476,7 @@ function BuyMovie() {
         }
         addPayableRequest()
       }
+      navigate("/")
     }
 
     function moveToSingle(movie){
@@ -477,7 +492,7 @@ function BuyMovie() {
 return(
   <>
    <div className="header">
-          <h1 className="h1">SELECT MORE MOVIES</h1>
+          <h1 className="h1">BUY MOVIES</h1>
           <h2 className="date">
           <span style={{ fontWeight: "bold" , fontSize:"1vw"}}>TODAY : </span>
           {date}
@@ -488,8 +503,8 @@ return(
           <h2 style={{color:"white" , fontSize:"1vw"}}>Selected Movies</h2>
           {selectedMovies.length!== 0 && slideMoviesSelected.map((movie,index)=>(
                     <div style={{position:"absolute",height:'15vw', width:'10vw', borderRadius:'0.9vw',top:"0",left:width*index+2+"vw"}} onClick={()=>moveToSingle(movie)}>
-                      <div style={{position:"absolute",height:'12vw', width:'10vw',backgroundColor:'white', borderRadius:'0.9vw',top:"10%",left:"0"}} > 
-                      <p style={{fontSize:"1vw",color:"red"}}><span style={{color:"blue"}}>name</span> - <b>{movie.name}</b></p>
+                      <div style={{position:"absolute",height:'12vw', width:'10vw',textAlign:"center",backgroundColor:'white', borderRadius:'0.9vw',top:"10%",left:"0"}} > 
+                      <p style={{fontSize:"1vw",color:"red"}}><span style={{color:"blue"}}></span> <b>{movie.name}</b></p>
                     <img style={{position:"absolute",height:'70%', width:'100%',backgroundColor:'white', borderRadius:'0.9vw',top:"30%",left:"0vw"}} src={movie.imageUrl}></img>
                   </div>
                     </div>
@@ -499,8 +514,8 @@ return(
               <div style={{fontSize:'2.4vw', color:'black',position:"absolute",background:"#676523",width:"3vw",height:"3vw",borderWidth:"10px",borderColor:"red",borderRadius:"100%",left:"-3vw", padding:'1vw 0px 0px 1vw', opacity:'0.8' , cursor:"pointer"}} onClick={movePreviosSlideSelected}><b style={{position:"absolute",left:"29%",top:"-24%"}}>{'<'}</b></div>
         </div>:<div style={{height:"15vw", width:"100vw", position: 'absolute', backgroundColor:'#040819',top:"0",left:"5vw"}}>
         <h2 style={{color:"white" , fontSize:"1vw"}}>Selected Movies</h2>
-        <div style={{position:"absolute",height:'12vw', width:'10vw',backgroundColor:'white', borderRadius:'0.9vw',top:"10%",left:"0"}} onClick={()=>moveToSingle(movie)}> 
-                      <p style={{fontSize:"1vw",color:"red"}}><span style={{color:"blue"}}>name</span> - <b>{movie.name}</b></p>
+        <div style={{position:"absolute",height:'12vw', width:'10vw',backgroundColor:'white',textAlign:"center", borderRadius:'0.9vw',top:"10%",left:"0"}} onClick={()=>moveToSingle(movie)}> 
+                      <p style={{fontSize:"1vw",color:"red"}}><span style={{color:"blue"}}></span> <b>{movie.name}</b></p>
                     <img style={{position:"absolute",height:'70%', width:'100%',backgroundColor:'white', borderRadius:'0.9vw',top:"30%",left:"0vw"}} src={movie.imageUrl}></img>
                   </div>
           </div>}

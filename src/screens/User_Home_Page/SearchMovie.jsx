@@ -142,11 +142,11 @@ function SearchMovies (movieImage)
        
        <div>
        <lable style={{ color:"#FFF504",position: 'absolute',left:"-3vw",top:"0",fontSize:"2vw"}}>Search Movie</lable>
-      <input style={{ color:"black",position: 'absolute',left:"0",top:"20%",fontSize:"1vw"}}  onChange={(e) => serachMoviesByName(e.target.value)} placeholder="Enter Key"></input>
+      <input style={{ color:"black",background:"white",position: 'absolute',left:"0",top:"18%",fontSize:"1vw",width:'10vw',height:"2vw"}}  onChange={(e) => serachMoviesByName(e.target.value)} placeholder="Enter Key"></input>
      
       {searchMovies.length!== 0 && slideMovies.map((movie,index)=>(
-                    <div style={{position:"absolute",height:'12vw', width:'10vw',backgroundColor:'white', borderRadius:'0.9vw',top:"35%",left:width*index+2+"vw"}} onClick={()=>moveToSingle(movie)}> 
-                     <p style={{fontSize:"1vw",color:"red"}}><span style={{color:"blue"}}>name</span> - <b>{movie.name}</b></p>
+                    <div style={{position:"absolute",height:'12vw', width:'10vw',textAlign:"center",backgroundColor:'white', borderRadius:'0.9vw',top:"45%",left:width*index+2+"vw"}} onClick={()=>moveToSingle(movie)}> 
+                     <p style={{fontSize:"1vw",color:"red"}}><span style={{color:"blue"}}></span> <b>{movie.name}</b></p>
                     <img style={{position:"absolute",height:'70%', width:'100%',backgroundColor:'white', borderRadius:'0.9vw',top:"30%",left:"0vw"}} src={movie.imageUrl}></img>
                     </div>
                 ))}

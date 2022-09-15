@@ -152,8 +152,8 @@ function RecentMovieCard (movieImage)
                     <div style={{position:"absolute",height:'12vw', width:'100vw',top:height*index+2+"vw",left:"0"}}>
                         {movieList.map((movie,index)=>(
 
-<div style={{position:"absolute",height:'12vw', width:'10vw',backgroundColor:'white', borderRadius:'0.9vw',top:"0",left:width*index+2+"vw"}} onClick={()=>moveToSingle(movie)}> 
-<p style={{fontSize:"1vw",color:"red"}}><span style={{color:"blue"}}>name</span> - <b>{movie.name}</b></p>
+<div style={{position:"absolute",height:'12vw', width:'10vw',backgroundColor:'white',textAlign:"center", borderRadius:'0.9vw',top:"0",left:width*index+2+"vw"}} onClick={()=>moveToSingle(movie)}> 
+<p style={{fontSize:"1vw",color:"red"}}><span style={{color:"blue"}}></span> <b>{movie.name}</b></p>
 <img style={{position:"absolute",height:'70%', width:'100%',backgroundColor:'white', borderRadius:'0.9vw',top:"30%",left:"0vw"}} src={movie.imageUrl}></img>
 </div>
 

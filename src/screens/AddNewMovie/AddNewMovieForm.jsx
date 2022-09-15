@@ -82,6 +82,13 @@ function checkUrls(){
   return true
 }
 
+function checkStoryLength(){
+  if(story.length>240){
+    return false
+  }
+  return true
+}
+
 function addMovie(){
   
   alert(imageUrl)
@@ -89,6 +96,7 @@ function addMovie(){
   alert(characters)
   var validation1 = checkUrls()
   var validation2 = validateFormRequired()
+  var validation3 = checkStoryLength()
 
   if(!validation1){
     alert("Enter Three Files First")
@@ -96,6 +104,11 @@ function addMovie(){
   }
   if(!validation2){
     alert("Please Complete Full Form")
+    return
+  }
+  if(!validation3){
+    alert("Story Length has exceeded")
+    alert("Maximum length of story is 240 characters")
     return
   }
     const movie = {name : name , story : story , category, imageUrl , launchingImageUrl , trailerLink , actors , price}
@@ -225,7 +238,7 @@ console.log(err)
         <div style={{height:"40vw", width:"100vw", position: 'absolute', backgroundColor:'#040819'}}>
       <h2 className={formStyles.heading} style={{fontSize:"1.4vw",color:"white"}}>Add New Movie</h2>
       <label style={{ color:"white",position: 'absolute',left:"0",top:"5%",fontSize:"1vw"}} >Category</label><br></br>
-                <select name="Category" id="cate" style={{ color:"black",position: 'absolute',left:"0",top:"10%",fontSize:"1vw"}}
+                <select name="Category" id="cate" style={{ color:"black",background:"white",position: 'absolute',left:"0",top:"10%",fontSize:"1vw"}}
                 value={category}
                 onChange={(e)=>setCategory(e.target.value)}
                 >
@@ -234,15 +247,15 @@ console.log(err)
  
 </select>
       <lable style={{ color:"white",position: 'absolute',left:"0",top:"15%",fontSize:"1vw"}}>Movie Category</lable>
-      <input style={{ color:"black",position: 'absolute',left:"0",top:"20%",fontSize:"1vw"}} value={category} onChange={(e) => setCategory(e.target.value)}></input>
+      <input style={{ color:"black",background:"white",position: 'absolute',left:"0",top:"20%",fontSize:"1vw"}} value={category} onChange={(e) => setCategory(e.target.value)}></input>
       <lable style={{ color:"white",position: 'absolute',left:"0",top:"25%",fontSize:"1vw"}}>Movie Name</lable>
-      <input style={{ color:"black",position: 'absolute',left:"0",top:"30%",fontSize:"1vw"}} onChange={(e) => setName(e.target.value)}></input>
+      <input style={{ color:"black",background:"white",position: 'absolute',left:"0",top:"30%",fontSize:"1vw"}} onChange={(e) => setName(e.target.value)}></input>
       <label style={{ color:"white",position: 'absolute',left:"0",top:"35%",fontSize:"1vw"}}>Story</label>
-      <input  style={{ color:"black",position: 'absolute',left:"0",top:"40%",fontSize:"1vw"}} onChange={(e) => setStory(e.target.value)}></input>
+      <input  style={{ color:"black",background:"white",position: 'absolute',left:"0",top:"40%",fontSize:"1vw"}} onChange={(e) => setStory(e.target.value)}></input>
       <lable style={{ color:"white",position: 'absolute',left:"0",top:"45%",fontSize:"1vw"}}>Price</lable>
-      <input style={{ color:"black",position: 'absolute',left:"0",top:"50%",fontSize:"1vw"}} type="number" onChange={(e) => setPrice(e.target.value)}></input>
+      <input style={{ color:"black",background:"white",position: 'absolute',left:"0",top:"50%",fontSize:"1vw"}} type="number" onChange={(e) => setPrice(e.target.value)}></input>
       <lable style={{ color:"white",position: 'absolute',left:"0",top:"55%",fontSize:"1vw"}} >Actor</lable>
-      <input style={{ color:"black",position: 'absolute',left:"0",top:"60%",fontSize:"1vw"}} onChange={(e) => setActors(e.target.value)}></input>
+      <input style={{ color:"black",background:"white",position: 'absolute',left:"0",top:"60%",fontSize:"1vw"}} onChange={(e) => setActors(e.target.value)}></input>
       <button style={{ color:"white",position: 'absolute',left:"0",top:"67%",fontSize:"1vw" , color:"black",background:"yellow"}} onClick={addCharacter}>Add Actor</button>
       <lable style={{ color:"white",position: 'absolute',left:"0",top:"75%",fontSize:"1vw"}}>Movie Image</lable>
       <input style={{ color:"white",position: 'absolute',left:"0",top:"80%",fontSize:"1vw"}} type="file" onChange={(e) => setImageUpload(e.target.files[0])}></input>

@@ -1,12 +1,12 @@
 import React from "react";
-import AddNewMovieForm from "./AddNewMovieForm";
+import MovieRequest from "./MovieRequest";
 import Screen_Layout from "../common_components/ScreenLayout";
 import { useState } from "react";
 import movieManiaApi from "../../api/movieManiaApi";
 import { useEffect } from "react";
 import LoginErrorPage from "../LoginErrorPage";
 
-function AddNewMovieScreen() {
+function MovieRequestScreen() {
 
   const[valid,setValid]=useState(false)
 
@@ -51,12 +51,12 @@ function AddNewMovieScreen() {
   return (
     <>
     {valid?<div>
-      {<AddNewMovieForm></AddNewMovieForm>}
+      {<MovieRequest></MovieRequest>}
     </div>:<div>
-      {<LoginErrorPage></LoginErrorPage>}
+    {<LoginErrorPage></LoginErrorPage>}
       </div>}
     </>
   );
 }
 
-export default AddNewMovieScreen;
+export default MovieRequestScreen;

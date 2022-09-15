@@ -131,11 +131,12 @@ function MovieRequest(requestID)
     }
 
     function showConfirm(id){
-        movieManiaApi.put("/setShow"+id,{
+        movieManiaApi.put("/setShow/"+id,{
           headers:{"header":releaseToken()}
         })
         .then((res) => { 
           alert(res.data)
+          window.location.reload()
       })
   
     // Catch errors if any
@@ -145,11 +146,12 @@ function MovieRequest(requestID)
     }
 
     function sendCustomerUploadMail(code){
-        movieManiaApi.get("/sendUploadMail"+code,{
+        movieManiaApi.get("/sendUploadMail/"+code,{
           headers:{"header":releaseToken()}
         })
         .then((res) => { 
           alert(res.data)
+          window.location.reload()
       })
   
     // Catch errors if any
@@ -159,11 +161,12 @@ function MovieRequest(requestID)
     }
 
     function sendUploadMail(){
-      movieManiaApi.get("/sendUploadMail"+code,{
+      movieManiaApi.get("/sendUploadMail/"+code,{
         headers:{"header":releaseToken()}
       })
       .then((res) => { 
         alert(res.data)
+        window.location.reload()
     })
 
   // Catch errors if any
@@ -178,6 +181,7 @@ function MovieRequest(requestID)
         })
         .then((res) => { 
           alert(res.data)
+          window.location.reload()
       })
   
     // Catch errors if any
@@ -199,6 +203,7 @@ function MovieRequest(requestID)
         })
         .then((res) => { 
           alert(res.data)
+          window.location.reload()
       })
   
     // Catch errors if any
@@ -352,7 +357,7 @@ function MovieRequest(requestID)
             <Row><img src={request.request.slipUrl}></img></Row>
  
             <button onClick={()=>confirmReq(request.request.requestId)}>Confirm</button>
-            <button onClick={()=>sendCustomerUploadMail(request.request.code)}>Send Upload Email</button>
+            <button style={{fontSize:"1vw",height:"2vw",width:"12vw"}} onClick={()=>sendCustomerUploadMail(request.request.code)}>Send Upload Email</button>
       
  </div>
           ))}
@@ -412,9 +417,9 @@ function MovieRequest(requestID)
 
             {reasonLogic&&<div style={{height:"7vw",width:"30vw",position:"absolute",right:"0",background:"blue" , top:"0"}}>
   <label>Reason</label>
-  <input value={reason} onChange={(e) => setReason(e.target.value)}></input>
-  <button onClick={()=>rejectReq(request.request.requestId)}>Reject</button>
-  <button onClick={cancleReject}>Cancel</button>
+  <input style={{fontSize:"1vw",height:"2vw",width:"16vw",position:"absolute"}} value={reason} onChange={(e) => setReason(e.target.value)}></input>
+  <button style={{fontSize:"1vw",height:"2vw",width:"8vw",position:"absolute",top:"2vw",left:"0"}} onClick={()=>rejectReq(request.request.requestId)}>Reject</button>
+  <button style={{fontSize:"1vw",height:"2vw",width:"8vw",position:"absolute",top:"2vw",left:"8vw"}} onClick={cancleReject}>Cancel</button>
   </div>}
  </div>
           ))}
