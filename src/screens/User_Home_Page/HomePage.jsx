@@ -10,6 +10,7 @@ import RecentMovieCardCopy from './RecentMovieCard'
 import SearchMovies from './SearchMovie'
 import HomePageStyles from "./HomePage.module.css";
 import admin from '../../resources/images/admin.png';
+import logo from '../../resources/images/logo.jpg';
 
 function HomePage()
 {
@@ -237,45 +238,75 @@ function HomePage()
 
     return(
         <>
-        <div style={{position:"absolute" , width:"100vw" , height:height+"vw", background:"rgb(10, 9, 9)"}}>
+        <div style={{position:"absolute" , width:"100vw" , height:'auto', backgroundColor:"#00010F"}}>
+        {/* changed this - height+"vw" */}
+
             {/* Nav Bar */}
             <div className={HomePageStyles.navBar}>
                 <Row style={{height:'17vw'}}>
                   <Col span={1}></Col>
                   <Col span={22}><SearchMovies/></Col>
                 </Row>
-                
-
-
             </div>
 
             {/* Top Rated */}
             <div className={HomePageStyles.topRated}>
-                <h2 style={{color:'#FFF504', textAlign:'left', paddingLeft:'1vw', fontSize:"2vw"}}>Top Rated Movies</h2>
+                <h2 style={{color:'#FFF504', textAlign:'left', paddingLeft:'5vw', fontSize:"1.6vw", opacity:'0.9'}}>Top Rated Movies</h2>
                 <Row>
                 <Col span={1}></Col>
                     <Col span={22}><TopRatedMovieCard/></Col>
                     <Col span={1}></Col>
                 </Row>
             </div>
-            {/* Recent Movies */}
-            
+            <div style={{height:'2vw'}}></div>
+            {/* Recent Movies */}       
             <div className={HomePageStyles.recentMovies}>
-              <p></p>
-            <h2 style={{color:'#FFF504', textAlign:'left', paddingLeft:'1vw', fontSize:"2vw"}}>Recent Movies</h2>
+              
+            <h2 style={{color:'#FFF504', textAlign:'left', padding:'3vw 0vw 0vw 5vw', fontSize:"1.6vw", opacity:'0.9'}}>Recent Movies</h2>
                 <Row>
                     <Col span={1}></Col>
                     <Col span={22} style={{width:'6'}}><RecentMovieCardCopy/></Col>
                     <Col span={1}></Col>
                 </Row>
+                </div>
+           
+                {/* Company Detail Content */}
+                <div className={HomePageStyles.detailContent}>
+                <hr style={{color:'white'}}/>
+                  <div style={{height:'60vw'}}>
+                   <center><img src={logo} style={{height:'15vw', width:'18vw', marginTop:'2vw'}}></img></center>   
+                   <center><h4 style={{color:'white', fontSize:'1.5vw', paddingTop:'2vw'}}>Fast Track Computers</h4></center>
+                   <center> <p style={{maxWidth:'85vw', color:'#E8E6E6', fontSize:'1.2vw'}}>
+                    Most people today use computers either at work or at home. It is important that people have a quality resource for buying and servicing those computers. Eagle Computers will provide the West Hawaii community with just such a quality resource – a one-stop shop for IBM-compatible computers. Eagle Computers will offer the following products and services with excellent customer service in a friendly, professional, and pleasant environment
+                    </p></center>
+
+                    
+                   <center><h4 style={{color:'white', fontSize:'1.4vw', paddingTop:'4vw'}}>Our Services</h4>
+ 
+                    <ul style={{listStyle:'none', marginTop:'2.5vw', lineHeight:'3vw'}}>
+                      <li style={{color:'#E8E6E6', fontSize:'1.2vw'}}> CCTV </li>
+                      <li style={{color:'#E8E6E6', fontSize:'1.2vw'}}> Software Solutions </li>
+                      <li style={{color:'#E8E6E6', fontSize:'1.2vw'}}> Hardware Solutions </li>
+                      <li style={{color:'#E8E6E6', fontSize:'1.2vw'}}> Laptop Repair </li>
+                      <li style={{color:'#E8E6E6', fontSize:'1.2vw'}}> CD/DVD Retailer </li>
+                    </ul></center>
+                  </div>
+
+                </div>
+
+
+
+
+
                 {/* Footer */}
                 <div className={HomePageStyles.footer}>
                     <Row>
-                        <Col span={10}><h4 style={{color:'white', opacity:'0.7', paddingLeft:'1vw', fontSize:"1vw"}}>Website <br/> www.fasttrack.com</h4></Col>
+                        <Col span={10}><h4 style={{color:'white', opacity:'0.7', paddingLeft:'1vw', fontSize:"1vw"}}>Facebook </h4>
+                      <a href="https://www.facebook.com/pages/category/Computer-Repair-Service/Fast-Track-Computer-Solution-102307735059838/"> <h4 style={{color:'white', opacity:'0.7', paddingLeft:'1vw', fontSize:"1.1vw"}}> Fast Track Computer Solution</h4></a> </Col>
                         <Col span={8}><h4 style={{color:'white', opacity:'0.7', fontSize:"1vw"}}>Fast Track Computers <br/> Negombo Rd, Narammala.</h4></Col>
                         <Col span={4}><h4 style={{color:'white', opacity:'0.7', fontSize:"1vw"}}>Contact   <br/> +94 77 158 1542 <br/> +94 77 158 1542</h4></Col>
                         <Col span={2}>
-                         <button style={{height:'2vw', width:'2vw', opacity:'0.2', marginTop:'0.3vw'}} onClick={showModal}><img src={admin} style={{height:'2vw', width:'2vw'}}></img></button>  
+                        <img src={admin} style={{height:'2vw', width:'2vw', opacity:'0.4', marginTop:'1.6vw'}} onClick={showModal}></img>
                          <Modal 
                          style={{height:'30vw', width:'60vw', borderRadius:'1vw', backgroundColor:'wheat',fontSize:"1vw"}}
                          title="Login" visible={isModalVisible} onOk={Login}  onCancel={handleCancle}>
@@ -296,7 +327,7 @@ function HomePage()
                         </Col>
                     </Row>
                 </div>
-            </div>
+           
         </div>
         </>
     );

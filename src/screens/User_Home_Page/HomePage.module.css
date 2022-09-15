@@ -10,10 +10,18 @@
 }
 
 .navBar{
-    height:20vw;
+    height:30vw;
     width:100%;
     position:relative;
     /* background-image: url("../../resources/images/MovieMania.png"); */
+}
+
+.detailContent{
+    height: auto;
+    width: 100vw;
+    top: 40vw;
+    background-color: #00010F;
+    position: relative;
 }
 
 .topRated{
@@ -23,17 +31,17 @@
 }
 
 .recentMovies{
-    height:15vw;
+    height:auto;
     width:100%;
     position:relative;
 }
 
 .footer{
-    height: 5vw;
+    height: 8vw;
     width: 100%;
-    top:92%;
+    top:90%;
     position: fixed;
-    background-color: rgb(4, 4, 31);
+    background-color:rgba(0, 0, 0, 0.397);
 }
 
 .categoryBtn{
