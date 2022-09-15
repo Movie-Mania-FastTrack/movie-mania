@@ -141,17 +141,17 @@ function SearchMovies (movieImage)
         <>
        
        <div>
-       <lable style={{ color:"#FFF504",position: 'absolute',left:"-3vw",top:"0",fontSize:"2vw"}}>Search Movie</lable>
-      <input style={{ color:"black",background:"white",position: 'absolute',left:"0",top:"18%",fontSize:"1vw",width:'10vw',height:"2vw"}}  onChange={(e) => serachMoviesByName(e.target.value)} placeholder="Enter Key"></input>
+       <label style={{ color:"#FFF504",position: 'absolute',margin:'4vw 0vw 0vw 24vw',opacity:'0.6',fontSize:"1.5vw"}}>Search your favourite</label>
+      <input style={{ color:"white",border:'1vw',borderColor:'yellow',backgroundColor:"transparent",position: 'absolute',margin:'4vw 0vw 0vw 40vw',fontSize:"1.2vw",width:'25vw',height:"3.2vw", borderRadius:'0.5vw'}}  onChange={(e) => serachMoviesByName(e.target.value)} placeholder="Enter Movie..."></input>
      
       {searchMovies.length!== 0 && slideMovies.map((movie,index)=>(
-                    <div style={{position:"absolute",height:'12vw', width:'10vw',textAlign:"center",backgroundColor:'white', borderRadius:'0.9vw',top:"45%",left:width*index+2+"vw"}} onClick={()=>moveToSingle(movie)}> 
-                     <p style={{fontSize:"1vw",color:"red"}}><span style={{color:"blue"}}></span> <b>{movie.name}</b></p>
+                    <div style={{position:"absolute",height:'12vw', width:'10vw',textAlign:"center",backgroundColor:'yellow', opacity:'0.7', borderRadius:'0.9vw',top:"70%", boxShadow:'0.1vw 0.1vw #656568',left:width*index+2+"vw"}} onClick={()=>moveToSingle(movie)}> 
+                     <p style={{fontSize:"1.1vw",color:"#01011B", fontWeight:'550'}}><b>{movie.name}</b></p>
                     <img style={{position:"absolute",height:'70%', width:'100%',backgroundColor:'white', borderRadius:'0.9vw',top:"30%",left:"0vw"}} src={movie.imageUrl}></img>
                     </div>
                 ))}
-                <div style={{fontSize:'2.4vw', color:'black',position:"absolute",background:"#676523",width:"3vw",height:"3vw",borderWidth:"10px",borderColor:"red",borderRadius:"100%",right:"0",top:"35%", padding:'1vw 0px 0px 1vw', opacity:'0.8' , cursor:"pointer"}} onClick={moveNextSlide}><b style={{position:"absolute",left:"29%",top:"-24%"}}>{'>'}</b></div>
-              <div style={{fontSize:'2.4vw', color:'black',position:"absolute",background:"#676523",width:"3vw",height:"3vw",borderWidth:"10px",borderColor:"red",borderRadius:"100%",left:"-3vw",top:"35%", padding:'1vw 0px 0px 1vw', opacity:'0.8' , cursor:"pointer"}} onClick={movePreviosSlide}><b style={{position:"absolute",left:"29%",top:"-24%"}}>{'<'}</b></div>
+                <div style={{fontSize:'2.4vw', color:'black',position:"absolute",background:"#676523",width:"3vw",height:"3vw",borderWidth:"10px",borderColor:"red",borderRadius:"100%",right:"0",top:"90%", padding:'1vw 0px 0px 1vw', opacity:'0.8' , cursor:"pointer"}} onClick={moveNextSlide}><b style={{position:"absolute",left:"29%",top:"-24%"}}>{'>'}</b></div>
+              <div style={{fontSize:'2.4vw', color:'black',position:"absolute",background:"#676523",width:"3vw",height:"3vw",borderWidth:"10px",borderColor:"red",borderRadius:"100%",left:"-3vw",top:"90%", padding:'1vw 0px 0px 1vw', opacity:'0.8' , cursor:"pointer"}} onClick={movePreviosSlide}><b style={{position:"absolute",left:"29%",top:"-24%"}}>{'<'}</b></div>
               
                 </div>
          
