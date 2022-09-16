@@ -7,10 +7,11 @@ import {useNavigate} from 'react-router-dom';
 import movieManiaApi from "../../api/movieManiaApi";
 import TopRatedMovieCard from './TopRatedMovieCard';
 import RecentMovieCardCopy from './RecentMovieCard'
+import ShopDescription from './ShopDescription'
 import SearchMovies from './SearchMovie'
 import HomePageStyles from "./HomePage.module.css";
 import admin from '../../resources/images/admin.png';
-import logo from '../../resources/images/logo.jpg';
+
 
 function HomePage()
 {
@@ -24,7 +25,7 @@ function HomePage()
     const[movies , setMovies] = useState([])
     const[adminMails , setAdminMails] = useState([])
     const[email,setEmail] = useState("")
-    const[height , setHeight] = useState(55)
+    const[height , setHeight] = useState(75)
     
     const navigate = useNavigate();
 
@@ -238,7 +239,7 @@ function HomePage()
 
     return(
         <>
-        <div style={{position:"absolute" , width:"100vw" , height:'auto', backgroundColor:"#00010F"}}>
+        <div style={{position:"absolute" , width:"100vw" , height:height+"vw", backgroundColor:"#00010F"}}>
         {/* changed this - height+"vw" */}
 
             {/* Nav Bar */}
@@ -269,32 +270,17 @@ function HomePage()
                     <Col span={1}></Col>
                 </Row>
                 </div>
-           
-                {/* Company Detail Content */}
-                <div className={HomePageStyles.detailContent}>
-                <hr style={{color:'white'}}/>
-                  <div style={{height:'60vw'}}>
-                   <center><img src={logo} style={{height:'15vw', width:'18vw', marginTop:'2vw'}}></img></center>   
-                   <center><h4 style={{color:'white', fontSize:'1.5vw', paddingTop:'2vw'}}>Fast Track Computers</h4></center>
-                   <center> <p style={{maxWidth:'85vw', color:'#E8E6E6', fontSize:'1.2vw'}}>
-                    Most people today use computers either at work or at home. It is important that people have a quality resource for buying and servicing those computers. Eagle Computers will provide the West Hawaii community with just such a quality resource – a one-stop shop for IBM-compatible computers. Eagle Computers will offer the following products and services with excellent customer service in a friendly, professional, and pleasant environment
-                    </p></center>
-
+         
+             {/* Shop Description */}
+             <div style={{position:"absolute",top:height+"vw"}}>
+              
+             
+                  <Row>
                     
-                   <center><h4 style={{color:'white', fontSize:'1.4vw', paddingTop:'4vw'}}>Our Services</h4>
- 
-                    <ul style={{listStyle:'none', marginTop:'2.5vw', lineHeight:'3vw'}}>
-                      <li style={{color:'#E8E6E6', fontSize:'1.2vw'}}> CCTV </li>
-                      <li style={{color:'#E8E6E6', fontSize:'1.2vw'}}> Software Solutions </li>
-                      <li style={{color:'#E8E6E6', fontSize:'1.2vw'}}> Hardware Solutions </li>
-                      <li style={{color:'#E8E6E6', fontSize:'1.2vw'}}> Laptop Repair </li>
-                      <li style={{color:'#E8E6E6', fontSize:'1.2vw'}}> CD/DVD Retailer </li>
-                    </ul></center>
+                      <Col span={24} ><ShopDescription/></Col>
+                      
+                  </Row>
                   </div>
-
-                </div>
-
-
 
 
 
