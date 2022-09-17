@@ -492,12 +492,12 @@ function BuyMovie() {
 return(
   <>
    <div className="header">
-          <h1 className="h1" style={{boxShadow:'2px 5px white'}}>BUY MOVIES</h1>
+          <h1 className="h1" >BUY MOVIES</h1>
        
         </div>
-        <div style={{height:"50vw", width:"100vw", position: 'absolute', backgroundColor:'#040819'}}>
+        <div style={{height:"50vw", width:"100vw", position: 'absolute', backgroundColor:'#00010F'}}>
         {moreMovies?<div style={{height:"15vw", width:"100vw", position: 'absolute', backgroundColor:'#040819',top:"0",left:"5vw"}}>
-          <h2 style={{color:"white" , fontSize:"1vw"}}>Selected Movies</h2>
+          <h2 style={{color:"yellow" , fontSize:"1.3vw", opacity:'0.5'}}>Selected Movies</h2>
           {selectedMovies.length!== 0 && slideMoviesSelected.map((movie,index)=>(
                     <div style={{position:"absolute",height:'15vw', width:'10vw', borderRadius:'0.9vw',top:"0",left:width*index+2+"vw"}} onClick={()=>moveToSingle(movie)}>
                       <div style={{position:"absolute",height:'12vw', width:'10vw',textAlign:"center",backgroundColor:'white', borderRadius:'0.9vw',top:"10%",left:"0"}} > 
@@ -516,16 +516,16 @@ return(
                     <img style={{position:"absolute",height:'70%', width:'100%',backgroundColor:'white', borderRadius:'0.9vw',top:"30%",left:"0vw"}} src={movie.imageUrl}></img>
                   </div>
           </div>}
-        <div div style={{height:"32vw", width:"100vw", position: 'absolute', backgroundColor:'#040819',top:"18vw",left:"5vw"}}>
-          <button style={{position:"absolute",width:"10vw",height:"2vw",top:"0",left:"0",background:"yellow"}} onClick={addMultipleMovies}>Add More Movies</button>
-          <lable style={{ color:"white",position: 'absolute',left:"0",top:"15%",fontSize:"1vw"}}>Name :</lable>
-      <input style={{ color:"black",position: 'absolute',left:"0",top:"22%",fontSize:"1vw"}} value={customerName} onChange={(e) => setCustomerName(e.target.value)}></input>
-      <lable style={{ color:"white",position: 'absolute',left:"0",top:"29%",fontSize:"1vw"}}>Contact No :</lable>
-      <input style={{ color:"black",position: 'absolute',left:"0",top:"36%",fontSize:"1vw"}} type="number" value={contact} onChange={(e) => setContact(e.target.value)}></input>
-      <lable style={{ color:"white",position: 'absolute',left:"0",top:"43%",fontSize:"1vw"}}>Email Address :</lable>
-      <input style={{ color:"black",position: 'absolute',left:"0",top:"50%",fontSize:"1vw"}} value={customerEmail} onChange={(e) => setCustomerEmail(e.target.value)}></input>
-      <label style={{ color:"white",position: 'absolute',left:"0",top:"57%",fontSize:"1vw"}} >Collection Method : </label><br></br>
-                <select name="Category" id="cate" style={{ color:"black",position: 'absolute',left:"0",top:"64%",fontSize:"1vw"}}
+        <div div style={{height:"32vw", width:"100vw", position: 'absolute', backgroundColor:'#00010F',top:"18vw",left:"5vw"}}>
+          <button style={{position:"absolute",width:"10vw",height:"2.4vw",top:"0",background:"#F0A116", opacity:'0.4', marginLeft:'10vw', color:'white', cursor:'pointer'}} onClick={addMultipleMovies}>Add More Movies</button>
+          <label style={{ color:"yellow",opacity:'0.7',position: 'absolute',paddingLeft:"4vw",top:"15%",fontSize:"1.2vw"}}>Name </label>
+      <input style={{ color:"white",position: 'absolute',left:"0",top:"22%",fontSize:"1vw",marginLeft:"4vw", backgroundColor:'transparent', borderColor:'yellow', borderRadius:'0.5vw', height:'2.5vw', width:'22vw', border:'0.5'}} value={customerName} onChange={(e) => setCustomerName(e.target.value)}></input>
+      <label style={{ color:"yellow",opacity:'0.7',position: 'absolute',paddingLeft:"4vw",top:"34%",fontSize:"1.2vw"}}>Contact No</label>
+      <input style={{ color:"black",position: 'absolute',left:"0",top:"39%",fontSize:"1vw",marginLeft:"4vw",backgroundColor:'transparent', borderColor:'yellow', borderRadius:'0.5vw', height:'2.5vw', width:'22vw', border:'0.5'}} type="number" value={contact} onChange={(e) => setContact(e.target.value)}></input>
+      <label style={{ color:"yellow",opacity:'0.7',position: 'absolute',paddingLeft:"4vw",top:"49%",fontSize:"1.2vw"}}>Email Address</label>
+      <input style={{ color:"black",position: 'absolute',left:"0",top:"54%",fontSize:"1vw",marginLeft:"4vw",backgroundColor:'transparent', borderColor:'yellow', borderRadius:'0.5vw', height:'2.5vw', width:'22vw', border:'0.5'}} value={customerEmail} onChange={(e) => setCustomerEmail(e.target.value)}></input>
+      <label style={{ color:"yellow",opacity:'0.7',position: 'absolute',paddingLeft:"4vw",top:"65%",fontSize:"1.2vw"}} >Collection Method</label><br></br>
+                <select name="Category" id="cate" style={{ color:"black",position: 'absolute',left:"0",top:"71%",fontSize:"1vw",marginLeft:"4vw"}}
                 onChange={(e)=>onchangeCollection(e.target.value)}
                 >
                   {payment_methods.map((method)=>(<option value={method.value}>{method.method}</option>))}  
@@ -533,11 +533,11 @@ return(
  
 </select>
 {driverLinkLogic?<div>
-  <lable style={{ color:"white",position: 'absolute',left:"0",top:"71%",fontSize:"1vw"}}>Driver Link :</lable>
+  <lable style={{ color:"white",position: 'absolute',left:"0",top:"75%",fontSize:"1vw"}}>Driver Link :</lable>
       <input style={{ color:"black",position: 'absolute',left:"0",top:"78%",fontSize:"1vw"}} value={driverLink} onChange={(e) => setDriverLink(e.target.value)}></input>
-      <button style={{position:"absolute",width:"10vw",height:"2vw",top:"85%",left:"0",background:"yellow"}} onClick={submit}>Add Request</button>
+      <button style={{position:"absolute",width:"10vw",height:"2vw",top:"87%",left:"0",background:"yellow"}} onClick={submit}>Add Request</button>
 </div>:<div>
-<button style={{position:"absolute",width:"10vw",height:"2vw",top:"75%",left:"0",background:"green"}} onClick={submit}>Add Request</button>
+<button style={{position:"absolute",width:"10vw",height:"2.2vw",top:"87%",marginLeft:'8vw',background:"yellow", opacity:'0.7', color:'black', fontWeight:'700', boxShadow:'0.15vw 0.2vw grey', border:'none'}} onClick={submit}>Add Request</button>
   </div>}
         </div>
        </div>
