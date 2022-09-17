@@ -522,13 +522,13 @@ return(
         <div div style={{height:"32vw", width:"100vw", position: 'absolute', backgroundColor:'#040819',top:"18vw",left:"5vw"}}>
           <button style={{position:"absolute",width:"10vw",height:"2vw",top:"0",left:"0",background:"yellow"}} onClick={addMultipleMovies}>Add More Movies</button>
           <lable style={{ color:"white",position: 'absolute',left:"0",top:"15%",fontSize:"1vw"}}>Name :</lable>
-      <input style={{ color:"black",position: 'absolute',left:"0",top:"22%",fontSize:"1vw"}} value={customerName} onChange={(e) => setCustomerName(e.target.value)}></input>
+      <input style={{ color:"black",background:"white",position: 'absolute',left:"0",top:"22%",fontSize:"1vw"}} value={customerName} onChange={(e) => setCustomerName(e.target.value)}></input>
       <lable style={{ color:"white",position: 'absolute',left:"0",top:"29%",fontSize:"1vw"}}>Contact No :</lable>
-      <input style={{ color:"black",position: 'absolute',left:"0",top:"36%",fontSize:"1vw"}} type="number" value={contact} onChange={(e) => setContact(e.target.value)}></input>
+      <input style={{ color:"black",background:"white",position: 'absolute',left:"0",top:"36%",fontSize:"1vw"}} type="number" value={contact} onChange={(e) => setContact(e.target.value)}></input>
       <lable style={{ color:"white",position: 'absolute',left:"0",top:"43%",fontSize:"1vw"}}>Email Address :</lable>
-      <input style={{ color:"black",position: 'absolute',left:"0",top:"50%",fontSize:"1vw"}} value={customerEmail} onChange={(e) => setCustomerEmail(e.target.value)}></input>
+      <input style={{ color:"black",background:"white",position: 'absolute',left:"0",top:"50%",fontSize:"1vw"}} value={customerEmail} onChange={(e) => setCustomerEmail(e.target.value)}></input>
       <label style={{ color:"white",position: 'absolute',left:"0",top:"57%",fontSize:"1vw"}} >Collection Method : </label><br></br>
-                <select name="Category" id="cate" style={{ color:"black",position: 'absolute',left:"0",top:"64%",fontSize:"1vw"}}
+                <select name="Category" id="cate" style={{ color:"black",background:"white",position: 'absolute',left:"0",top:"64%",fontSize:"1vw"}}
                 onChange={(e)=>onchangeCollection(e.target.value)}
                 >
                   {payment_methods.map((method)=>(<option value={method.value}>{method.method}</option>))}  

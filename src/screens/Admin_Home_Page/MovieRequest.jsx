@@ -246,7 +246,7 @@ function MovieRequest(requestID)
         {logicNPayed?<div >
           <button style={{height:'2vw', width:"10%", position: 'absolute',left:"0",top:"0",fontSize:"1vw" , cursor:"pointer"}} onClick={showPayedRequests}>Payed Request</button>
       <button style={{height:'2vw', width:"15%", position: 'absolute',left:"10%",top:"0",fontSize:"1vw" , cursor:"pointer"}} onClick={showNotPayableRequests}>Not Payable Request</button>
-      <button style={{height:'2vw', width:"15%", position: 'absolute',left:"20%",top:"0",fontSize:"1vw" , cursor:"pointer"}} onClick={sendMail}>Send Uploaded Mail</button>
+      <button style={{height:'2vw', width:"15%", position: 'absolute',left:"25%",top:"0",fontSize:"1vw" , cursor:"pointer"}} onClick={sendMail}>Send Uploaded Mail</button>
 
           {requests.map((request , index)=>(
             <div style={{height:'auto', width:'100%', backgroundColor:'#171723'}}>

@@ -1,6 +1,6 @@
 {
   "name": "movie-mania",
-  "homepage": "/slip_upload_page",
+  "homepage": "/movie_requests",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
