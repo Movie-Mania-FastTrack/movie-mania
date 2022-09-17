@@ -275,43 +275,41 @@ function moveToSingle(movie){
       <>
       <div className="header">
           <h1 className="h1">SELECT MORE MOVIES</h1>
-          <h2 className="date">
-          <span style={{ fontWeight: "bold" , fontSize:"1vw"}}>TODAY : </span>
-          {date}
-        </h2>
+ 
         </div>
-        <div style={{height:"39.72vw", width:"100vw", position: 'absolute', backgroundColor:'#040819'}}>
-        <div style={{height:"15vw", width:"100vw", position: 'absolute', backgroundColor:'#040819',top:"1vw",left:"5vw"}}>
-        <h2 style={{color:"white" , fontSize:"1vw"}}>Not Selected Movies</h2>
+        <div style={{height:"52vw", width:"100vw", position: 'absolute', backgroundColor:'#040819'}}>
+        <div style={{height:"20vw", width:"100vw", position: 'absolute', backgroundColor:'#040819',top:"1vw",left:"5vw"}}>
+        <h2 style={{color:"yellow" , fontSize:"1.4vw", opacity:'0.7', paddingLeft:'5vw'}}>All Movies</h2>
         {movies.length!== 0 && slideMovies.map((movie,index)=>(
-                    <div style={{position:"absolute",height:'15vw', width:'10vw', borderRadius:'0.9vw',top:"0",left:width*index+2+"vw"}}>
-                      <div style={{position:"absolute",height:'12vw', width:'10vw',textAlign:"center",backgroundColor:'white', borderRadius:'0.9vw',top:"10%",left:"0"}} > 
-                      <p style={{fontSize:"1vw",color:"red"}}><span style={{color:"blue"}}></span> <b>{movie.name}</b></p>
+                    <div style={{position:"absolute",height:'20vw', width:'10vw', borderRadius:'0.9vw',top:"1vw",left:width*index+2+"vw"}}>
+                      <div style={{position:"absolute",height:'13vw', width:'11vw', backgroundColor:'yellow', opacity:'0.8',boxShadow:'0vw 0.1vw #656568',textAlign:"center", borderRadius:'0.9vw',top:"10%",}} > 
+                      <p style={{fontSize:"1.1vw",color:"#01011B", fontWeight:'550',paddingTop:'1vw'}}> <b>{movie.name}</b></p>
                     <img style={{position:"absolute",height:'70%', width:'100%',backgroundColor:'white', borderRadius:'0.9vw',top:"30%",left:"0vw"}} src={movie.imageUrl}  onClick={()=>moveToSingle(movie)}></img>
                    </div>
-                    <button style={{position:"absolute",height:'2vw', width:'8vw',backgroundColor:'green', borderRadius:'0.9vw',top:"90%",left:"0"}}  onClick={()=>selectMovie(movie.movieId)}>select</button>
+                    <button style={{position:"absolute",top:"76%",left:"1vw",height:'2.5vw', width:'8vw',backgroundColor:'green', borderRadius:'0.8vw', border:'none', fontWeight:'700', fontSize:'1.2vw', opacity:'0.8', boxShadow:'0.1vw 0.1vw grey'}}  onClick={()=>selectMovie(movie.movieId)}>SELECT</button>
                     </div>
                     
                 ))}
                 <div style={{fontSize:'2.4vw', color:'black',position:"absolute",background:"#676523",width:"3vw",height:"3vw",borderWidth:"10px",borderColor:"red",borderRadius:"100%",right:"8vw", padding:'1vw 0px 0px 1vw', opacity:'0.8' , cursor:"pointer"}} onClick={moveNextSlide}><b style={{position:"absolute",left:"29%",top:"-24%"}}>{'>'}</b></div>
               <div style={{fontSize:'2.4vw', color:'black',position:"absolute",background:"#676523",width:"3vw",height:"3vw",borderWidth:"10px",borderColor:"red",borderRadius:"100%",left:"-3vw", padding:'1vw 0px 0px 1vw', opacity:'0.8' , cursor:"pointer"}} onClick={movePreviosSlide}><b style={{position:"absolute",left:"29%",top:"-24%"}}>{'<'}</b></div>
         </div>
-        <div style={{height:"15vw", width:"100vw", position: 'absolute', backgroundColor:'#040819',top:"18vw",left:"5vw"}}>
-          <h2 style={{color:"white" , fontSize:"1vw"}}>Selected Movies</h2>
+        <div style={{height:"20vw", width:"100vw", position: 'absolute', backgroundColor:'#040819',top:"25vw",left:"5vw"}}>
+          <h2 style={{color:"yellow" , fontSize:"1.4vw", opacity:'0.7', paddingLeft:'5vw'}}>Selected Movies</h2>
           {selectedMovies.length!== 0 && slideMoviesSelected.map((movie,index)=>(
-                    <div style={{position:"absolute",height:'15vw', width:'10vw', borderRadius:'0.9vw',top:"0",left:width*index+2+"vw"}}>
-                      <div style={{position:"absolute",height:'12vw', width:'10vw',textAlign:"center",backgroundColor:'white', borderRadius:'0.9vw',top:"10%",left:"0"}} > 
-                      <p style={{fontSize:"1vw",color:"red"}}><span style={{color:"blue"}}></span> <b>{movie.name}</b></p>
+                    <div style={{position:"absolute",height:'15vw', width:'10vw', borderRadius:'0.9vw',top:"1vw",left:width*index+2+"vw"}}>
+
+                      <div style={{position:"absolute",height:'13vw', width:'11vw', backgroundColor:'yellow', opacity:'0.8',boxShadow:'0vw 0.1vw #656568',textAlign:"center", borderRadius:'0.9vw',top:"10%"}} > 
+                      <p style={{fontSize:"1.1vw",color:"#01011B", fontWeight:'550',paddingTop:'1vw'}}><b>{movie.name}</b></p>
                     <img style={{position:"absolute",height:'70%', width:'100%',backgroundColor:'white', borderRadius:'0.9vw',top:"30%",left:"0vw"}} src={movie.imageUrl}></img>
                   </div>
-                    <button style={{position:"absolute",height:'2vw', width:'8vw',backgroundColor:'red', borderRadius:'0.9vw',top:"90%",left:"0"}} onClick={()=>removeMovie(movie.movieId)}>Remove</button>
+                    <button style={{position:"absolute",top:"98%",left:"1vw",height:'2.5vw', width:'8vw',backgroundColor:'red', borderRadius:'0.8vw', border:'none', fontWeight:'700', fontSize:'1.2vw', opacity:'0.6', boxShadow:'0.1vw 0.1vw grey'}} onClick={()=>removeMovie(movie.movieId)}>REMOVE</button>
                     </div>
                     
                 ))}
                 <div style={{fontSize:'2.4vw', color:'black',position:"absolute",background:"#676523",width:"3vw",height:"3vw",borderWidth:"10px",borderColor:"red",borderRadius:"100%",right:"8vw", padding:'1vw 0px 0px 1vw', opacity:'0.8' , cursor:"pointer"}} onClick={moveNextSlideSelected}><b style={{position:"absolute",left:"29%",top:"-24%"}}>{'>'}</b></div>
               <div style={{fontSize:'2.4vw', color:'black',position:"absolute",background:"#676523",width:"3vw",height:"3vw",borderWidth:"10px",borderColor:"red",borderRadius:"100%",left:"-3vw", padding:'1vw 0px 0px 1vw', opacity:'0.8' , cursor:"pointer"}} onClick={movePreviosSlideSelected}><b style={{position:"absolute",left:"29%",top:"-24%"}}>{'<'}</b></div>
         </div>
-        <button style={{position:"absolute",height:'2vw', width:'8vw',backgroundColor:'yellow', borderRadius:'0.9vw',bottom:"0",left:"0"}}  onClick={submit}>Submit</button>
+        <button style={{position:"absolute",height:'3vw', width:'10vw',backgroundColor:'yellow', borderRadius:'0.5vw',left:"45vw", top:'45vw', border:'none', fontWeight:'700', fontSize:'1.3vw', opacity:'0.8', boxShadow:'0.1vw 0.1vw grey'}}  onClick={submit}>Proceed {'>>'}</button>
         </div>
       </>
       
