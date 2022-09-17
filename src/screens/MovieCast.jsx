@@ -28,22 +28,27 @@ function MovieCast()
 
     return(
         <>
-        <div style={{height:wHeight+"vw", width:'100vw', position:"absolute", backgroundColor:'#040819'}}>
-            
+        <div style={{height:wHeight+"vw", width:'100vw', position:"absolute", backgroundColor:'#00010F'}}>
+   
             
             <div >
-            <div ><h2 style={{fontSize:"3vw",color:"purple"}}>Characters :</h2></div>
+            <div>
+            <center><h2 style={{fontSize:"2.6vw",color:"yellow",opacity:'0.5', marginTop:'3vw'}}>Characters</h2></center> 
+            </div>
             <div  >{characters.map((character,index)=>(
                 <div >
-                    <p style={{fontSize:"1.5vw",color:"yellow"}}>{character.character}</p>
+                    <center><h3 style={{fontSize:"1.3vw",color:"#CDC8A1"}}>{character.character}</h3></center>
                 </div>
             ))}</div>
                 </div>
+
                 <div >
-                <h2 style={{fontSize:"3vw",color:"purple"}}>Story : <p style={{fontSize:"2vw",color:"yellow"}}>{movie.story}</p></h2>
+               <center><h2 style={{fontSize:"2.6vw",color:"yellow",opacity:'0.5',marginTop:'2vw'}}>Story</h2></center> 
+             <center><p style={{fontSize:"1.3vw",color:"#CDC8A1", maxWidth:'60vw', fontWeight:'600'}}>{movie.story}</p></center>   
                 </div>
-                <h2 style={{fontSize:"3vw",color:"purple"}}>Release Partner</h2>
-                <img style={{position:"absolute",height:'10vw', width:'10vw',backgroundColor:'white', borderRadius:'0.9vw',left:"0vw"}} src={movie.launchingImageUrl}></img>
+            
+                <center><h2 style={{fontSize:"2vw",color:"yellow",opacity:'0.5',marginTop:'2vw'}}>Release Partner</h2></center>
+                <img style={{position:"absolute",height:'12vw', width:'30vw',backgroundColor:'white', borderRadius:'0.3vw', marginLeft:'35vw'}} src={movie.launchingImageUrl}></img>
                 <div >
                 
                 </div>
