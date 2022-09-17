@@ -495,13 +495,13 @@ return(
           <h1 className="h1" >BUY MOVIES</h1>
        
         </div>
-        <div style={{height:"50vw", width:"100vw", position: 'absolute', backgroundColor:'#00010F'}}>
-        {moreMovies?<div style={{height:"15vw", width:"100vw", position: 'absolute', backgroundColor:'#040819',top:"0",left:"5vw"}}>
+        <div style={{height:"55vw", width:"100vw", position: 'absolute', backgroundColor:'#00010F'}}>
+        {moreMovies?<div style={{height:"15vw", width:"100vw", position: 'absolute', backgroundColor:'#00010F',top:"0",left:"5vw"}}>
           <h2 style={{color:"yellow" , fontSize:"1.3vw", opacity:'0.5'}}>Selected Movies</h2>
           {selectedMovies.length!== 0 && slideMoviesSelected.map((movie,index)=>(
                     <div style={{position:"absolute",height:'15vw', width:'10vw', borderRadius:'0.9vw',top:"0",left:width*index+2+"vw"}} onClick={()=>moveToSingle(movie)}>
                       <div style={{position:"absolute",height:'12vw', width:'10vw',textAlign:"center",backgroundColor:'white', borderRadius:'0.9vw',top:"10%",left:"0"}} > 
-                      <p style={{fontSize:"1vw",color:"red"}}><span style={{color:"blue"}}></span> <b>{movie.name}</b></p>
+                      <p style={{fontSize:"1vw",color:"black"}}><b>{movie.name}</b></p>
                     <img style={{position:"absolute",height:'70%', width:'100%',backgroundColor:'white', borderRadius:'0.9vw',top:"30%",left:"0vw"}} src={movie.imageUrl}></img>
                   </div>
                     </div>
@@ -509,7 +509,7 @@ return(
                 ))}
                 <div style={{fontSize:'2.4vw', color:'black',position:"absolute",background:"#676523",width:"3vw",height:"3vw",borderWidth:"10px",borderColor:"red",borderRadius:"100%",right:"8vw", padding:'1vw 0px 0px 1vw', opacity:'0.8' , cursor:"pointer"}} onClick={moveNextSlideSelected}><b style={{position:"absolute",left:"29%",top:"-24%"}}>{'>'}</b></div>
               <div style={{fontSize:'2.4vw', color:'black',position:"absolute",background:"#676523",width:"3vw",height:"3vw",borderWidth:"10px",borderColor:"red",borderRadius:"100%",left:"-3vw", padding:'1vw 0px 0px 1vw', opacity:'0.8' , cursor:"pointer"}} onClick={movePreviosSlideSelected}><b style={{position:"absolute",left:"29%",top:"-24%"}}>{'<'}</b></div>
-        </div>:<div style={{height:"15vw", width:"100vw", position: 'absolute', backgroundColor:'#040819',top:"0",left:"5vw"}}>
+        </div>:<div style={{height:"15vw", width:"100vw", position: 'absolute', backgroundColor:'#00010F',top:"0",left:"5vw"}}>
         <h2 style={{color:"white" , fontSize:"1vw"}}>Selected Movies</h2>
         <div style={{position:"absolute",height:'12vw', width:'10vw',backgroundColor:'white',textAlign:"center", borderRadius:'0.9vw',top:"10%",left:"0"}} onClick={()=>moveToSingle(movie)}> 
                       <p style={{fontSize:"1vw",color:"red"}}><span style={{color:"blue"}}></span> <b>{movie.name}</b></p>
@@ -521,9 +521,9 @@ return(
           <label style={{ color:"yellow",opacity:'0.7',position: 'absolute',paddingLeft:"4vw",top:"15%",fontSize:"1.2vw"}}>Name </label>
       <input style={{ color:"white",position: 'absolute',left:"0",top:"22%",fontSize:"1vw",marginLeft:"4vw", backgroundColor:'transparent', borderColor:'yellow', borderRadius:'0.5vw', height:'2.5vw', width:'22vw', border:'0.5'}} value={customerName} onChange={(e) => setCustomerName(e.target.value)}></input>
       <label style={{ color:"yellow",opacity:'0.7',position: 'absolute',paddingLeft:"4vw",top:"34%",fontSize:"1.2vw"}}>Contact No</label>
-      <input style={{ color:"black",position: 'absolute',left:"0",top:"39%",fontSize:"1vw",marginLeft:"4vw",backgroundColor:'transparent', borderColor:'yellow', borderRadius:'0.5vw', height:'2.5vw', width:'22vw', border:'0.5'}} type="number" value={contact} onChange={(e) => setContact(e.target.value)}></input>
+      <input style={{ color:"white",position: 'absolute',left:"0",top:"39%",fontSize:"1vw",marginLeft:"4vw",backgroundColor:'transparent', borderColor:'yellow', borderRadius:'0.5vw', height:'2.5vw', width:'22vw', border:'0.5'}} type="number" value={contact} onChange={(e) => setContact(e.target.value)}></input>
       <label style={{ color:"yellow",opacity:'0.7',position: 'absolute',paddingLeft:"4vw",top:"49%",fontSize:"1.2vw"}}>Email Address</label>
-      <input style={{ color:"black",position: 'absolute',left:"0",top:"54%",fontSize:"1vw",marginLeft:"4vw",backgroundColor:'transparent', borderColor:'yellow', borderRadius:'0.5vw', height:'2.5vw', width:'22vw', border:'0.5'}} value={customerEmail} onChange={(e) => setCustomerEmail(e.target.value)}></input>
+      <input style={{ color:"white",position: 'absolute',left:"0",top:"54%",fontSize:"1vw",marginLeft:"4vw",backgroundColor:'transparent', borderColor:'yellow', borderRadius:'0.5vw', height:'2.5vw', width:'22vw', border:'0.5'}} value={customerEmail} onChange={(e) => setCustomerEmail(e.target.value)}></input>
       <label style={{ color:"yellow",opacity:'0.7',position: 'absolute',paddingLeft:"4vw",top:"65%",fontSize:"1.2vw"}} >Collection Method</label><br></br>
                 <select name="Category" id="cate" style={{ color:"black",position: 'absolute',left:"0",top:"71%",fontSize:"1vw",marginLeft:"4vw"}}
                 onChange={(e)=>onchangeCollection(e.target.value)}
@@ -533,13 +533,23 @@ return(
  
 </select>
 {driverLinkLogic?<div>
-  <lable style={{ color:"white",position: 'absolute',left:"0",top:"75%",fontSize:"1vw"}}>Driver Link :</lable>
-      <input style={{ color:"black",position: 'absolute',left:"0",top:"78%",fontSize:"1vw"}} value={driverLink} onChange={(e) => setDriverLink(e.target.value)}></input>
-      <button style={{position:"absolute",width:"10vw",height:"2vw",top:"87%",left:"0",background:"yellow"}} onClick={submit}>Add Request</button>
+  <label style={{ color:"yellow",opacity:'0.7',position: 'absolute',left:"0",top:"80%",fontSize:"1vw", paddingLeft:'4vw'}}>Driver Link </label>
+      <input style={{ color:"white",position: 'absolute',left:"0",top:"85%",fontSize:"1vw", marginLeft:'4vw',backgroundColor:'transparent', borderColor:'yellow', borderRadius:'0.5vw', height:'2.5vw', width:'30vw', border:'0.5'}} value={driverLink} onChange={(e) => setDriverLink(e.target.value)}></input>
+      <button style={{position:"absolute",width:"10vw",height:"2.2vw",top:"99%",marginLeft:'8vw',background:"yellow", opacity:'0.7', color:'black', fontWeight:'750', boxShadow:'0.15vw 0.2vw grey', border:'none'}} onClick={submit}>Send Request</button>
 </div>:<div>
-<button style={{position:"absolute",width:"10vw",height:"2.2vw",top:"87%",marginLeft:'8vw',background:"yellow", opacity:'0.7', color:'black', fontWeight:'700', boxShadow:'0.15vw 0.2vw grey', border:'none'}} onClick={submit}>Add Request</button>
+<button style={{position:"absolute",width:"10vw",height:"2.2vw",top:"91%",marginLeft:'8vw',background:"yellow", opacity:'0.7', color:'black', fontWeight:'750', boxShadow:'0.15vw 0.2vw grey', border:'none'}} onClick={submit}>Send Request</button>
   </div>}
         </div>
+          <div style={{position:'absolute', height:'30vw', width:'40vw', top:'40%', marginLeft:'50vw'}}>
+           <center><h3 style={{color:'white', fontWeight:'700', fontSize:'1.4vw'}}>Steps to follow :</h3></center> 
+            <ol style={{fontSize:'1.2vw', fontWeight:'650', color:'white', lineHeight:'3vw'}}>
+              <li>This screen shows the movies that you have selected.</li>
+              <li>If you want to select more, you need to click on 'add movies' button.</li>
+              <li>Then, you will be redirected to movie selection screen and you can add multiple movies from there.</li>
+              <li>Check that all the required movies are in the list.</li>
+              <li>Finally submit the form by filling the relevant details in the form.</li>
+            </ol>
+          </div>
        </div>
   </>
 )
