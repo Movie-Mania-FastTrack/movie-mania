@@ -500,7 +500,7 @@ return(
           <h2 style={{color:"yellow" , fontSize:"1.3vw", opacity:'0.5'}}>Selected Movies</h2>
           {selectedMovies.length!== 0 && slideMoviesSelected.map((movie,index)=>(
                     <div style={{position:"absolute",height:'15vw', width:'10vw', borderRadius:'0.9vw',top:"0",left:width*index+2+"vw"}} onClick={()=>moveToSingle(movie)}>
-                      <div style={{position:"absolute",height:'12vw', width:'10vw',textAlign:"center",backgroundColor:'white', borderRadius:'0.9vw',top:"10%",left:"0"}} > 
+                      <div style={{position:"absolute",height:'12vw', width:'10vw',textAlign:"center",backgroundColor:'white', borderRadius:'0.9vw',top:"12%",left:"0"}} > 
                       <p style={{fontSize:"1vw",color:"black"}}><b>{movie.name}</b></p>
                     <img style={{position:"absolute",height:'70%', width:'100%',backgroundColor:'white', borderRadius:'0.9vw',top:"30%",left:"0vw"}} src={movie.imageUrl}></img>
                   </div>
@@ -517,7 +517,7 @@ return(
                   </div>
           </div>}
         <div div style={{height:"32vw", width:"100vw", position: 'absolute', backgroundColor:'#00010F',top:"18vw",left:"5vw"}}>
-          <button style={{position:"absolute",width:"10vw",height:"2.4vw",top:"0",background:"#F0A116", opacity:'0.4', marginLeft:'10vw', color:'white', cursor:'pointer'}} onClick={addMultipleMovies}>Add More Movies</button>
+          <button style={{position:"absolute",width:"10vw",height:"2.4vw",top:"0",background:"#F0A116", opacity:'0.6', marginLeft:'10vw', color:'white', cursor:'pointer'}} onClick={addMultipleMovies}>Add More Movies</button>
           <label style={{ color:"yellow",opacity:'0.7',position: 'absolute',paddingLeft:"4vw",top:"15%",fontSize:"1.2vw"}}>Name </label>
       <input style={{ color:"white",position: 'absolute',left:"0",top:"22%",fontSize:"1vw",marginLeft:"4vw", backgroundColor:'transparent', borderColor:'yellow', borderRadius:'0.5vw', height:'2.5vw', width:'22vw', border:'0.5'}} value={customerName} onChange={(e) => setCustomerName(e.target.value)}></input>
       <label style={{ color:"yellow",opacity:'0.7',position: 'absolute',paddingLeft:"4vw",top:"34%",fontSize:"1.2vw"}}>Contact No</label>
@@ -535,9 +535,9 @@ return(
 {driverLinkLogic?<div>
   <label style={{ color:"yellow",opacity:'0.7',position: 'absolute',left:"0",top:"80%",fontSize:"1vw", paddingLeft:'4vw'}}>Driver Link </label>
       <input style={{ color:"white",position: 'absolute',left:"0",top:"85%",fontSize:"1vw", marginLeft:'4vw',backgroundColor:'transparent', borderColor:'yellow', borderRadius:'0.5vw', height:'2.5vw', width:'30vw', border:'0.5'}} value={driverLink} onChange={(e) => setDriverLink(e.target.value)}></input>
-      <button style={{position:"absolute",width:"10vw",height:"2.2vw",top:"99%",marginLeft:'8vw',background:"yellow", opacity:'0.7', color:'black', fontWeight:'750', boxShadow:'0.15vw 0.2vw grey', border:'none'}} onClick={submit}>Send Request</button>
+      <button style={{position:"absolute",width:"10vw",height:"2.2vw",top:"99%",marginLeft:'8vw',background:"yellow", opacity:'0.7', color:'black', fontWeight:'750', boxShadow:'0.15vw 0.2vw grey', border:'none', cursor:'pointer'}} onClick={submit}>Send Request</button>
 </div>:<div>
-<button style={{position:"absolute",width:"10vw",height:"2.2vw",top:"91%",marginLeft:'8vw',background:"yellow", opacity:'0.7', color:'black', fontWeight:'750', boxShadow:'0.15vw 0.2vw grey', border:'none'}} onClick={submit}>Send Request</button>
+<button style={{position:"absolute",width:"10vw",height:"2.2vw",top:"91%",marginLeft:'8vw',background:"yellow", opacity:'0.7', color:'black', fontWeight:'750', boxShadow:'0.15vw 0.2vw grey', border:'none', cursor:'pointer'}} onClick={submit}>Send Request</button>
   </div>}
         </div>
           <div style={{position:'absolute', height:'30vw', width:'40vw', top:'40%', marginLeft:'50vw'}}>

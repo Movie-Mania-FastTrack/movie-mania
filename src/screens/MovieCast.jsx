@@ -28,6 +28,12 @@ function MovieCast()
 
     return(
         <>
+        {/* Header Part */}
+        <div className="header" style={{boxShadow:'2px 5px white'}}>
+          <h1 className="h1">Movie Cast</h1>
+        
+       
+        </div>
         <div style={{height:wHeight+"vw", width:'100vw', position:"absolute", backgroundColor:'#01020C'}}>
    
             

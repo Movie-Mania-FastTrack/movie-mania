@@ -75,21 +75,21 @@ function SingleMovieHome()
         }
     return(
         <>
-        <div style={{height:"47.5vw", width:"100vw", position: 'absolute', backgroundColor:'#040819'}}>
-        <div style={{height:"100%", width:"25%", position: 'absolute',left:"0"}}>
+        <div style={{height:"47.5vw", width:"100vw", position: 'absolute', backgroundColor:'#00010B'}}>
+        <div style={{height:"100%", width:"20%", position: 'absolute',left:"0", backgroundColor:'black'}}>
             
-            <button style={{height:"5vw", width:"12vw", background:"wheate", position: 'absolute',left:"2vw",top:"20%"}} className="trailerButton" onMouseEnter={triler}>Movie Trailer</button>
-            <button style={{height:"5vw", width:"12vw", position: 'absolute',left:"2vw",top:"35%"}} onClick={showMovie}>Movie</button>
+            <button style={{height:"5vw", width:"12vw", background:"yellow", opacity:'0.7',fontSize:'1.4vw', fontWeight:'780', position: 'absolute',left:"3vw",top:"20%", boxShadow:'0.1vw 0.1vw grey',  borderRadius:'0.4vw'}} className="trailerButton" onMouseEnter={triler}>Movie Trailer</button>
+            <button style={{height:"5vw", width:"12vw", background:"yellow", opacity:'0.7',fontSize:'1.4vw', fontWeight:'780',  position: 'absolute',left:"3vw",top:"35%", boxShadow:'0.1vw 0.1vw grey',  borderRadius:'0.4vw'}} onClick={showMovie}>Movie</button>
             
             {!adminLogic&&<div>
-                <button style={{height:"5vw", width:"12vw", position: 'absolute',left:"2vw",top:"50%"}} onClick={slipUpload}>Slip Upload</button>
-                <button style={{height:"5vw", width:"12vw", position: 'absolute',left:"2vw",top:"65%"}} onClick={buy}>Buy</button>
+                <button style={{height:"5vw", width:"12vw", background:"yellow", opacity:'0.7',fontSize:'1.4vw', fontWeight:'780',  position: 'absolute',left:"3vw",top:"50%", boxShadow:'0.1vw 0.1vw grey',  borderRadius:'0.4vw'}} onClick={slipUpload}>Slip Upload</button>
+                <button style={{height:"5vw", width:"12vw",  background:"yellow", opacity:'0.7',fontSize:'1.4vw', fontWeight:'780', position: 'absolute',left:"3vw",top:"65%", boxShadow:'0.1vw 0.1vw grey',  borderRadius:'0.4vw'}} onClick={buy}>Buy</button>
                 </div>}
 </div>
-<div style={{height:"100%", width:"75%", position: 'absolute', backgroundColor:"black",left:"25%"}}>
-    {!TrailerLogic?<div style={{height:"100%", width:"100%", position: 'absolute', backgroundColor:"black"}}><img src={movie.imageUrl} style={{height:"100%", width:"100%", position: 'absolute', left:"0"}}></img></div>:<div>
+<div style={{height:"100%", width:"75%", position: 'absolute', backgroundColor:"#00010B",left:"20%"}}>
+    {!TrailerLogic?<div style={{height:"100%", width:"100%", position: 'absolute', backgroundColor:"#00010B"}}><img src={movie.imageUrl} style={{height:"100%", width:"100%", position: 'absolute', left:"0"}}></img></div>:<div>
     <div>
-                <video loop autoPlay style={{position:"absolute",top:"15%",left:"15%",height:'70%',width:'70%', float:'center', marginLeft:'10vw'}} controls>
+                <video loop autoPlay style={{position:"absolute",top:"13%",left:"10%",height:'80%',width:'90%', float:'center', marginRight:'15vw'}} controls>
                     <source
                     src={movie.trailerLink}
                     type="video/mp4"
