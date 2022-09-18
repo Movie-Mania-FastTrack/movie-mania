@@ -28,7 +28,7 @@ function MovieCast()
 
     return(
         <>
-        <div style={{height:wHeight+"vw", width:'100vw', position:"absolute", backgroundColor:'#00010F'}}>
+        <div style={{height:wHeight+"vw", width:'100vw', position:"absolute", backgroundColor:'#01020C'}}>
    
             
             <div >
