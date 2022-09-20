@@ -110,13 +110,13 @@ function SlipUpload()
             <hr style={{color:'white'}}/>
             <br/>
             <label style={{ color:"yellow",opacity:'0.7',position: 'absolute',paddingLeft:"20vw",top:"38%",fontSize:"1.2vw"}}>Request Code</label>
-            <input style={{ color:"white" ,background:"transparent",borderColor:'#7C7E2E',position: 'absolute',width:"25vw",height:"3vw",marginLeft:"20vw",top:"43%",fontSize:"1.2vw", borderRadius:'0.5vw'}} value={code} onChange={(e) => setCode(e.target.value)}></input>
-            <button style={{ color:"black",position: 'absolute', height:"3vw",width:"10vw",marginLeft:"52vw",fontSize:"1.1vw", marginTop:'1.5vw', backgroundColor:'yellow', fontWeight:'650', opacity:'0.5', cursor:'pointer'}} onClick={showPayment}>Show Payment</button>
+            <input style={{ color:"white" ,background:"transparent",borderColor:'#7C7E2E',position: 'absolute',width:"25vw",height:"3vw",marginLeft:"20vw",top:"43%",fontSize:"1.2vw", borderRadius:'0.5vw', borderWidth:'0.2vw'}} value={code} onChange={(e) => setCode(e.target.value)}></input>
+            <button className={style.Btn} style={{ color:"black",position: 'absolute', height:"3vw",width:"10vw",marginLeft:"52vw",fontSize:"1.1vw", marginTop:'5vw', backgroundColor:'yellow', fontWeight:'650',  cursor:'pointer',borderRadius:'0.3vw'}} onClick={showPayment}>Show Payment</button>
           <br></br>
           <label style={{ color:"yellow",opacity:'0.7',position: 'absolute',paddingLeft:"20vw",top:"58%",fontSize:"1.2vw"}}>Slip Image</label>
           <input style={{ color:"yellow",position: 'absolute', height:"2vw",width:"20vw",marginLeft:"20vw",top:"66%",fontSize:"0.8vw"}} type="file"  onChange={(e)=>setImageUpload(e.target.files[0])}></input>
           <br></br>
-            <button style={{ backgroundColor:"yellow",opacity:'0.8',borderRadius:'0.5vw',position: 'absolute', height:"3.2vw",marginLeft:"35vw",top:"78%",fontSize:"1.2vw", fontWeight:'650', color:'red', cursor:'pointer'}} onClick={uploadImage}>SUBMIT</button>
+            <button className={style.Btn}  style={{ backgroundColor:"yellow",borderRadius:'0.3vw',position: 'absolute', height:"3.2vw",marginLeft:"35vw",top:"78%",fontSize:"1.2vw", fontWeight:'650', color:'red', cursor:'pointer'}} onClick={uploadImage}>SUBMIT</button>
         </div>
         </>
     );

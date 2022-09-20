@@ -517,15 +517,15 @@ return(
                   </div>
           </div>}
         <div div style={{height:"32vw", width:"100vw", position: 'absolute', backgroundColor:'#00010F',top:"18vw",left:"5vw"}}>
-          <button style={{position:"absolute",width:"10vw",height:"2.4vw",top:"0",background:"#F0A116", opacity:'0.6', marginLeft:'10vw', color:'white', cursor:'pointer'}} onClick={addMultipleMovies}>Add More Movies</button>
+          <button className={styles.addMoreBtn} style={{position:"absolute",width:"10vw",height:"2.4vw",top:"0",background:"#F0A116", marginLeft:'10vw', color:'white', cursor:'pointer'}} onClick={addMultipleMovies}>Add More Movies</button>
           <label style={{ color:"yellow",opacity:'0.7',position: 'absolute',paddingLeft:"4vw",top:"15%",fontSize:"1.2vw"}}>Name </label>
-      <input style={{ color:"white",position: 'absolute',left:"0",top:"22%",fontSize:"1vw",marginLeft:"4vw", backgroundColor:'transparent', borderColor:'yellow', borderRadius:'0.5vw', height:'2.5vw', width:'22vw', border:'0.5'}} value={customerName} onChange={(e) => setCustomerName(e.target.value)}></input>
+      <input style={{ color:"white",position: 'absolute',left:"0",top:"22%",fontSize:"1vw",marginLeft:"4vw", backgroundColor:'transparent', borderColor:'yellow', borderRadius:'0.5vw', height:'2.5vw', width:'22vw', borderWidth:'0.2vw'}} value={customerName} onChange={(e) => setCustomerName(e.target.value)}></input>
       <label style={{ color:"yellow",opacity:'0.7',position: 'absolute',paddingLeft:"4vw",top:"34%",fontSize:"1.2vw"}}>Contact No</label>
-      <input style={{ color:"white",position: 'absolute',left:"0",top:"39%",fontSize:"1vw",marginLeft:"4vw",backgroundColor:'transparent', borderColor:'yellow', borderRadius:'0.5vw', height:'2.5vw', width:'22vw', border:'0.5'}} type="number" value={contact} onChange={(e) => setContact(e.target.value)}></input>
+      <input style={{ color:"white",position: 'absolute',left:"0",top:"39%",fontSize:"1vw",marginLeft:"4vw",backgroundColor:'transparent', borderColor:'yellow', borderRadius:'0.5vw', height:'2.5vw', width:'22vw', borderWidth:'0.2vw'}} type="number" value={contact} onChange={(e) => setContact(e.target.value)}></input>
       <label style={{ color:"yellow",opacity:'0.7',position: 'absolute',paddingLeft:"4vw",top:"49%",fontSize:"1.2vw"}}>Email Address</label>
-      <input style={{ color:"white",position: 'absolute',left:"0",top:"54%",fontSize:"1vw",marginLeft:"4vw",backgroundColor:'transparent', borderColor:'yellow', borderRadius:'0.5vw', height:'2.5vw', width:'22vw', border:'0.5'}} value={customerEmail} onChange={(e) => setCustomerEmail(e.target.value)}></input>
+      <input style={{ color:"white",position: 'absolute',left:"0",top:"54%",fontSize:"1vw",marginLeft:"4vw",backgroundColor:'transparent', borderColor:'yellow', borderRadius:'0.5vw', height:'2.5vw', width:'22vw', borderWidth:'0.2vw'}} value={customerEmail} onChange={(e) => setCustomerEmail(e.target.value)}></input>
       <label style={{ color:"yellow",opacity:'0.7',position: 'absolute',paddingLeft:"4vw",top:"65%",fontSize:"1.2vw"}} >Collection Method</label><br></br>
-                <select name="Category" id="cate" style={{ color:"black",position: 'absolute',left:"0",top:"71%",fontSize:"1vw",marginLeft:"4vw"}}
+                <select name="Category" id="cate" style={{ color:"black",position: 'absolute',left:"0",top:"71%",fontSize:"1vw",marginLeft:"4vw", borderWidth:'0.2vw'}}
                 onChange={(e)=>onchangeCollection(e.target.value)}
                 >
                   {payment_methods.map((method)=>(<option value={method.value}>{method.method}</option>))}  

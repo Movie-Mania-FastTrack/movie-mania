@@ -2,7 +2,7 @@ import React , {useEffect , useState} from "react";
 import {Link} from 'react-router-dom';
 import movieManiaApi from "../../api/movieManiaApi";
 import {useNavigate} from 'react-router-dom';
-import {LeftCircleOutlined,RightCircleOutlined} from '@ant-design/icons';
+import HomePageStyles from "./HomePage.module.css";
 
 function TopRatedMovieCard ()
 {
@@ -129,7 +129,7 @@ function TopRatedMovieCard ()
          
          <div>
             {topMovies.length!== 0 && slideMovies.map((movie,index)=>(
-                    <div style={{position:"absolute",height:'13vw', width:'11vw', backgroundColor:'#CAB51D', opacity:'0.9',boxShadow:'0vw 0.1vw #656568',textAlign:"center", borderRadius:'0.9vw',top:"0",left:width*index+2+"vw"}} onClick={()=>moveToSingle(movie)}> 
+                    <div className={HomePageStyles.topRatedCard} style={{position:"absolute",height:'13vw', width:'11vw', backgroundColor:'#CAB51D', opacity:'0.9',boxShadow:'0vw 0.1vw #656568',textAlign:"center", borderRadius:'0.9vw',top:"0",left:width*index+2+"vw"}} onClick={()=>moveToSingle(movie)}> 
                      <p style={{fontSize:"1.1vw",color:"#01011B", fontWeight:'550',paddingTop:'1vw' }}><b>{movie.name}</b></p>
                     <img style={{position:"absolute",height:'70%', width:'100%',backgroundColor:'white', borderRadius:'0.9vw',top:"30%",left:"0vw"}} src={movie.imageUrl}></img>
                     </div>

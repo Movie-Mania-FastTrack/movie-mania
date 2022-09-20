@@ -312,6 +312,7 @@ function HomePage()
                         </Modal>
                         </Col>
                     </Row>
+                    <div style={{height:'2.5vw'}}></div>
                 </div>
            
         </div>

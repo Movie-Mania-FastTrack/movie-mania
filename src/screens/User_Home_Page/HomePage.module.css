@@ -37,8 +37,8 @@
 }
 
 .footer{
-    height: 8vw;
-    width: 100%;
+    height: auto;
+    width: 95%;
     top:90%;
     position: fixed;
     background-color:rgba(0, 0, 0, 0.397);
@@ -57,4 +57,15 @@
 .categoryBtn:hover{
     background-color:  #38370e;
     
+}
+
+
+.card:hover{
+    transform: scale(1.2);
+    transition-duration: 0.5s;
+}
+
+.topRatedCard{
+    transform: scale(1.1);
+    transition-duration: 0.3s;
 }

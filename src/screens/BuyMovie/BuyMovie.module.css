@@ -53,3 +53,13 @@ width: 70%;
   padding-left: 100px;
 }
 
+.addMoreBtn:hover{
+  background-color: #f15107;
+  transform: scale(1.4);
+  transition-duration: 0.5s;
+}
+
+.Btn:hover{
+  opacity: 0.5;
+
+}
