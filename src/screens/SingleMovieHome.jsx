@@ -3,7 +3,7 @@ import {Row, Col, Card, Space} from 'antd';
 import {HomeFilled} from '@ant-design/icons';
 import {Link} from 'react-router-dom';
 
-
+import styles from "./BuyMovie/BuyMovie.module.css";
 import { useEffect } from "react";
 import { useState } from "react";
 import image from "../resources/images/doctorStrange.jpeg"
@@ -18,6 +18,19 @@ import { hover } from "@testing-library/user-event/dist/hover";
 function SingleMovieHome()
 {
 
+
+    const[film , setFilm] = useState({})
+    const[characters , setCharacters] = useState([])
+    const[wHeight , setWHeight] = useState(47)
+    useEffect(()=>{
+        const movie = JSON.parse( localStorage.getItem("singleMovie")) 
+        setFilm(movie)
+        setCharacters(movie.characters)
+        if(movie.characters.length>3){
+            var height = wHeight+(movie.characters.length-3)*7
+            setWHeight(height)
+        }   
+        },[]) 
     const navigate = useNavigate();
 
     const[movie , setMovie] = useState({})
@@ -70,20 +83,18 @@ function SingleMovieHome()
             navigate("/buy_page")
         }
 
-        function showMovie(){
-            navigate("/cast_page")
-        }
     return(
         <>
-        <div style={{height:"47.5vw", width:"100vw", position: 'absolute', backgroundColor:'#00010B'}}>
+        <div style={{backgroundColor:'#01020C'}}>
+        <div style={{height:"48vw", width:"100vw", position: 'absolute', backgroundColor:'#01020C'}}>
         <div style={{height:"100%", width:"20%", position: 'absolute',left:"0", backgroundColor:'black'}}>
             
-            <button style={{height:"5vw", width:"12vw", background:"yellow", opacity:'0.7',fontSize:'1.4vw', fontWeight:'780', position: 'absolute',left:"3vw",top:"20%", boxShadow:'0.1vw 0.1vw grey',  borderRadius:'0.4vw'}} className="trailerButton" onMouseEnter={triler}>Movie Trailer</button>
-            <button style={{height:"5vw", width:"12vw", background:"yellow", opacity:'0.7',fontSize:'1.4vw', fontWeight:'780',  position: 'absolute',left:"3vw",top:"35%", boxShadow:'0.1vw 0.1vw grey',  borderRadius:'0.4vw'}} onClick={showMovie}>Movie</button>
+            <button className={styles.optionBtn}  style={{height:"5vw", width:"12vw", background:"yellow",fontSize:'1.4vw', fontWeight:'780', position: 'absolute',left:"3vw",top:"20%", boxShadow:'0.1vw 0.1vw grey',  borderRadius:'0.4vw', cursor:'pointer'}} onMouseEnter={triler}>Movie Trailer</button>
+            <a href="#movieCast"><button className={styles.optionBtn}  style={{height:"5vw", width:"12vw", background:"yellow",color:'black', fontSize:'1.4vw', fontWeight:'780',  position: 'absolute',left:"3vw",top:"35%", boxShadow:'0.1vw 0.1vw grey',  borderRadius:'0.4vw', cursor:'pointer'}} >Movie Cast</button></a>
             
             {!adminLogic&&<div>
-                <button style={{height:"5vw", width:"12vw", background:"yellow", opacity:'0.7',fontSize:'1.4vw', fontWeight:'780',  position: 'absolute',left:"3vw",top:"50%", boxShadow:'0.1vw 0.1vw grey',  borderRadius:'0.4vw'}} onClick={slipUpload}>Slip Upload</button>
-                <button style={{height:"5vw", width:"12vw",  background:"yellow", opacity:'0.7',fontSize:'1.4vw', fontWeight:'780', position: 'absolute',left:"3vw",top:"65%", boxShadow:'0.1vw 0.1vw grey',  borderRadius:'0.4vw'}} onClick={buy}>Buy</button>
+                <button className={styles.optionBtn}  style={{height:"5vw", width:"12vw", background:"yellow", fontSize:'1.4vw', fontWeight:'780',  position: 'absolute',left:"3vw",top:"50%", boxShadow:'0.1vw 0.1vw grey',  borderRadius:'0.4vw', cursor:'pointer'}} onClick={slipUpload}>Slip Upload</button>
+                <button className={styles.optionBtn}  style={{height:"5vw", width:"12vw",  background:"yellow", fontSize:'1.4vw', fontWeight:'780', position: 'absolute',left:"3vw",top:"65%", boxShadow:'0.1vw 0.1vw grey',  borderRadius:'0.4vw', cursor:'pointer'}} onClick={buy}>Buy</button>
                 </div>}
 </div>
 <div style={{height:"100%", width:"75%", position: 'absolute', backgroundColor:"#00010B",left:"20%"}}>
@@ -98,11 +109,53 @@ function SingleMovieHome()
                 </video>
             </div>
         </div>}
+        <div style={{height:'5vw', width:'100vw', backgroundColor:'#01020C'}}></div>
 
 </div>
+
+{/* Movie Cast */}
+<div id='movieCast' style={{top:'48vw', width:'100vw', position:'absolute', backgroundColor:'#01020C'}}>
+          {/* Header Part */}
+          <div style={{boxShadow:'2px 5px white', height:'7vw', width:'100vw', backgroundColor:'#01020C'}}>
+          <h1 className="h1" >Movie Cast</h1>
+        
+       
+        </div>
+        <div style={{height:wHeight+"vw", width:'100vw', position:"absolute", backgroundColor:'#01020C'}}>
+   
+            
+            <div >
+            <div>
+            <center><h2 style={{fontSize:"2.6vw",color:"yellow",opacity:'0.8', marginTop:'3vw'}}>Characters</h2></center> 
+            </div>
+            <div  >{characters.map((character,index)=>(
+                <div >
+                    <center><h3 style={{fontSize:"1.3vw",color:"#CDC8A1"}}>{character.character}</h3></center>
+                </div>
+            ))}</div>
+                </div>
+
+                <div >
+               <center><h2 style={{fontSize:"2.6vw",color:"yellow",opacity:'0.8',marginTop:'2vw'}}>Story</h2></center> 
+             <center><p style={{fontSize:"1.3vw",color:"#CDC8A1", maxWidth:'60vw', fontWeight:'600'}}>{movie.story}</p></center>   
+                </div>
+            
+                <center><h2 style={{fontSize:"2vw",color:"yellow",opacity:'0.8',marginTop:'2vw'}}>Release Partner</h2></center>
+                <img style={{position:"absolute",height:'12vw', width:'30vw',backgroundColor:'white', borderRadius:'0.3vw', marginLeft:'35vw'}} src={movie.launchingImageUrl}></img>
+                <div >
+                
+                </div>
+            
+        </div>
+</div>
+
+
+        </div>
         </div>
         </>
     );
 }
 
 export default SingleMovieHome;
+
+// className="trailerButton" 
