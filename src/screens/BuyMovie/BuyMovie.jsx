@@ -496,7 +496,7 @@ return(
        
         </div>
         <div style={{height:"55vw", width:"100vw", position: 'absolute', backgroundColor:'#00010F'}}>
-        {moreMovies?<div  style={{height:"7vw", width:"auto", position: 'absolute', backgroundColor:'#00010F',left:"5vw"}}>
+        {moreMovies?<div  style={{height:"7vw", width:"100vw", position: 'absolute', backgroundColor:'#00010F',left:"5vw"}}>
           <h2 style={{color:"yellow" , fontSize:"1.3vw", opacity:'0.7'}}>Selected Movies</h2>
           {selectedMovies.length!== 0 && slideMoviesSelected.map((movie,index)=>(
                     <div className={styles.Btn} style={{position:"absolute",height:'3vw', width:'auto', minWidth:'10vw',top:'40%',left:width*index+2+"vw", borderRadius:'0.5vw', textAlign:'center', backgroundColor:'yellow'}} onClick={()=>moveToSingle(movie)}>

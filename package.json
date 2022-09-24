@@ -1,6 +1,6 @@
 {
   "name": "movie-mania",
-  "homepage": "/",
+  "homepage": "/multiple_movie_select",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
