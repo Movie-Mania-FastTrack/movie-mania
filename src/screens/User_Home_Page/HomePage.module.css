@@ -2,7 +2,8 @@
     height: 100vw;
     width: 100vw;
     position:absolute;
-    background-color: rgb(10, 9, 9);
+    background-color: antiquewhite;
+    /* background-color: rgb(10, 9, 9); */
 }
 
 .trailerButton:hover{
@@ -13,7 +14,7 @@
     height:30vw;
     width:100%;
     position:relative;
-    /* background-image: url("../../resources/images/MovieMania.png"); */
+    background-image: url("../../resources/images/movie.png");
 }
 
 .detailContent{

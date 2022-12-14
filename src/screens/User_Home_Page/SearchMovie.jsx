@@ -141,8 +141,8 @@ function SearchMovies (movieImage)
         <>
        
        <div>
-       <label style={{ color:"yellow",position: 'absolute',margin:'4vw 0vw 0vw 24vw',fontSize:"1.5vw"}}>Search your favourite</label>
-      <input style={{  color:"white" ,background:"transparent",borderColor:'#7C7E2E',position: 'absolute',margin:'4vw 0vw 0vw 40vw',fontSize:"1.2vw",width:'25vw',height:"3.2vw", borderRadius:'0.5vw', borderWidth:'0.2vw'}}  onChange={(e) => serachMoviesByName(e.target.value)} placeholder="Enter Movie..."></input>
+       <label style={{ color:"#010211",position: 'absolute',margin:'5vw 0vw 0vw 28vw',fontSize:"1.7vw"}}>Search your favourite</label>
+      <input style={{  color:"white" ,background:"#010211",borderColor:'#7C7E2E',position: 'absolute',margin:'5vw 0vw 0vw 46vw',fontSize:"1.2vw",width:'25vw',height:"3.2vw", borderRadius:'0.5vw', borderWidth:'0.2vw'}}  onChange={(e) => serachMoviesByName(e.target.value)} placeholder="Enter Movie..."></input>
      
       {searchMovies.length!== 0 && slideMovies.map((movie,index)=>(
                     <div style={{position:"absolute",height:'12vw', width:'10vw',textAlign:"center",backgroundColor:'yellow', opacity:'0.7', borderRadius:'0.9vw',top:"70%", boxShadow:'0.1vw 0.1vw #656568',left:width*index+2+"vw"}} onClick={()=>moveToSingle(movie)}> 
